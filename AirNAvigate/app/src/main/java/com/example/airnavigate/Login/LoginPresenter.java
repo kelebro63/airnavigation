@@ -5,4 +5,5 @@ package com.example.airnavigate.Login;
  */
 public interface LoginPresenter {
     public void ValidateCredentials(String username, String password);
+    public void populateAutoComplete();
 }
