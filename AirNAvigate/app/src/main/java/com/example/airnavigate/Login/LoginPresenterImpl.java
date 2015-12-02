@@ -1,7 +1,6 @@
 package com.example.airnavigate.Login;
 
 import android.app.LoaderManager;
-import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Loader;
 import android.content.pm.PackageManager;
@@ -10,8 +9,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-
-import com.example.airnavigate.MyApplication;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,12 +27,12 @@ public class LoginPresenterImpl implements LoginPresenter, OnLoginFinishedListen
 
     private LoginView loginView;
     private LoginInteractor loginInteractor;
-    private Context appContext;
+    private LoginActivity appContext;
 
-    public LoginPresenterImpl(LoginView loginView) {
+    public LoginPresenterImpl(LoginView loginView, LoginActivity loginActivity) {
         this.loginView = loginView;
         this.loginInteractor = new LoginInteractorImpl();
-        this.appContext = MyApplication.getContext();
+        this.appContext = loginActivity;
     }
 
     @Override
@@ -76,6 +73,12 @@ public class LoginPresenterImpl implements LoginPresenter, OnLoginFinishedListen
         }
 
         ((LoginActivity) appContext).getLoaderManager().initLoader(0, null, this);
+    }
+
+    @Override
+    public void attemptLogin(String email, String password) {
+        loginView.showProgress();
+        loginInteractor.login();
     }
 
     @Override
