@@ -18,7 +18,7 @@ import static android.Manifest.permission.READ_CONTACTS;
 /**
  * Created by Kelebro63 on 29.11.2015.
  */
-public class LoginPresenterImpl implements LoginPresenter, OnLoginFinishedListener, LoaderManager.LoaderCallbacks<Cursor>{
+public class LoginPresenterImpl implements LoginPresenter, OnLoginFinishedListener, OnValidateLoginFinishedListener, LoaderManager.LoaderCallbacks<Cursor>{
 
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -38,7 +38,7 @@ public class LoginPresenterImpl implements LoginPresenter, OnLoginFinishedListen
     @Override
     public void ValidateCredentials(String username, String password) {
         this.loginView.showProgress();
-        loginInteractor.login(username, password, this);
+        loginInteractor.validate(username, password, this);
     }
 
 
@@ -75,10 +75,11 @@ public class LoginPresenterImpl implements LoginPresenter, OnLoginFinishedListen
         ((LoginActivity) appContext).getLoaderManager().initLoader(0, null, this);
     }
 
+
     @Override
     public void attemptLogin(String email, String password) {
         loginView.showProgress();
-        loginInteractor.login();
+        loginInteractor.validate(email, password, this);
     }
 
     @Override
@@ -94,8 +95,8 @@ public class LoginPresenterImpl implements LoginPresenter, OnLoginFinishedListen
     }
 
     @Override
-    public void onSuccess() {
-        loginView.startMainScreen();
+    public void onSuccess(String username, String password) {
+        loginInteractor.login(username, password, this);
     }
 
     @Override
@@ -129,6 +130,16 @@ public class LoginPresenterImpl implements LoginPresenter, OnLoginFinishedListen
     @Override
     public void onLoaderReset(Loader<Cursor> cursorLoader) {
 
+    }
+
+    @Override
+    public void onError() {
+
+    }
+
+    @Override
+    public void onSuccess() {
+        loginView.startMainScreen();
     }
 
     private interface ProfileQuery {

@@ -5,9 +5,7 @@ package com.example.airnavigate.Login;
  */
 public interface OnLoginFinishedListener {
 
-    public void onUsernameError();
-
-    public void onPasswordError();
+    public void onError();
 
     public void onSuccess();
 

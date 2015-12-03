@@ -6,5 +6,5 @@ package com.example.airnavigate.Login;
 public interface LoginPresenter {
     public void ValidateCredentials(String username, String password);
     public void populateAutoComplete();
-    public void attemptLogin();
+    public void attemptLogin(String email, String password);
 }
