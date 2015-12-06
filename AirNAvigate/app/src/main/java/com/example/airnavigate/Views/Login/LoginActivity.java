@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.airnavigate.R;
+import com.example.airnavigate.Views.Common.SimpleAlertDialog;
 import com.example.airnavigate.Views.Main.MainActivity;
 
 import java.util.List;
@@ -137,12 +138,12 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void setEmailError() {
-
+        displayDialog("внимание", "ошибка email");
     }
 
     @Override
     public void setPasswordError() {
-
+        displayDialog("внимание", "ошибка password");
     }
 
     @Override
@@ -160,6 +161,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         mEmailView.setAdapter(adapter);
     }
 
+    public void displayDialog(String title, String message) {
+        SimpleAlertDialog.show(getSupportFragmentManager(), title, message);
+    }
 
 
 }

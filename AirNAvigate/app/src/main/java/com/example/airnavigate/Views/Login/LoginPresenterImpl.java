@@ -10,6 +10,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 
+import com.example.airnavigate.Views.Common.SimpleAlertDialog;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -151,4 +153,6 @@ public class LoginPresenterImpl implements LoginPresenter, OnLoginFinishedListen
         int ADDRESS = 0;
         int IS_PRIMARY = 1;
     }
+
+
 }
