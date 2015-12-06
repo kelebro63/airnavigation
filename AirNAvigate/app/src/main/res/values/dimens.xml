@@ -6,4 +6,23 @@
     <dimen name="nav_header_vertical_spacing">16dp</dimen>
     <dimen name="nav_header_height">160dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <!-- Inset shadow for RoundRectDrawableWithShadow. It is used to avoid gaps between the card
+ and the shadow. -->
+    <dimen name="cardview_compat_inset_shadow">1dp</dimen>
+
+    <!-- CardView -->
+    <dimen name="cardview_shadow_size">1dp</dimen>
+    <!-- Default radius for CardView corners. -->
+    <dimen name="cardview_default_radius">2dp</dimen>
+    <!-- Elevation value to use for CardViews. Pre-L, it is equal to shadow size. -->
+    <dimen name="cardview_default_elevation">2dp</dimen>
+    <!--Toolbar-->
+    <dimen name="toolbar_default_elevation">4dp</dimen>
+    <!--Tabs-->
+    <dimen name="tab.textSize">14sp</dimen>
+
+
+    <dimen name="dialog.minwidth">312dp</dimen>
 </resources>
+
+

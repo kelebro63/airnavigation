@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <!--hint: use ColorHexa to provide description to color when in doubt
+    http://www.colorhexa.com/88b41a -->
+    <color name="black.semi_transparent">#B4000000</color>
+    <color name="black.semi_transparent2">#cd000000</color>
+    <color name="black">#000</color>
+
+    <color name="white">#fff</color>
+    <color name="white.almost">#f3f3f3</color>
+    <color name="white.almost.semitransparent">#cdf3f3f3</color>
+
+    <color name="gray.mostly_black">#212121</color>
+    <color name="gray.very_dark_37">#373737</color>
+    <color name="gray.very_dark_38">#383838</color>
+    <color name="gray.very_dark_666">#666666</color>
+    <color name="gray.very_dark_999">#999999</color>
+    <color name="gray.very_dark_333">#333333</color>
+    <color name="gray.dark">#999999</color>
+    <color name="gray.light">#c3c3c3</color>
+    <color name="gray.light.dfdfdf">#dfdfdf</color>
+    <color name="gray.very_light">#e6e6e6</color>
+    <color name="gray.dividercolor">#e6e6e6</color>
+    <color name="gray.dark_30p_transparent_97">#4D979797</color>
+    <color name="gray.dark_50p_transparent_99">#80979797</color>
+
+    <color name="green.vivid">#aae122</color>
+    <color name="green.vivid.restored">#98D500</color>
+    <color name="green.very_dark">#212E00</color>
+    <color name="green.deep">#648b03</color>
+    <color name="green.strong">#88b41a</color>
+
+    <color name="orange.vivid">#f34505</color>
+
+    <!-- Shadow color for the first pixels around CardView. -->
+    <color name="cardview_shadow_start_color">#37000000</color>
+    <!--<color name="cardview_shadow_start_color">#22000000</color>-->
+    <!-- Shadow color for the furthest pixels around CardView. -->
+    <color name="cardview_shadow_end_color">#03000000</color>
+    <!--<color name="cardview_shadow_end_color">#03000000</color>-->
+
 </resources>
