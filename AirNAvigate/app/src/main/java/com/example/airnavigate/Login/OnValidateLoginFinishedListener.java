@@ -5,10 +5,10 @@ package com.example.airnavigate.Login;
  */
 public interface OnValidateLoginFinishedListener {
 
-    public void onUsernameError();
+    public void onEmailError();
 
     public void onPasswordError();
 
-    public void onSuccess(String username, String password);
+    public void onSuccessValidate(String username, String password);
 
 }

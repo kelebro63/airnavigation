@@ -133,16 +133,16 @@ public class LoginActivity extends AppCompatActivity implements  LoginView {
     //View interface implementation
     @Override
     public void showProgress() {
-
+        showProgress(true);
     }
 
     @Override
     public void hideProgress() {
-
+        showProgress(false);
     }
 
     @Override
-    public void setUsernameError() {
+    public void setEmailError() {
 
     }
 

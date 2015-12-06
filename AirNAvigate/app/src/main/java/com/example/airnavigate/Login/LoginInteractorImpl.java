@@ -27,7 +27,7 @@ public class LoginInteractorImpl implements LoginInteractor{
             @Override public void run() {
                 boolean error = false;
                 if (TextUtils.isEmpty(email)){
-                    listener.onUsernameError();
+                    listener.onEmailError();
                     error = true;
                 }
                 if (TextUtils.isEmpty(password)){
@@ -35,7 +35,7 @@ public class LoginInteractorImpl implements LoginInteractor{
                     error = true;
                 }
                 if (!error){
-                    listener.onSuccess(email, password);
+                    listener.onSuccessValidate(email, password);
                 }
             }
         }, 2000);

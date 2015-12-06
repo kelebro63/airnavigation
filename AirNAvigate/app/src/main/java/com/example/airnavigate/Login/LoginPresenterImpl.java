@@ -83,8 +83,8 @@ public class LoginPresenterImpl implements LoginPresenter, OnLoginFinishedListen
     }
 
     @Override
-    public void onUsernameError() {
-        loginView.setUsernameError();
+    public void onEmailError() {
+        loginView.setEmailError();
         loginView.hideProgress();
     }
 
@@ -95,7 +95,7 @@ public class LoginPresenterImpl implements LoginPresenter, OnLoginFinishedListen
     }
 
     @Override
-    public void onSuccess(String username, String password) {
+    public void onSuccessValidate(String username, String password) {
         loginInteractor.login(username, password, this);
     }
 
