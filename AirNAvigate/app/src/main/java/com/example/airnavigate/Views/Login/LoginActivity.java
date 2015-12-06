@@ -1,4 +1,4 @@
-package com.example.airnavigate.Login;
+package com.example.airnavigate.Views.Login;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -19,23 +19,26 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.airnavigate.Main.MainActivity;
 import com.example.airnavigate.R;
+import com.example.airnavigate.Views.Main.MainActivity;
 
 import java.util.List;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends AppCompatActivity implements  LoginView {
+public class LoginActivity extends AppCompatActivity implements LoginView {
 
 
 
     // UI references.
-    private AutoCompleteTextView mEmailView;
-    private EditText mPasswordView;
-    private View mProgressView;
-    private View mLoginFormView;
+    @Bind(R.id.email) AutoCompleteTextView mEmailView;
+    @Bind(R.id.password) EditText mPasswordView;
+    @Bind(R.id.login_progress) View mProgressView;
+    @Bind(R.id.login_form) View mLoginFormView;
 
     private LoginPresenter loginPresenter;
 
@@ -43,11 +46,7 @@ public class LoginActivity extends AppCompatActivity implements  LoginView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        // Set up the login form.
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-
-
-        mPasswordView = (EditText) findViewById(R.id.password);
+        ButterKnife.bind(this);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -66,10 +65,6 @@ public class LoginActivity extends AppCompatActivity implements  LoginView {
                 loginPresenter.ValidateCredentials(mEmailView.getText().toString(), mPasswordView.getText().toString());
             }
         });
-
-        mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
-
         loginPresenter = new LoginPresenterImpl(this, LoginActivity.this);
     }
 

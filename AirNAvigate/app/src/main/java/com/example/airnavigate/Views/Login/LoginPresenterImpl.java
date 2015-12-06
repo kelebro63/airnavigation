@@ -1,4 +1,4 @@
-package com.example.airnavigate.Login;
+package com.example.airnavigate.Views.Login;
 
 import android.app.LoaderManager;
 import android.content.CursorLoader;

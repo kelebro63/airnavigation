@@ -1,4 +1,4 @@
-package com.example.airnavigate.Main;
+package com.example.airnavigate.Views.Main;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
