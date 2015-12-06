@@ -11,7 +11,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -26,6 +25,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * A login screen that offers login via email/password.
@@ -39,6 +39,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @Bind(R.id.password) EditText mPasswordView;
     @Bind(R.id.login_progress) View mProgressView;
     @Bind(R.id.login_form) View mLoginFormView;
+    @Bind(R.id.email_sign_in_button) Button mEmailSignInButton;
+
 
     private LoginPresenter loginPresenter;
 
@@ -57,14 +59,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
                 return false;
             }
         });
-
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-        mEmailSignInButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                loginPresenter.ValidateCredentials(mEmailView.getText().toString(), mPasswordView.getText().toString());
-            }
-        });
         loginPresenter = new LoginPresenterImpl(this, LoginActivity.this);
     }
 
@@ -72,6 +66,11 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         loginPresenter.populateAutoComplete();
+    }
+
+    @OnClick(R.id.email_sign_in_button)
+    public void clickLogin(View view) {
+        loginPresenter.ValidateCredentials(mEmailView.getText().toString(), mPasswordView.getText().toString());
     }
 
     /**
