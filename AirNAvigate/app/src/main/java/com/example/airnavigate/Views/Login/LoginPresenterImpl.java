@@ -10,8 +10,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 
-import com.example.airnavigate.Views.Common.SimpleAlertDialog;
-
 import java.util.ArrayList;
 import java.util.List;
 
