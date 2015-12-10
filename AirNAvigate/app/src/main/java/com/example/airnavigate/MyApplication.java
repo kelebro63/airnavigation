@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 
 import com.example.airnavigate.Components.AppComponent;
+import com.example.airnavigate.Components.DaggerAppComponent;
+import com.example.airnavigate.Modules.AppModule;
 
 /**
  * Created by Kelebro63 on 29.11.2015.
@@ -30,6 +32,10 @@ public class MyApplication extends Application {
 
     public static Context getContext() {
         return instance;
+    }
+
+    public AppComponent getAppComponent() {
+        return appComponent;
     }
 
 }
