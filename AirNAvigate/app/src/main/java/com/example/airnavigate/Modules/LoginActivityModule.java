@@ -14,9 +14,17 @@ import dagger.Provides;
 @Module
 public class LoginActivityModule {
     private LoginActivity loginActivity;
+    private final LoginView loginView;
 
     public LoginActivityModule(LoginActivity loginActivity) {
         this.loginActivity = loginActivity;
+        this.loginView = loginActivity;
+    }
+
+    @Provides
+    @ActivityScope
+    LoginPresenterImpl loginPresenter(LoginActivity loginActivity) {
+        return new LoginPresenterImpl(loginView, loginActivity);
     }
 
     @Provides
@@ -25,12 +33,6 @@ public class LoginActivityModule {
         return loginActivity;
     }
 
-
-    @Provides
-    @ActivityScope
-    LoginPresenterImpl loginPresenter(LoginView loginView, LoginActivity loginActivity) {
-        return new LoginPresenterImpl(loginView, loginActivity);
-    }
 
 
 
