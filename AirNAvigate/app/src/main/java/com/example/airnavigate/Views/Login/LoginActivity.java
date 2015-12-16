@@ -18,11 +18,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.airnavigate.Modules.LoginActivityModule;
+import com.example.airnavigate.MyApplication;
 import com.example.airnavigate.R;
 import com.example.airnavigate.Views.Common.SimpleAlertDialog;
 import com.example.airnavigate.Views.Main.MainActivity;
 
 import java.util.List;
+
+import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -42,8 +46,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @Bind(R.id.login_form) View mLoginFormView;
     @Bind(R.id.email_sign_in_button) Button mEmailSignInButton;
 
-
-    private LoginPresenter loginPresenter;
+    @Inject
+    LoginPresenterImpl loginPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,13 +64,25 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
                 return false;
             }
         });
-        loginPresenter = new LoginPresenterImpl(this, LoginActivity.this);
+       // loginPresenter = new LoginPresenterImpl(this, LoginActivity.this);
+        setupActivityComponent();
     }
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         loginPresenter.populateAutoComplete();
+    }
+
+    //Local dependencies graph is constructed here
+    public void setupActivityComponent() {
+        //Uncomment those lines do measure dependencies creation time
+        //Debug.startMethodTracing("SplashTrace");
+        MyApplication.get(this)
+                .getAppComponent()
+                .initLoginActivityComponent(new LoginActivityModule(this))
+                .inject(this);
+        //Debug.stopMethodTracing();
     }
 
     @OnClick(R.id.email_sign_in_button)

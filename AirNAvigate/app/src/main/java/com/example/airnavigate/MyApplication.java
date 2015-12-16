@@ -18,6 +18,10 @@ public class MyApplication extends Application {
         instance = this;
     }
 
+    public static MyApplication get(Context context) {
+        return (MyApplication) context.getApplicationContext();
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();

@@ -18,7 +18,7 @@ import static android.Manifest.permission.READ_CONTACTS;
 /**
  * Created by Kelebro63 on 29.11.2015.
  */
-public class LoginPresenterImpl implements LoginPresenter, OnLoginFinishedListener, OnValidateLoginFinishedListener, LoaderManager.LoaderCallbacks<Cursor>{
+public class LoginPresenterImpl implements  OnLoginFinishedListener, OnValidateLoginFinishedListener, LoaderManager.LoaderCallbacks<Cursor>{ //LoginPresenter,
 
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -35,7 +35,7 @@ public class LoginPresenterImpl implements LoginPresenter, OnLoginFinishedListen
         this.appContext = loginActivity;
     }
 
-    @Override
+
     public void ValidateCredentials(String username, String password) {
         this.loginView.showProgress();
         loginInteractor.validate(username, password, this);
@@ -66,7 +66,7 @@ public class LoginPresenterImpl implements LoginPresenter, OnLoginFinishedListen
         return false;
     }
 
-    @Override
+
     public void populateAutoComplete() {
         if (!mayRequestContacts()) {
             return;
@@ -76,7 +76,7 @@ public class LoginPresenterImpl implements LoginPresenter, OnLoginFinishedListen
     }
 
 
-    @Override
+
     public void attemptLogin(String email, String password) {
         loginView.showProgress();
         loginInteractor.validate(email, password, this);
