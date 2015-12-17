@@ -13,6 +13,8 @@ import android.provider.ContactsContract;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import static android.Manifest.permission.READ_CONTACTS;
 
 /**
@@ -29,8 +31,10 @@ public class LoginPresenterImpl implements  OnLoginFinishedListener, OnValidateL
     private LoginInteractor loginInteractor;
     private LoginActivity appContext;
 
-    public LoginPresenterImpl(LoginView loginView, LoginActivity loginActivity) {
-        this.loginView = loginView;
+
+    @Inject
+    public LoginPresenterImpl(LoginActivity loginActivity) {
+        this.loginView = loginActivity;
         this.loginInteractor = new LoginInteractorImpl();
         this.appContext = loginActivity;
     }
