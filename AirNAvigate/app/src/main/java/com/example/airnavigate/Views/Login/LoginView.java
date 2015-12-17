@@ -19,4 +19,6 @@ public interface LoginView {
 
     public void loadFinished(List<String> emailAddressCollection);
 
+    public LoginView takeView();
+
 }

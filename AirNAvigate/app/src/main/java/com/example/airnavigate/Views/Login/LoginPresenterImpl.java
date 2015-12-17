@@ -20,7 +20,7 @@ import static android.Manifest.permission.READ_CONTACTS;
 /**
  * Created by Kelebro63 on 29.11.2015.
  */
-public class LoginPresenterImpl implements  OnLoginFinishedListener, OnValidateLoginFinishedListener, LoaderManager.LoaderCallbacks<Cursor>{ //LoginPresenter,
+public class LoginPresenterImpl implements LoginPresenter, OnLoginFinishedListener, OnValidateLoginFinishedListener, LoaderManager.LoaderCallbacks<Cursor>{ //LoginPresenter,
 
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -36,7 +36,7 @@ public class LoginPresenterImpl implements  OnLoginFinishedListener, OnValidateL
 
     @Inject
     public LoginPresenterImpl(LoginActivity loginActivity, LoginInteractorImpl loginInteractor) {
-        this.loginView = loginActivity;
+        this.loginView = loginActivity.takeView();
         this.loginInteractor = loginInteractor;
         this.appContext = loginActivity;
     }

@@ -177,6 +177,11 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         mEmailView.setAdapter(adapter);
     }
 
+    @Override
+    public LoginView takeView() {
+        return this;
+    }
+
     public void displayDialog(String title, String message) {
         SimpleAlertDialog.show(getSupportFragmentManager(), title, message);
     }
