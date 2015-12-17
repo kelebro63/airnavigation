@@ -4,10 +4,16 @@ import android.os.AsyncTask;
 import android.os.Handler;
 import android.text.TextUtils;
 
+import javax.inject.Inject;
+
 /**
  * Created by Kelebro63 on 29.11.2015.
  */
 public class LoginInteractorImpl implements LoginInteractor{
+
+    @Inject
+    public LoginInteractorImpl() {
+    }
 
     /**
      * A dummy authentication store containing known user names and passwords.

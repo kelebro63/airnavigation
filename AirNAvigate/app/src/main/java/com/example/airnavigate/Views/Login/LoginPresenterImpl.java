@@ -28,14 +28,16 @@ public class LoginPresenterImpl implements  OnLoginFinishedListener, OnValidateL
     public static final int REQUEST_READ_CONTACTS = 0;
 
     private LoginView loginView;
-    private LoginInteractor loginInteractor;
+    //@Inject
+    LoginInteractorImpl loginInteractor;
+
     private LoginActivity appContext;
 
 
     @Inject
-    public LoginPresenterImpl(LoginActivity loginActivity) {
+    public LoginPresenterImpl(LoginActivity loginActivity, LoginInteractorImpl loginInteractor) {
         this.loginView = loginActivity;
-        this.loginInteractor = new LoginInteractorImpl();
+        this.loginInteractor = loginInteractor;
         this.appContext = loginActivity;
     }
 

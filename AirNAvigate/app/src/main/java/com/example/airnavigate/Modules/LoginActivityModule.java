@@ -20,7 +20,7 @@ public class LoginActivityModule {
 //    @Provides
 //    @ActivityScope
 //    LoginPresenterImpl loginPresenter(LoginActivity loginActivity) {
-//        return new LoginPresenterImpl(loginView, loginActivity);
+//        return new LoginPresenterImpl(loginActivity);
 //    }
 
     @Provides
@@ -28,6 +28,11 @@ public class LoginActivityModule {
     LoginActivity provideLoginActivity() {
         return loginActivity;
     }
+
+//    @Provides
+//    public LoginInteractorImpl provideInteractor(LoginInteractorImpl interactor) {
+//        return interactor;
+//    }
 
 
 
