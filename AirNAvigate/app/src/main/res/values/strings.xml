@@ -16,12 +16,24 @@
 
 
     <string name="title_activity_main">MainActivity</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
 
     <!-- SimpleAlertDialog!-->
     <string name="ok">OK</string>
+
+    <!-- navigation drawer -->
+    <string name="navigation_drawer_open">"Open navigation drawer"</string>
+    <string name="navigation_drawer_close">"Close navigation drawer"</string>
+    <string name="MENU_RECIPES">"RECIPES"</string>
+    <string name="MENU_COOKING_TIPS">"HOW TO"</string>
+    <string name="MENU_FAVORITES">"FAVORITES"</string>
+    <string name="MENU_SHOPPINGLIST">"SHOPPING"</string>
+    <string name="MORE">"MORE"</string>
+    <string name="MENU_BASICS">"ESSENTIALS"</string>
+    <string name="MENU_ABOUT">"ABOUT US"</string>
+    <string name="MENU_TELL">"Tell a friend"</string>
+    <string name="MENU_FEEDBACK">"Feedback"</string>
+    <string name="MENU_SETTINGS">"SETTINGS"</string>
 
 </resources>

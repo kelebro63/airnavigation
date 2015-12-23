@@ -23,6 +23,78 @@
 
 
     <dimen name="dialog.minwidth">312dp</dimen>
+
+
+
+
+    <!-- Per the design guidelines, navigation drawers should be between 240dp and 320dp:
+         https://developer.android.com/design/patterns/navigation-drawer.html -->
+    <dimen name="navigation_drawer_width">240dp</dimen>
+
+    <dimen name="drawer_item_main_height">48dp</dimen>
+    <dimen name="drawer_item_more_height">48dp</dimen>
+    <dimen name="progress_inner_size">28dp</dimen>
+
+    <dimen name="list_item_divider_height">0.5dp</dimen>
+    <dimen name="header_divider_height">1dp</dimen>
+
+    <!--fragment how-to videos dimensions and rules-->
+    <dimen name="video_title_margin">8dp</dimen>
+    <dimen name="video_item_video_height">96dp</dimen>
+    <dimen name="video_item_width">172dp</dimen><!--it is a width of item layout-->
+
+    <dimen name="video_item_whole_layout_height">196dp</dimen>
+    <dimen name="video_row_header_width">32dp</dimen>
+
+    <!--grid item layout-->
+    <dimen name="grid_item_favorite_icon_dim">24dp</dimen>
+    <dimen name="grid_item_favorite_icon_margin">8dp</dimen>
+    <dimen name="grid_item_fastplay_width">38dp</dimen>
+    <dimen name="grid_item_fastplay_height">28dp</dimen>
+    <dimen name="grid_item_fastplay_layout_margin_top">16dp</dimen>
+    <dimen name="grid_item_title_margin_top">7dp</dimen>
+    <dimen name="grid_item_package_margin_top">6dp</dimen>
+    <dimen name="grid_item_strip_width">16dp</dimen>
+    <dimen name="grid_item_strip_height">2px</dimen>
+    <dimen name="grid_item_strip_margin_top">10dp</dimen>
+    <dimen name="grid_item_strip_margin_bottom">17dp</dimen>
+
+    <dimen name="grid_item_fastplay_padding_left">8dp</dimen>
+    <dimen name="grid_item_fastplay_padding_right">4dp</dimen>
+    <dimen name="grid_item_fastplay_top">4dp</dimen>
+    <dimen name="grid_item_fastplay_bottom">4dp</dimen>
+    <dimen name="how_to_video_play_icon_dim">48dp</dimen>
+    <dimen name="dialog_progress_box_dim">96dp</dimen>
+    <dimen name="dialog_progress_box_padding">16dp</dimen>
+    <dimen name="dialog_progress_custom_progress_dim">36dp</dimen>
+    <dimen name="dialog_progress_custom_progress_inner_dim">32dp</dimen>
+    <dimen name="dialog_progress_custom_progress_margin_bottom">8dp</dimen>
+    <dimen name="details_intro_rcp_whisk_margin_top">12dp</dimen>
+    <dimen name="details_badge_layout_padding_top">32dp</dimen>
+    <dimen name="filter_header_height">54dp</dimen>
+    <dimen name="filter_item_height">48dp</dimen>
+    <dimen name="filter_seekbar_height">64dp</dimen>
+
+    <dimen name="navdrawer_row_image_margin_right">8dp</dimen>
+    <dimen name="navdrawer_row_image_margin_top">4dp</dimen>
+    <dimen name="navdrawer_row_image_margin_left">12dp</dimen>
+    <dimen name="navdrawer_row_more_image_dim">32dp</dimen>
+    <dimen name="navdrawer_row_main_image_dim">40dp</dimen>
+    <dimen name="bg_filter_corner_radius">24dp</dimen>
+
+    <dimen name="recipe_grid_item_margin">4dp</dimen>
+    <dimen name="recipe_grid_item_title_font_size">12sp</dimen>
+    <dimen name="recipe_grid_item_package_font_size">10sp</dimen>
+
+    <dimen name="recipe_details_land_combined_item_margin_phone">8dp</dimen>
+    <dimen name="recipe_details_land_combined_item_margin_tablet">16dp</dimen>
+    <dimen name="details_ingredients_add_to_shopping_list_font_size">14dp</dimen>
+
+    <dimen name="toolbar_elevation">4dp</dimen>
+    <dimen name="sub_toolbar_elevation">2dp</dimen>
+
+
+
 </resources>
 
 

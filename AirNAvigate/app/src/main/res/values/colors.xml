@@ -39,4 +39,46 @@
     <color name="cardview_shadow_end_color">#03000000</color>
     <!--<color name="cardview_shadow_end_color">#03000000</color>-->
 
+
+
+    <color name="progress_default_circle_color">@android:color/darker_gray</color>
+    <color name="progress_default_progress_color">#ffffff</color>
+    <color name="progress_fragment_background">#ff7e7e7e</color>
+    <color name="timer_background_color">#FFFFFFFF</color>
+    <color name="navdrawer_text_color_selected">@color/orange_fill</color>
+
+
+    <color name="main_kitchen_fill_color">#FFFFFFFF</color>
+    <color name="orange_fill">#FFCD02</color>
+    <color name="orange_highlight_transparent">#99FFDD10</color>
+    <color name="orange_highlight">#FFDD10</color>
+    <color name="orange_lighter">#ffffdb99</color>
+    <color name="orange_darker">#FDBD02</color>
+    <color name="grid_item_shadow_color">@android:color/darker_gray</color>
+    <color name="transparent">@android:color/transparent</color>
+    <color name="semitransparent" >#f3ffffff</color>
+
+    <color name="reset_button_shadow">#50b6b6b6</color>
+    <color name="reset_button_inactive">#d2ffffff</color>
+    <color name="reset_button_active">#d2858585</color>
+
+
+    <color name="recipe_screen_text">#000</color>
+    <color name="orange_dark">#ff8c681c</color>
+    <color name="gray_color" >@android:color/darker_gray</color>
+    <color name="light_gray_color" >#dddddd</color>
+    <color name="very_light_gray_color" >#f5f5f5</color>
+    <color name="transparent_gray_color" >#22999999</color>
+    <color name="darker_darker_gray_color">#4A4A4A</color>
+    <color name="divider_color">#cccccc</color>
+    <color name="howto_list_divider_color">#f3f3f3</color>
+
+    <color name="recipe_title_shadow_color">#ff3c3c3c</color>
+    <drawable name="bg_multipane_sidemenu">@color/main_kitchen_fill_color</drawable>
+    <color name="ks_main_darker_gray">#454545</color>
+
+    <color name="window_background_color">#F2F2F2</color>
+
+
+
 </resources>
