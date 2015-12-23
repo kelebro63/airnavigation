@@ -1,5 +1,6 @@
 package com.example.airnavigate.Views.Drawer;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
@@ -76,6 +77,16 @@ public class NavDrawerFragment extends BaseFragment implements DrawerAdapter.Dra
         createDrawer(view);
         //   adapter.restoreState(savedInstanceState);
         return view;
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            mCallbacks = (NavigationDrawerCallbacks) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException("Activity must implement NavigationDrawerCallbacks.");
+        }
     }
 
     private void createDrawer(View view) {
@@ -178,7 +189,7 @@ public class NavDrawerFragment extends BaseFragment implements DrawerAdapter.Dra
         if (mCallbacks != null) {
             if (recyclerView != null && !mCallbacks.isSpecialCasePosition(position)) {
                 //mDrawerListView.setItemChecked(position, true);
-                mDrawerAdapter.setSelected(position);
+               // mDrawerAdapter.setSelected(position);
                 mCurrentSelectedPosition = position;
             }
         }

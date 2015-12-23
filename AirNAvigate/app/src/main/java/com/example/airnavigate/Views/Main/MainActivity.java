@@ -12,7 +12,7 @@ import com.example.airnavigate.Views.Drawer.DrawerNavigator;
 import com.example.airnavigate.Views.Drawer.NavDrawerFragment;
 import com.example.airnavigate.Views.Drawer.NavigationConstants;
 
-public class MainActivity extends BaseActivity implements DrawerNavigator
+public class MainActivity extends BaseActivity implements DrawerNavigator, NavDrawerFragment.NavigationDrawerCallbacks
 {
 
     NavDrawerFragment drawer;
@@ -70,6 +70,21 @@ public class MainActivity extends BaseActivity implements DrawerNavigator
 
     @Override
     public void navigateTo(@NavigationConstants.MenuItemId int menuItemId) {
+        String test = "";
+    }
+
+    @Override
+    public void onNavigationDrawerItemSelected(int position, boolean calledByUserClick) {
+        String test = "";
+    }
+
+    @Override
+    public boolean isSpecialCasePosition(int position) {
+        return false;
+    }
+
+    @Override
+    public void onReportDrawerStatus(boolean isOpened) {
         String test = "";
     }
 }
