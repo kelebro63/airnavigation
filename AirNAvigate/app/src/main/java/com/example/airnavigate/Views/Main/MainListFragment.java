@@ -1,5 +1,6 @@
 package com.example.airnavigate.Views.Main;
 
+import com.example.airnavigate.R;
 import com.example.airnavigate.Views.Base.BaseFragment;
 
 /**
@@ -10,6 +11,6 @@ public class MainListFragment extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return 0;
+        return R.layout.main_fragment;
     }
 }

@@ -2,6 +2,7 @@ package com.example.airnavigate.Components;
 
 import com.example.airnavigate.Modules.AppModule;
 import com.example.airnavigate.Modules.LoginActivityModule;
+import com.example.airnavigate.Modules.MainActivityModule;
 
 import javax.inject.Singleton;
 
@@ -18,4 +19,5 @@ import dagger.Component;
 )
 public interface AppComponent {
     LoginActivityComponent initLoginActivityComponent(LoginActivityModule module);
+    MainActivityComponent initMainActivityComponent(MainActivityModule module);
 }
