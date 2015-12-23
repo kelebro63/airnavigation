@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <TextView
-        android:id="@+id/toolbarTitle"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:text="Some title"
-        />
-
-</merge>
+<android.support.v7.widget.Toolbar
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+    android:layout_height="?attr/actionBarSize"
+    android:layout_width="match_parent"
+    android:minHeight="?attr/actionBarSize"
+    android:background="?attr/colorPrimary"
+    android:elevation="@dimen/toolbar_elevation"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    />

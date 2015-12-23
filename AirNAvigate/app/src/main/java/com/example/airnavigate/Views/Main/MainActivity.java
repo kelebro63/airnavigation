@@ -7,12 +7,12 @@ import android.view.MenuItem;
 import com.example.airnavigate.Modules.MainActivityModule;
 import com.example.airnavigate.MyApplication;
 import com.example.airnavigate.R;
-import com.example.airnavigate.Views.Base.BaseActivity;
+import com.example.airnavigate.Views.Base.BaseToolbarActivity;
 import com.example.airnavigate.Views.Drawer.DrawerNavigator;
 import com.example.airnavigate.Views.Drawer.NavDrawerFragment;
 import com.example.airnavigate.Views.Drawer.NavigationConstants;
 
-public class MainActivity extends BaseActivity implements DrawerNavigator, NavDrawerFragment.NavigationDrawerCallbacks
+public class MainActivity extends BaseToolbarActivity implements DrawerNavigator, NavDrawerFragment.NavigationDrawerCallbacks
 {
 
     NavDrawerFragment drawer;
@@ -20,7 +20,7 @@ public class MainActivity extends BaseActivity implements DrawerNavigator, NavDr
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_activity);
+        //setContentView(R.layout.main_activity);
         setupActivityComponent();
         drawer = (NavDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.drawer);
         if (savedInstanceState == null) {
@@ -28,6 +28,11 @@ public class MainActivity extends BaseActivity implements DrawerNavigator, NavDr
             //noinspection ResourceType
             drawer.openItem(initialId);
         }
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.main_activity;
     }
 
     @Override
