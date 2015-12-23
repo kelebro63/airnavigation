@@ -8,20 +8,26 @@ import com.example.airnavigate.Modules.MainActivityModule;
 import com.example.airnavigate.MyApplication;
 import com.example.airnavigate.R;
 import com.example.airnavigate.Views.Base.BaseActivity;
+import com.example.airnavigate.Views.Drawer.DrawerNavigator;
+import com.example.airnavigate.Views.Drawer.NavDrawerFragment;
+import com.example.airnavigate.Views.Drawer.NavigationConstants;
 
-public class MainActivity extends BaseActivity
+public class MainActivity extends BaseActivity implements DrawerNavigator
 {
 
+    NavDrawerFragment drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.container, new MainListFragment(), "MainListFragmentTag")
-                .commit();
         setupActivityComponent();
+        drawer = (NavDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.drawer);
+        if (savedInstanceState == null) {
+            int initialId = getIntent().getIntExtra("initialId", NavigationConstants.DRAWER_NEWS);
+            //noinspection ResourceType
+            drawer.openItem(initialId);
+        }
     }
 
     @Override
@@ -62,4 +68,8 @@ public class MainActivity extends BaseActivity
     }
 
 
+    @Override
+    public void navigateTo(@NavigationConstants.MenuItemId int menuItemId) {
+        String test = "";
+    }
 }
