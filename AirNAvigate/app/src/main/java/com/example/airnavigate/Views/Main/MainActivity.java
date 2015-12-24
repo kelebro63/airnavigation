@@ -28,12 +28,13 @@ public class MainActivity extends BaseToolbarActivity implements NavDrawerFragme
         setupActivityComponent();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        drawer = (NavDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.drawer);
+
         mDispatcher.onCreate();
+        drawer = (NavDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.drawer);
         drawer.setUp(
                 R.id.drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
-
+        mDispatcher.displayNavigationDrawerItem(FragmentDispatcher.NavDrawerItems.RECIPES, true);
     }
 
     @Override
@@ -82,7 +83,7 @@ public class MainActivity extends BaseToolbarActivity implements NavDrawerFragme
 
     @Override
     public void onNavigationDrawerItemSelected(int position, boolean calledByUserClick) {
-        String test = "";
+        mDispatcher.displayNavigationDrawerItem(position, calledByUserClick);
     }
 
     @Override

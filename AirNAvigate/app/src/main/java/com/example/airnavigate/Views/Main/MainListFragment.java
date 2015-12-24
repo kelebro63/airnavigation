@@ -9,8 +9,10 @@ import com.example.airnavigate.Views.Base.BaseFragment;
 public class MainListFragment extends BaseFragment {
 
 
+    public static final String TAG = "MainListFragment";
+
     @Override
     protected int getLayoutId() {
-        return R.layout.main_fragment;
+        return R.layout.main_list_fragment;
     }
 }

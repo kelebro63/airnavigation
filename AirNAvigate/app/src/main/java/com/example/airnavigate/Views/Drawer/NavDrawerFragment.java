@@ -50,11 +50,6 @@ public class NavDrawerFragment extends BaseFragment implements DrawerAdapter.Dra
    // private boolean mUserLearnedDrawer;
 
 
-    public NavDrawerFragment() {
-    }
-
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +64,7 @@ public class NavDrawerFragment extends BaseFragment implements DrawerAdapter.Dra
         }
 
         // Select either the default item (1) or the last selected item.
-        selectItem(mCurrentSelectedPosition, false);
+        //selectItem(mCurrentSelectedPosition, false);
 
 
     }

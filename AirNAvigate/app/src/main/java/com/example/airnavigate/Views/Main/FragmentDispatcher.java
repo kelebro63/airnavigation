@@ -43,13 +43,13 @@ public class FragmentDispatcher {
 
         String tag = null;
         switch (position) {
-//            case NavDrawerItems.RECIPES:
-//                currentSelectionFragment = mManager.findFragmentByTag(RecipesGridFragment.TAG);
-//                if (currentSelectionFragment == null) {
-//                    currentSelectionFragment = new RecipesGridFragment();
-//                    tag = RecipesGridFragment.TAG;
-//                }
-//                break;
+            case NavDrawerItems.RECIPES:
+                currentSelectionFragment = mManager.findFragmentByTag(MainListFragment.TAG);
+                if (currentSelectionFragment == null) {
+                    currentSelectionFragment = new MainListFragment();
+                    tag = MainListFragment.TAG;
+                }
+                break;
 //            case NavDrawerItems.HOWTOS:
 //                currentSelectionFragment = mManager.findFragmentByTag(HowToFragment.TAG);
 //                if (currentSelectionFragment == null) {
