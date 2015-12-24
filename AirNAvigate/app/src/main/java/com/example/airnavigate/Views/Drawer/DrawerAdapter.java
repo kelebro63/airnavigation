@@ -73,7 +73,6 @@ class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implem
             mItems.get(i).setSelected(false);
             if (i == position) {
                 mItems.get(i).setSelected(true);
-                mCallbacks.onPositionSelected(i);
             }
         }
         notifyDataSetChanged();
@@ -117,7 +116,7 @@ class DrawerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implem
             root = itemView;
             icon = (ImageView) itemView.findViewById(R.id.drawer_item_icon);
             title = (TextView) itemView.findViewById(R.id.drawer_item_title);
-            colorRegular = context.getResources().getColor(R.color.gray_dark);
+            colorRegular = context.getResources().getColor(R.color.darker_darker_gray_color);
             colorSelected = context.getResources().getColor(R.color.navdrawer_text_color_selected);
 
         }

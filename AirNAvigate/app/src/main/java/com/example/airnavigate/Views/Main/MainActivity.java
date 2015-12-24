@@ -1,6 +1,7 @@
 package com.example.airnavigate.Views.Main;
 
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -8,14 +9,16 @@ import com.example.airnavigate.Modules.MainActivityModule;
 import com.example.airnavigate.MyApplication;
 import com.example.airnavigate.R;
 import com.example.airnavigate.Views.Base.BaseToolbarActivity;
-import com.example.airnavigate.Views.Drawer.DrawerNavigator;
 import com.example.airnavigate.Views.Drawer.NavDrawerFragment;
-import com.example.airnavigate.Views.Drawer.NavigationConstants;
 
-public class MainActivity extends BaseToolbarActivity implements DrawerNavigator, NavDrawerFragment.NavigationDrawerCallbacks
+public class MainActivity extends BaseToolbarActivity implements NavDrawerFragment.NavigationDrawerCallbacks
 {
 
     NavDrawerFragment drawer;
+
+    //@Inject
+    //@ForMainActivity
+    FragmentDispatcher mDispatcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +26,12 @@ public class MainActivity extends BaseToolbarActivity implements DrawerNavigator
         //setContentView(R.layout.main_activity);
         setupActivityComponent();
         drawer = (NavDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.drawer);
-        if (savedInstanceState == null) {
-            int initialId = getIntent().getIntExtra("initialId", NavigationConstants.DRAWER_NEWS);
-            //noinspection ResourceType
-            drawer.openItem(initialId);
-        }
+        mDispatcher = new FragmentDispatcher(getSupportFragmentManager(), getResources());
+        mDispatcher.onCreate();
+        drawer.setUp(
+                R.id.drawer,
+                (DrawerLayout) findViewById(R.id.drawer_layout));
+
     }
 
     @Override
@@ -73,10 +77,6 @@ public class MainActivity extends BaseToolbarActivity implements DrawerNavigator
     }
 
 
-    @Override
-    public void navigateTo(@NavigationConstants.MenuItemId int menuItemId) {
-        String test = "";
-    }
 
     @Override
     public void onNavigationDrawerItemSelected(int position, boolean calledByUserClick) {
