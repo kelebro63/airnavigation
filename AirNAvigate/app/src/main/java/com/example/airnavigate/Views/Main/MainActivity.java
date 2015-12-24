@@ -11,6 +11,8 @@ import com.example.airnavigate.R;
 import com.example.airnavigate.Views.Base.BaseToolbarActivity;
 import com.example.airnavigate.Views.Drawer.NavDrawerFragment;
 
+import javax.inject.Inject;
+
 public class MainActivity extends BaseToolbarActivity implements NavDrawerFragment.NavigationDrawerCallbacks
 {
 
@@ -18,6 +20,7 @@ public class MainActivity extends BaseToolbarActivity implements NavDrawerFragme
 
     //@Inject
     //@ForMainActivity
+    @Inject
     FragmentDispatcher mDispatcher;
 
     @Override
@@ -26,7 +29,7 @@ public class MainActivity extends BaseToolbarActivity implements NavDrawerFragme
         //setContentView(R.layout.main_activity);
         setupActivityComponent();
         drawer = (NavDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.drawer);
-        mDispatcher = new FragmentDispatcher(getSupportFragmentManager(), getResources());
+       // mDispatcher = new FragmentDispatcher(getSupportFragmentManager(), getResources());
         mDispatcher.onCreate();
         drawer.setUp(
                 R.id.drawer,

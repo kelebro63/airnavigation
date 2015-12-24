@@ -18,7 +18,6 @@ public class FragmentDispatcher {
     private Resources mResources;
 
 
-
     public FragmentDispatcher(@NonNull FragmentManager mManager,
                               @NonNull Resources mResources) {
 

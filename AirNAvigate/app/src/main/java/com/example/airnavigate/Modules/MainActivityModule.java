@@ -1,6 +1,7 @@
 package com.example.airnavigate.Modules;
 
 import com.example.airnavigate.Views.Login.ActivityScope;
+import com.example.airnavigate.Views.Main.FragmentDispatcher;
 import com.example.airnavigate.Views.Main.MainActivity;
 
 import dagger.Module;
@@ -21,6 +22,12 @@ public class MainActivityModule {
     @ActivityScope
     MainActivity provideMainActivity() {
         return mainActivity;
+    }
+
+    @Provides
+    @ActivityScope
+    FragmentDispatcher provideFragmentDispatcher() {
+        return new FragmentDispatcher(mainActivity.getSupportFragmentManager(), mainActivity.getResources());
     }
 
 
