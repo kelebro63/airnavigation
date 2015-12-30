@@ -7,8 +7,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.airnavigate.Model.News;
 import com.example.airnavigate.R;
 import com.example.airnavigate.Views.Base.BaseFragment;
+
+import java.util.ArrayList;
 
 import butterknife.Bind;
 
@@ -53,7 +56,7 @@ public class MainListFragment extends BaseFragment {
 //                .homeActivityFragmentModule(new HomeActivityFragmentModule((HomeActivity) getActivity(), this))
 //                .build()
 //                .inject(this);
-//        initRecyclerView();
+            initRecyclerView();
 //
 //        presenter.takeView(this);
 //        presenter.requestNews(filter);
@@ -74,8 +77,10 @@ public class MainListFragment extends BaseFragment {
         layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         newsRecyclerView.setLayoutManager(layoutManager);
         adapter = new NewsListAdapter();
+
      //   adapter.setItemClickListener(item -> presenter.openNextScreen(item, filter));
         newsRecyclerView.setAdapter(adapter);
+        adapter.addAll(getNews());
        // newsRecyclerView.addItemDecoration(new BlackThickDividerDecor());
 //        newsRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
 //            @Override
@@ -89,5 +94,18 @@ public class MainListFragment extends BaseFragment {
 //                }
 //            }
 //        });
+    }
+
+    private ArrayList<News> getNews() {
+        ArrayList<News> newsArrayList = new ArrayList<>();
+        News news1 = new News(1);
+        news1.setTitle("title1");
+        news1.setSubtitle("subTitle1");
+        newsArrayList.add(news1);
+        News news2 = new News(2);
+        news2.setTitle("title2");
+        news2.setSubtitle("subTitle2");
+        newsArrayList.add(news2);
+        return newsArrayList;
     }
 }
