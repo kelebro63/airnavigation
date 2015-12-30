@@ -15,11 +15,9 @@
             android:id="@+id/newsRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-
+            android:alpha="0"
+            tools:alpha="1"
             />
-        <!--android:alpha="0"
-            tools:alpha="1"-->
 
     </android.support.v4.widget.SwipeRefreshLayout>
     <com.example.airnavigate.Views.Widgets.HorizontalProgress

@@ -12,6 +12,7 @@ import com.example.airnavigate.R;
 import com.example.airnavigate.Views.Base.BaseFragment;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 
@@ -80,7 +81,7 @@ public class MainListFragment extends BaseFragment {
 
      //   adapter.setItemClickListener(item -> presenter.openNextScreen(item, filter));
         newsRecyclerView.setAdapter(adapter);
-        adapter.addAll(getNews());
+        setNewsToDisplay(getNews());
        // newsRecyclerView.addItemDecoration(new BlackThickDividerDecor());
 //        newsRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
 //            @Override
@@ -94,6 +95,25 @@ public class MainListFragment extends BaseFragment {
 //                }
 //            }
 //        });
+    }
+
+    public void setNewsToDisplay(List<News> news) {
+        adapter.setItems(news);
+        if (news != null && news.size() > 0) {
+            newsRecyclerView.animate().alpha(1).setDuration(getResources().getInteger(android.R.integer.config_shortAnimTime));
+        }
+        updateContentVisibility();
+    }
+
+    private void updateContentVisibility() {
+        emptyStub.setVisibility(adapter.isEmpty() ? View.VISIBLE : View.GONE);
+        animateRecycler(adapter.isEmpty());
+    }
+
+    private void animateRecycler(boolean isEmpty) {
+        float val = isEmpty ? 0 : 1;
+        int duration = getResources().getInteger(android.R.integer.config_mediumAnimTime);
+        newsRecyclerView.animate().alpha(val).setDuration(duration);
     }
 
     private ArrayList<News> getNews() {
