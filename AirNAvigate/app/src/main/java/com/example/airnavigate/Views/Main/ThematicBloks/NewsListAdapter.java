@@ -47,8 +47,8 @@ class NewsListAdapter extends BaseArrayAdapter<News, AbstractNewsHolder> {
                 return new NewsListHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.news_item, parent, false));
 //            case TYPE_TWITTER_POST:
 //                return new NewsListTwitterHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.news_twitter_item, parent, false));
-//            case TYPE_PROGRESS:
-//                return new NewsLoadingFooterHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.news_item_footer, parent, false));
+            case TYPE_PROGRESS:
+                return new NewsLoadingFooterHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.news_item_footer, parent, false));
             default:
                 throw new IllegalStateException("ViewHolder is not implemented");
         }

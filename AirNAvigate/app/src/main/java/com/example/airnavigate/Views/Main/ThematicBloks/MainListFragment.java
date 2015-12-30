@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.example.airnavigate.Model.News;
 import com.example.airnavigate.R;
+import com.example.airnavigate.Utils.BlackThickDividerDecor;
 import com.example.airnavigate.Views.Base.BaseFragment;
 
 import java.util.ArrayList;
@@ -82,19 +83,19 @@ public class MainListFragment extends BaseFragment {
      //   adapter.setItemClickListener(item -> presenter.openNextScreen(item, filter));
         newsRecyclerView.setAdapter(adapter);
         setNewsToDisplay(getNews());
-       // newsRecyclerView.addItemDecoration(new BlackThickDividerDecor());
-//        newsRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-//            @Override
-//            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-//                if (!adapter.isLoading() &&  //adapter is not already loading more news
-//                        layoutManager.findLastCompletelyVisibleItemPosition() == adapter.getItemCount() - 1 //reached the last item
-//                        ) {
-//                    adapter.displayLoadingFooter();//indicate loading more news by showing footer
-//                    newsRecyclerView.smoothScrollToPosition(adapter.getItemCount() - 1);//smooth scroll to footer
-//                    presenter.requestNews(filter);//load more news
-//                }
-//            }
-//        });
+        newsRecyclerView.addItemDecoration(new BlackThickDividerDecor());
+        newsRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                if (!adapter.isLoading() &&  //adapter is not already loading more news
+                        layoutManager.findLastCompletelyVisibleItemPosition() == adapter.getItemCount() - 1 //reached the last item
+                        ) {
+                    adapter.displayLoadingFooter();//indicate loading more news by showing footer
+                    newsRecyclerView.smoothScrollToPosition(adapter.getItemCount() - 1);//smooth scroll to footer
+                    //presenter.requestNews(filter);//load more news
+                }
+            }
+        });
     }
 
     public void setNewsToDisplay(List<News> news) {
@@ -118,14 +119,12 @@ public class MainListFragment extends BaseFragment {
 
     private ArrayList<News> getNews() {
         ArrayList<News> newsArrayList = new ArrayList<>();
-        News news1 = new News(1);
-        news1.setTitle("title1");
-        news1.setSubtitle("subTitle1");
-        newsArrayList.add(news1);
-        News news2 = new News(2);
-        news2.setTitle("title2");
-        news2.setSubtitle("subTitle2");
-        newsArrayList.add(news2);
+        for (int i = 0; i < 100; i++) {
+            News news = new News(i);
+            news.setTitle("title" + i);
+            news.setSubtitle("subTitle" + i);
+            newsArrayList.add(news);
+        }
         return newsArrayList;
     }
 }
