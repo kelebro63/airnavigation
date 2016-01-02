@@ -7,20 +7,25 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.airnavigate.Modules.MainActivityFragmentModule;
 import com.example.airnavigate.Model.News;
+import com.example.airnavigate.MyApplication;
 import com.example.airnavigate.R;
 import com.example.airnavigate.Utils.BlackThickDividerDecor;
 import com.example.airnavigate.Views.Base.BaseFragment;
+import com.example.airnavigate.Views.Main.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
 
 import butterknife.Bind;
 
 /**
  * Created by Bistrov Alexey on 17.12.2015.
  */
-public class MainListFragment extends BaseFragment {
+public class MainListFragment extends BaseFragment implements INewsListView{
 
 
 
@@ -36,14 +41,19 @@ public class MainListFragment extends BaseFragment {
 //    @Bind(R.id.progressLoading)
 //    HorizontalProgress progress;
 
-//    @Inject
-//    NewsListPresenter presenter;
+    @Inject
+    NewsListPresenter presenter;
 
 
     private NewsListAdapter adapter;
 
     private LinearLayoutManager layoutManager;
     public static final String TAG = "MainListFragment";
+
+    /**
+     * A title used to filter the news in search
+     */
+    private String filter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,20 +64,27 @@ public class MainListFragment extends BaseFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-//        DaggerHomeActivityFragmentComponent.builder().gokixxAppComponent(getAppComponent())
-//                .homeActivityFragmentModule(new HomeActivityFragmentModule((HomeActivity) getActivity(), this))
-//                .build()
-//                .inject(this);
-            initRecyclerView();
+        setupActivityFragmentComponent();
+        initRecyclerView();
 //
-//        presenter.takeView(this);
-//        presenter.requestNews(filter);
+        presenter.takeView(this);
+        presenter.requestNews(filter);
 
 //        newsRefreshLayout.setOnRefreshListener(() -> {
 //            if (!adapter.isLoading()) {
 //                presenter.refreshItems(filter);
 //            }
 //        });
+    }
+
+    public void setupActivityFragmentComponent() {
+        //Uncomment those lines do measure dependencies creation time
+        //Debug.startMethodTracing("SplashTrace");
+        MyApplication.get(getActivity())
+                .getAppComponent()
+                .initMainActivityFragmentComponent(new MainActivityFragmentModule((MainActivity) getActivity()))
+                .inject(this);
+        //Debug.stopMethodTracing();
     }
 
     @Override
@@ -80,7 +97,7 @@ public class MainListFragment extends BaseFragment {
         newsRecyclerView.setLayoutManager(layoutManager);
         adapter = new NewsListAdapter();
 
-     //   adapter.setItemClickListener(item -> presenter.openNextScreen(item, filter));
+        //   adapter.setItemClickListener(item -> presenter.openNextScreen(item, filter));
         newsRecyclerView.setAdapter(adapter);
         setNewsToDisplay(getNews());
         newsRecyclerView.addItemDecoration(new BlackThickDividerDecor());
@@ -98,12 +115,27 @@ public class MainListFragment extends BaseFragment {
         });
     }
 
+    @Override
+    public void addNewsToDisplay(List<News> news) {
+
+    }
+
     public void setNewsToDisplay(List<News> news) {
         adapter.setItems(news);
         if (news != null && news.size() > 0) {
             newsRecyclerView.animate().alpha(1).setDuration(getResources().getInteger(android.R.integer.config_shortAnimTime));
         }
         updateContentVisibility();
+    }
+
+    @Override
+    public void stopRefreshing() {
+
+    }
+
+    @Override
+    public void setInitialLoading(boolean isLoading) {
+
     }
 
     private void updateContentVisibility() {
@@ -126,5 +158,10 @@ public class MainListFragment extends BaseFragment {
             newsArrayList.add(news);
         }
         return newsArrayList;
+    }
+
+    @Override
+    public void displayError(Throwable error) {
+
     }
 }
