@@ -4,7 +4,11 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 
 import com.example.airnavigate.MVP.IPresenter;
+import com.example.airnavigate.Model.News;
+import com.example.airnavigate.Views.Base.BaseSubscriber;
 import com.example.airnavigate.Views.Common.ErrorNavigator;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -47,28 +51,28 @@ class NewsListPresenter implements IPresenter<INewsListView> {
         if (isLoading)
             return;
 
-//        interactor.loadNews(currentPage, filter, new BaseSubscriber<List<News>>(view) {
-//            @Override
-//            public void onStartImpl() {
-//                isLoading = true;
-//            }
-//
-//            @Override
-//            public void onCompletedImpl() {
-//                isLoading = false;
-//                currentPage++;
-//            }
-//
-//            @Override
-//            public void onErrorImpl(Throwable e) {
-//                isLoading = false;
-//            }
-//
-//            @Override
-//            public void onNextImpl(List<News> news) {
-//                view.addNewsToDisplay(news);
-//            }
-//        });
+        interactor.loadNews(currentPage, filter, new BaseSubscriber<List<News>>(view) {
+            @Override
+            public void onStartImpl() {
+                isLoading = true;
+            }
+
+            @Override
+            public void onCompletedImpl() {
+                isLoading = false;
+                currentPage++;
+            }
+
+            @Override
+            public void onErrorImpl(Throwable e) {
+                isLoading = false;
+            }
+
+            @Override
+            public void onNextImpl(List<News> news) {
+                view.addNewsToDisplay(news);
+            }
+        });
     }
 
     /**
