@@ -3,7 +3,7 @@ package com.example.airnavigate.Views.Main.ThematicBloks;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.example.airnavigate.Model.News;
+import com.example.airnavigate.Model.Topic;
 import com.example.airnavigate.R;
 import com.example.airnavigate.Views.Base.Adapter.BaseArrayAdapter;
 
@@ -13,7 +13,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 
-class NewsListAdapter extends BaseArrayAdapter<News, AbstractNewsHolder> {
+class NewsListAdapter extends BaseArrayAdapter<Topic, AbstractNewsHolder> {
 
     private final static int TYPE_REGULAR_POST = 0;
     private final static int TYPE_TWITTER_POST = 1;
@@ -29,14 +29,14 @@ class NewsListAdapter extends BaseArrayAdapter<News, AbstractNewsHolder> {
     private boolean isLoading;
 
     @Override
-    protected void onBindViewHolder(AbstractNewsHolder holder, News item) {
+    protected void onBindViewHolder(AbstractNewsHolder holder, Topic item) {
         holder.bind(item);
     }
 
 
     @Override
     public long getItemId(int position) {
-        News item = getItem(position);
+        Topic item = getItem(position);
         return item == null ? ID_PROGRESS_ITEM : item.getId();
     }
 
@@ -57,7 +57,7 @@ class NewsListAdapter extends BaseArrayAdapter<News, AbstractNewsHolder> {
 
     @Override
     public int getItemViewType(int position) {
-        News item = getItem(position);
+        Topic item = getItem(position);
         if (item == null) {
             return TYPE_PROGRESS;
         }
@@ -71,10 +71,10 @@ class NewsListAdapter extends BaseArrayAdapter<News, AbstractNewsHolder> {
 
 
     @Override
-    public void addAll(Collection<News> collection) {
+    public void addAll(Collection<Topic> collection) {
         if (!isEmpty()) {
             //remove the progress item
-            News remove = getItems().remove(getItemCount() - 1);
+            Topic remove = getItems().remove(getItemCount() - 1);
             if (remove != null) {
 //                IllegalStateException illegalStateException =
 //                        new IllegalStateException("loading logic gone wrong - item removed is not a progress item!");
@@ -86,7 +86,7 @@ class NewsListAdapter extends BaseArrayAdapter<News, AbstractNewsHolder> {
     }
 
     @Override
-    public void setItems(List<News> items) {
+    public void setItems(List<Topic> items) {
         super.setItems(items);
         isLoading = false;
 

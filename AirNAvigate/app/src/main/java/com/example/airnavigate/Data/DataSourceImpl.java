@@ -1,7 +1,10 @@
 package com.example.airnavigate.Data;
 
 
+import com.example.airnavigate.Internal.BackgroundThread;
 import com.example.airnavigate.Model.News;
+import com.example.airnavigate.Model.Topic;
+import com.example.airnavigate.Utils.Prefs;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +12,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import rx.Observable;
+import rx.Scheduler;
 
 @SuppressWarnings("TryWithIdenticalCatches")
 /**
@@ -26,39 +30,39 @@ public class DataSourceImpl implements IDataSource {
 //     */
 //    private static final String GOKIXX_TWITTER_ACCOUNT = "Gokixx";
 //
-//    private final IGokixxAPI serverApi;
-//    private final DBManager manager;
-//    private final Prefs prefs;
-//
-//    /**
-//     * Background scheduler which will be used to enqueue asynchronous tasks
-//     */
-//    private final Scheduler backgroundScheduler;
-//
-//
-//    @Inject
-//    public DataSourceImpl(IGokixxAPI serverApi,
-//                          @BackgroundThread Scheduler backgroundScheduler,
-//                          DBManager manager,
-//                          Prefs prefs) {
-//
-//        this.serverApi = serverApi;
-//        this.manager = manager;
-//        this.prefs = prefs;
-//        this.backgroundScheduler = backgroundScheduler;
-//    }
+    private final IAirNavigateAPI serverApi;
+    private final DBManager manager;
+    private final Prefs prefs;
+
+    /**
+     * Background scheduler which will be used to enqueue asynchronous tasks
+     */
+    private final Scheduler backgroundScheduler;
+
 
     @Inject
-    public DataSourceImpl() {
+    public DataSourceImpl(IAirNavigateAPI serverApi,
+                          @BackgroundThread Scheduler backgroundScheduler,
+                          DBManager manager,
+                          Prefs prefs) {
 
-
+        this.serverApi = serverApi;
+        this.manager = manager;
+        this.prefs = prefs;
+        this.backgroundScheduler = backgroundScheduler;
     }
+
+//    @Inject
+//    public DataSourceImpl() {
+//
+//
+//    }
 
 
     @Override
-    public Observable<List<News>> requestGetNews() {
-        return Observable.just(getNews());
-
+    public Observable<List<Topic>> requestGetNews(String tag) {
+        //return Observable.just(getNews());
+        return serverApi.requestLatestNews(tag);
     }
 
     private List<News> getNews() {

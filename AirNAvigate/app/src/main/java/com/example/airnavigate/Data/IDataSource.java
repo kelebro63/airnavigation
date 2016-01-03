@@ -1,6 +1,6 @@
 package com.example.airnavigate.Data;
 
-import com.example.airnavigate.Model.News;
+import com.example.airnavigate.Model.Topic;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import rx.Observable;
  */
 public interface IDataSource {
 
-    Observable<List<News>> requestGetNews();
+    Observable<List<Topic>> requestGetNews(String tag);
 
 //    Observable<List<News>> requestLatestNews(int page, String tag);
 //

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 
 import com.example.airnavigate.MVP.IPresenter;
-import com.example.airnavigate.Model.News;
+import com.example.airnavigate.Model.Topic;
 import com.example.airnavigate.Views.Base.BaseSubscriber;
 import com.example.airnavigate.Views.Common.ErrorNavigator;
 
@@ -50,7 +50,7 @@ class NewsListPresenter implements IPresenter<INewsListView> {
     public void requestNews(@Nullable String filter) {
         if (isLoading)
             return;
-        interactor.getNews(new BaseSubscriber<List<News>>(view) {
+        interactor.getNews(new BaseSubscriber<List<Topic>>(view) {
             @Override
             public void onStartImpl() {
                 isLoading = true;
@@ -69,7 +69,7 @@ class NewsListPresenter implements IPresenter<INewsListView> {
             }
 
             @Override
-            public void onNextImpl(List<News> news) {
+            public void onNextImpl(List<Topic> news) {
                 view.addNewsToDisplay(news);
             }
         });

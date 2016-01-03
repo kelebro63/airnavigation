@@ -8,6 +8,7 @@ import com.example.airnavigate.Internal.BackgroundThread;
 import com.example.airnavigate.Internal.MainThread;
 import com.example.airnavigate.MVP.Interactor;
 import com.example.airnavigate.Model.News;
+import com.example.airnavigate.Model.Topic;
 
 import java.util.List;
 
@@ -38,8 +39,8 @@ public class NewsInteractor extends Interactor {
         }
     }
 
-    public void getNews(Subscriber<List<News>> subscriber) {
-        subscribe(dataSource.requestGetNews(), subscriber);
+    public void getNews(Subscriber<List<Topic>> subscriber) {
+        subscribe(dataSource.requestGetNews("app752bd9901d986ec138dccfc56336a83f0af88134"), subscriber);
     }
 
 }

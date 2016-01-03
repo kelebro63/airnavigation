@@ -3,15 +3,27 @@ package com.example.airnavigate.Modules;
 import android.app.Application;
 import android.content.Context;
 
+import com.example.airnavigate.BuildConfig;
+import com.example.airnavigate.Data.DBManager;
 import com.example.airnavigate.Data.DataSourceImpl;
+import com.example.airnavigate.Data.IAirNavigateAPI;
 import com.example.airnavigate.Data.IDataSource;
 import com.example.airnavigate.Internal.BackgroundThread;
 import com.example.airnavigate.Internal.MainThread;
+import com.google.gson.FieldNamingPolicy;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.squareup.okhttp.OkHttpClient;
+
+import java.util.concurrent.TimeUnit;
 
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import retrofit.RestAdapter;
+import retrofit.client.OkClient;
+import retrofit.converter.GsonConverter;
 import rx.Scheduler;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -49,8 +61,37 @@ public class AppModule {
 
     @Provides
     @Singleton
-    IDataSource provideDataSource() {
-        return new DataSourceImpl();
+    IDataSource provideDataSource(IAirNavigateAPI api, @BackgroundThread Scheduler scheduler, DBManager manager) { //, Prefs prefs
+        return new DataSourceImpl(api, scheduler, manager, null);
+    }
+
+
+    @Provides
+    @Singleton
+    OkHttpClient provideClient() {
+        OkHttpClient client = new OkHttpClient();
+        client.setConnectTimeout(10, TimeUnit.SECONDS);
+        client.setReadTimeout(10, TimeUnit.SECONDS);
+        return client;
+    }
+
+    @Provides
+    @Singleton
+    IAirNavigateAPI provideRestAPI(OkHttpClient client) { //, RequestInterceptor interceptor
+
+        RestAdapter.Builder builder = new RestAdapter.Builder();
+        builder.setClient(new OkClient(client));
+        builder.setEndpoint("http://api.duma.gov.ru/api/3b816383786e9b28914837d27a06c50394dd5240");
+        //builder.setRequestInterceptor(interceptor);
+        Gson gson = new GsonBuilder()
+                .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create();
+        builder.setConverter(new GsonConverter(gson));
+
+        if (BuildConfig.DEBUG) {
+            builder.setLogLevel(RestAdapter.LogLevel.FULL);
+        }
+
+        return builder.build().create(IAirNavigateAPI.class);
     }
 
     @Provides

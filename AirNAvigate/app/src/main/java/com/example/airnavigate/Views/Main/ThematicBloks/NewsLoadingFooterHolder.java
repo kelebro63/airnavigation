@@ -2,7 +2,7 @@ package com.example.airnavigate.Views.Main.ThematicBloks;
 
 import android.view.View;
 
-import com.example.airnavigate.Model.News;
+import com.example.airnavigate.Model.Topic;
 
 /**
  * A "load more" footer displayed as list footer
@@ -13,7 +13,7 @@ class NewsLoadingFooterHolder extends AbstractNewsHolder {
     }
 
     @Override
-    public void bind(News news) {
+    public void bind(Topic news) {
 
     }
 

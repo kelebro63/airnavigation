@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.airnavigate.Model.News;
+import com.example.airnavigate.Model.Topic;
 import com.example.airnavigate.Modules.MainActivityFragmentModule;
 import com.example.airnavigate.MyApplication;
 import com.example.airnavigate.R;
@@ -115,12 +115,12 @@ public class MainListFragment extends BaseFragment implements INewsListView{
     }
 
     @Override
-    public void addNewsToDisplay(List<News> news) {
+    public void addNewsToDisplay(List<Topic> news) {
         adapter.addAll(news);
         updateContentVisibility();
     }
 
-    public void setNewsToDisplay(List<News> news) {
+    public void setNewsToDisplay(List<Topic> news) {
         adapter.setItems(news);
         if (news != null && news.size() > 0) {
             newsRecyclerView.animate().alpha(1).setDuration(getResources().getInteger(android.R.integer.config_shortAnimTime));
