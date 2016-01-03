@@ -5,18 +5,18 @@ import javax.inject.Inject;
 /**
  * Naviagtor for news-related screens
  */
-public class NewsNavigator {
+public class TopicsNavigator {
 //    private final DetailsNavigator detailNavigator;
 //    private final BaseActivity activity;
 //
 //    @Inject
-//    public NewsNavigator(BaseActivity activity, DetailsNavigator navigator) {
+//    public TopicsNavigator(BaseActivity activity, DetailsNavigator navigator) {
 //        this.detailNavigator = navigator;
 //        this.activity = activity;
 //    }
 
         @Inject
-    public NewsNavigator() {
+    public TopicsNavigator() {
     }
 //
 //    public void openArticle(long newsId, @Nullable String hashtag) {

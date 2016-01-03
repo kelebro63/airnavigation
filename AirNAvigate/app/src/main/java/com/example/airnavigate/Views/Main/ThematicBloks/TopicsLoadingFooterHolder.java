@@ -7,8 +7,8 @@ import com.example.airnavigate.Model.Topic;
 /**
  * A "load more" footer displayed as list footer
  * */
-class NewsLoadingFooterHolder extends AbstractNewsHolder {
-    public NewsLoadingFooterHolder(View itemView) {
+class TopicsLoadingFooterHolder extends AbstractTopicsHolder {
+    public TopicsLoadingFooterHolder(View itemView) {
         super(itemView);
     }
 

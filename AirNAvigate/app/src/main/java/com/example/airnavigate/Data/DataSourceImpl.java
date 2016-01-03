@@ -61,7 +61,7 @@ public class DataSourceImpl implements IDataSource {
 
     @Override
     public Observable<List<Topic>> requestGetNews(String tag) {
-        //return Observable.just(getNews());
+        //return Observable.just(getTopics());
         return serverApi.requestLatestNews(tag);
     }
 
@@ -82,8 +82,8 @@ public class DataSourceImpl implements IDataSource {
 //                .concatMap(ignore -> serverApi.requestLatestNews(page, tag)
 //                        .doOnNext(newses -> manager.updateNewsAtPage(page, tag, newses))
 //                        .onErrorResumeNext(
-//                                Observable.just(manager.loadNews(page, tag))
-//                        ).flatMap(newses -> Observable.just(manager.loadNews(page, tag))));
+//                                Observable.just(manager.loadTopics(page, tag))
+//                        ).flatMap(newses -> Observable.just(manager.loadTopics(page, tag))));
 //
 //    }
 //
@@ -95,9 +95,9 @@ public class DataSourceImpl implements IDataSource {
 //                .concatMap(ignore -> serverApi.requestLatestNews(page)
 //                        .doOnNext(newses -> manager.updateNewsAtPage(page, newses))
 //                        .onErrorResumeNext(
-//                                Observable.just(manager.loadNews(page)
+//                                Observable.just(manager.loadTopics(page)
 //                                )
-//                        ).flatMap(newses -> Observable.just(manager.loadNews(page))));
+//                        ).flatMap(newses -> Observable.just(manager.loadTopics(page))));
 //
 //
 //    }

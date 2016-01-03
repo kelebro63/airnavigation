@@ -13,7 +13,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 
-class NewsListAdapter extends BaseArrayAdapter<Topic, AbstractNewsHolder> {
+class TopicsListAdapter extends BaseArrayAdapter<Topic, AbstractTopicsHolder> {
 
     private final static int TYPE_REGULAR_POST = 0;
     private final static int TYPE_TWITTER_POST = 1;
@@ -22,14 +22,14 @@ class NewsListAdapter extends BaseArrayAdapter<Topic, AbstractNewsHolder> {
     private final static int ID_PROGRESS_ITEM = -2;
 
     @Inject
-    public NewsListAdapter() {
+    public TopicsListAdapter() {
         setHasStableIds(true);
     }
 
     private boolean isLoading;
 
     @Override
-    protected void onBindViewHolder(AbstractNewsHolder holder, Topic item) {
+    protected void onBindViewHolder(AbstractTopicsHolder holder, Topic item) {
         holder.bind(item);
     }
 
@@ -41,14 +41,14 @@ class NewsListAdapter extends BaseArrayAdapter<Topic, AbstractNewsHolder> {
     }
 
     @Override
-    public AbstractNewsHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public AbstractTopicsHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         switch (viewType) {
             case TYPE_REGULAR_POST:
-                return new NewsListHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.news_item, parent, false));
+                return new TopicsListHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.news_item, parent, false));
 //            case TYPE_TWITTER_POST:
 //                return new NewsListTwitterHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.news_twitter_item, parent, false));
             case TYPE_PROGRESS:
-                return new NewsLoadingFooterHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.news_item_footer, parent, false));
+                return new TopicsLoadingFooterHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.news_item_footer, parent, false));
             default:
                 throw new IllegalStateException("ViewHolder is not implemented");
         }

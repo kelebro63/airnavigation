@@ -7,10 +7,10 @@ import java.util.List;
 
 
 
-interface INewsListView extends IView {
-    void addNewsToDisplay(List<Topic> news);
+interface ITopicsListView extends IView {
+    void addTopicsToDisplay(List<Topic> news);
 
-    void setNewsToDisplay(List<Topic> news);
+    void setTopicsToDisplay(List<Topic> news);
 
     void stopRefreshing();
 

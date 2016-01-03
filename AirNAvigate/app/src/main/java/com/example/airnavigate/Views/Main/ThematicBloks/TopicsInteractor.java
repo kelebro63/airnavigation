@@ -18,28 +18,28 @@ import rx.Scheduler;
 import rx.Subscriber;
 
 
-public class NewsInteractor extends Interactor {
+public class TopicsInteractor extends Interactor {
     private final IDataSource dataSource;
 
     @Inject
-    public NewsInteractor(@MainThread Scheduler mainThreadScheduler, @BackgroundThread Scheduler backgroundThreadScheduler, IDataSource dataSource) {
+    public TopicsInteractor(@MainThread Scheduler mainThreadScheduler, @BackgroundThread Scheduler backgroundThreadScheduler, IDataSource dataSource) {
         super(mainThreadScheduler, backgroundThreadScheduler);
         this.dataSource = dataSource;
     }
 
-    public void loadNews(int page, Subscriber<List<News>> subscriber) {
+    public void loadTopics(int page, Subscriber<List<News>> subscriber) {
         //subscribe(dataSource.requestLatestNews(page), subscriber);
     }
 
-    public void loadNews(int page, String filter, Subscriber<List<News>> subscriber) {
+    public void loadTopics(int page, String filter, Subscriber<List<News>> subscriber) {
         if (TextUtils.isEmpty(filter)) {
-            loadNews(page, subscriber);
+            loadTopics(page, subscriber);
         } else {
            // subscribe(dataSource.requestLatestNews(page, filter), subscriber);
         }
     }
 
-    public void getNews(Subscriber<List<Topic>> subscriber) {
+    public void getTopics(Subscriber<List<Topic>> subscriber) {
         subscribe(dataSource.requestGetNews("app752bd9901d986ec138dccfc56336a83f0af88134"), subscriber);
     }
 

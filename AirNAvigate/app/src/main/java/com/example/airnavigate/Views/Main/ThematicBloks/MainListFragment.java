@@ -24,7 +24,7 @@ import butterknife.Bind;
 /**
  * Created by Bistrov Alexey on 17.12.2015.
  */
-public class MainListFragment extends BaseFragment implements INewsListView{
+public class MainListFragment extends BaseFragment implements ITopicsListView {
 
 
 
@@ -41,10 +41,10 @@ public class MainListFragment extends BaseFragment implements INewsListView{
 //    HorizontalProgress progress;
 
     @Inject
-    NewsListPresenter presenter;
+    TopicsListPresenter presenter;
 
 
-    private NewsListAdapter adapter;
+    private TopicsListAdapter adapter;
 
     private LinearLayoutManager layoutManager;
     public static final String TAG = "MainListFragment";
@@ -67,7 +67,7 @@ public class MainListFragment extends BaseFragment implements INewsListView{
         initRecyclerView();
 //
         presenter.takeView(this);
-        presenter.requestNews(filter);
+        presenter.requestTopics(filter);
 
 //        newsRefreshLayout.setOnRefreshListener(() -> {
 //            if (!adapter.isLoading()) {
@@ -94,11 +94,11 @@ public class MainListFragment extends BaseFragment implements INewsListView{
     private void initRecyclerView() {
         layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         newsRecyclerView.setLayoutManager(layoutManager);
-        adapter = new NewsListAdapter();
+        adapter = new TopicsListAdapter();
 
         //   adapter.setItemClickListener(item -> presenter.openNextScreen(item, filter));
         newsRecyclerView.setAdapter(adapter);
-        //setNewsToDisplay(getNews());
+        //setTopicsToDisplay(getTopics());
         newsRecyclerView.addItemDecoration(new BlackThickDividerDecor());
         newsRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -108,19 +108,19 @@ public class MainListFragment extends BaseFragment implements INewsListView{
                         ) {
                     adapter.displayLoadingFooter();//indicate loading more news by showing footer
                     newsRecyclerView.smoothScrollToPosition(adapter.getItemCount() - 1);//smooth scroll to footer
-                    //presenter.requestNews(filter);//load more news
+                    //presenter.requestTopics(filter);//load more news
                 }
             }
         });
     }
 
     @Override
-    public void addNewsToDisplay(List<Topic> news) {
+    public void addTopicsToDisplay(List<Topic> news) {
         adapter.addAll(news);
         updateContentVisibility();
     }
 
-    public void setNewsToDisplay(List<Topic> news) {
+    public void setTopicsToDisplay(List<Topic> news) {
         adapter.setItems(news);
         if (news != null && news.size() > 0) {
             newsRecyclerView.animate().alpha(1).setDuration(getResources().getInteger(android.R.integer.config_shortAnimTime));

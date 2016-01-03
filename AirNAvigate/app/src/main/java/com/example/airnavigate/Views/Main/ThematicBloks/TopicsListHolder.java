@@ -13,7 +13,7 @@ import butterknife.Bind;
 /**
  * Gokixx CMS article UI representation in list
  * */
-class NewsListHolder extends AbstractNewsHolder {
+class TopicsListHolder extends AbstractTopicsHolder {
     @Bind(R.id.newsPreviewImage)
     ImageView newsPreviewImage;
     @Bind(R.id.newsTitle)
@@ -24,7 +24,7 @@ class NewsListHolder extends AbstractNewsHolder {
 //    @Bind(R.id.icPlay)
 //    ImageView play;
 
-    public NewsListHolder(View itemView) {
+    public TopicsListHolder(View itemView) {
         super(itemView);
     }
 

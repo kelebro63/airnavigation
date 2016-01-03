@@ -6,8 +6,8 @@ import com.example.airnavigate.Model.Topic;
 import com.example.airnavigate.Views.Base.Adapter.BaseViewHolder;
 
 
-abstract class AbstractNewsHolder extends BaseViewHolder {
-    public AbstractNewsHolder(View itemView) {
+abstract class AbstractTopicsHolder extends BaseViewHolder {
+    public AbstractTopicsHolder(View itemView) {
         super(itemView);
     }
 

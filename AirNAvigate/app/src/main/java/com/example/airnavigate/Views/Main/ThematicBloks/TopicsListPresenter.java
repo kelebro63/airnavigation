@@ -17,21 +17,17 @@ import javax.inject.Inject;
  * Loads news into newsfeed. Controls pull-to-refresh.
  * Controls load more function by incrementing the number of the last fetched page
  */
-class NewsListPresenter implements IPresenter<INewsListView> {
-    private INewsListView view;
+class TopicsListPresenter implements IPresenter<ITopicsListView> {
+    private ITopicsListView view;
     private final ErrorNavigator errorDisplayer;
-    private final NewsInteractor interactor;
-    private final NewsNavigator navigator;
+    private final TopicsInteractor interactor;
+    private final TopicsNavigator navigator;
     private final Context context;
     private int currentPage = 1;
     private boolean isLoading;
 
-//    @Inject
-//    public NewsListPresenter() {
-//    }
-
     @Inject
-    public NewsListPresenter(ErrorNavigator errorDisplayer, NewsInteractor interactor, NewsNavigator navigator, Context context) {
+    public TopicsListPresenter(ErrorNavigator errorDisplayer, TopicsInteractor interactor, TopicsNavigator navigator, Context context) {
         this.errorDisplayer = errorDisplayer;
         this.interactor = interactor;
         this.navigator = navigator;
@@ -39,7 +35,7 @@ class NewsListPresenter implements IPresenter<INewsListView> {
     }
 
     @Override
-    public void takeView(INewsListView view) {
+    public void takeView(ITopicsListView view) {
         this.view = view;
     }
 
@@ -47,10 +43,10 @@ class NewsListPresenter implements IPresenter<INewsListView> {
     /**
      * Request news from data source. Paging is done automatically
      */
-    public void requestNews(@Nullable String filter) {
+    public void requestTopics(@Nullable String filter) {
         if (isLoading)
             return;
-        interactor.getNews(new BaseSubscriber<List<Topic>>(view) {
+        interactor.getTopics(new BaseSubscriber<List<Topic>>(view) {
             @Override
             public void onStartImpl() {
                 isLoading = true;
@@ -70,11 +66,11 @@ class NewsListPresenter implements IPresenter<INewsListView> {
 
             @Override
             public void onNextImpl(List<Topic> news) {
-                view.addNewsToDisplay(news);
+                view.addTopicsToDisplay(news);
             }
         });
 
-//        interactor.loadNews(currentPage, filter, new BaseSubscriber<List<News>>(view) {
+//        interactor.loadTopics(currentPage, filter, new BaseSubscriber<List<News>>(view) {
 //            @Override
 //            public void onStartImpl() {
 //                isLoading = true;
@@ -93,7 +89,7 @@ class NewsListPresenter implements IPresenter<INewsListView> {
 //
 //            @Override
 //            public void onNextImpl(List<News> news) {
-//                view.addNewsToDisplay(news);
+//                view.addTopicsToDisplay(news);
 //            }
 //        });
     }
@@ -106,7 +102,7 @@ class NewsListPresenter implements IPresenter<INewsListView> {
         if (isLoading) {
             return;
         }
-//        interactor.loadNews(1, filter, new BaseSubscriber<List<News>>(view) {
+//        interactor.loadTopics(1, filter, new BaseSubscriber<List<News>>(view) {
 //
 //            @Override
 //            public void onStartImpl() {
@@ -128,7 +124,7 @@ class NewsListPresenter implements IPresenter<INewsListView> {
 //            public void onNextImpl(List<News> newItems) {
 //                view.stopRefreshing();
 //                //we reset the items. that is necessary so that user can further update their newsfeed, as usual
-//                view.setNewsToDisplay(newItems);
+//                view.setTopicsToDisplay(newItems);
 //                currentPage = 2;//reset page
 //            }
 //        });
