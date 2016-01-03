@@ -1,5 +1,11 @@
 package com.example.airnavigate.Data;
 
+import com.example.airnavigate.Model.News;
+
+import java.util.List;
+
+import rx.Observable;
+
 /**
  * This is an API to get access to any data used in the application.
  * It abstracts away the details (getting data from server, or getting it from db cache, or anything)
@@ -7,6 +13,8 @@ package com.example.airnavigate.Data;
  * It has the same API as {@link //IGokixxAPI} for convenience (except for data that is not stored)
  */
 public interface IDataSource {
+
+    Observable<List<News>> requestGetNews();
 
 //    Observable<List<News>> requestLatestNews(int page, String tag);
 //

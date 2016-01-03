@@ -1,7 +1,14 @@
 package com.example.airnavigate.Data;
 
 
+import com.example.airnavigate.Model.News;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
+
+import rx.Observable;
 
 @SuppressWarnings("TryWithIdenticalCatches")
 /**
@@ -45,6 +52,24 @@ public class DataSourceImpl implements IDataSource {
     public DataSourceImpl() {
 
 
+    }
+
+
+    @Override
+    public Observable<List<News>> requestGetNews() {
+        return Observable.just(getNews());
+
+    }
+
+    private List<News> getNews() {
+        List<News> newsArrayList = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            News news = new News(i);
+            news.setTitle("title" + i);
+            news.setSubtitle("subTitle" + i);
+            newsArrayList.add(news);
+        }
+        return newsArrayList;
     }
 //
 //    @Override

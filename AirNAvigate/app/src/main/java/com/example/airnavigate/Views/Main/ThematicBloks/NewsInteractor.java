@@ -38,4 +38,8 @@ public class NewsInteractor extends Interactor {
         }
     }
 
+    public void getNews(Subscriber<List<News>> subscriber) {
+        subscribe(dataSource.requestGetNews(), subscriber);
+    }
+
 }

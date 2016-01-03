@@ -50,8 +50,7 @@ class NewsListPresenter implements IPresenter<INewsListView> {
     public void requestNews(@Nullable String filter) {
         if (isLoading)
             return;
-
-        interactor.loadNews(currentPage, filter, new BaseSubscriber<List<News>>(view) {
+        interactor.getNews(new BaseSubscriber<List<News>>(view) {
             @Override
             public void onStartImpl() {
                 isLoading = true;
@@ -66,6 +65,7 @@ class NewsListPresenter implements IPresenter<INewsListView> {
             @Override
             public void onErrorImpl(Throwable e) {
                 isLoading = false;
+                e.printStackTrace();
             }
 
             @Override
@@ -73,6 +73,29 @@ class NewsListPresenter implements IPresenter<INewsListView> {
                 view.addNewsToDisplay(news);
             }
         });
+
+//        interactor.loadNews(currentPage, filter, new BaseSubscriber<List<News>>(view) {
+//            @Override
+//            public void onStartImpl() {
+//                isLoading = true;
+//            }
+//
+//            @Override
+//            public void onCompletedImpl() {
+//                isLoading = false;
+//                currentPage++;
+//            }
+//
+//            @Override
+//            public void onErrorImpl(Throwable e) {
+//                isLoading = false;
+//            }
+//
+//            @Override
+//            public void onNextImpl(List<News> news) {
+//                view.addNewsToDisplay(news);
+//            }
+//        });
     }
 
     /**

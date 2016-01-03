@@ -7,15 +7,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.airnavigate.Modules.MainActivityFragmentModule;
 import com.example.airnavigate.Model.News;
+import com.example.airnavigate.Modules.MainActivityFragmentModule;
 import com.example.airnavigate.MyApplication;
 import com.example.airnavigate.R;
 import com.example.airnavigate.Utils.BlackThickDividerDecor;
 import com.example.airnavigate.Views.Base.BaseFragment;
 import com.example.airnavigate.Views.Main.MainActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -99,7 +98,7 @@ public class MainListFragment extends BaseFragment implements INewsListView{
 
         //   adapter.setItemClickListener(item -> presenter.openNextScreen(item, filter));
         newsRecyclerView.setAdapter(adapter);
-        setNewsToDisplay(getNews());
+        //setNewsToDisplay(getNews());
         newsRecyclerView.addItemDecoration(new BlackThickDividerDecor());
         newsRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -117,7 +116,8 @@ public class MainListFragment extends BaseFragment implements INewsListView{
 
     @Override
     public void addNewsToDisplay(List<News> news) {
-
+        adapter.addAll(news);
+        updateContentVisibility();
     }
 
     public void setNewsToDisplay(List<News> news) {
@@ -149,16 +149,7 @@ public class MainListFragment extends BaseFragment implements INewsListView{
         newsRecyclerView.animate().alpha(val).setDuration(duration);
     }
 
-    private ArrayList<News> getNews() {
-        ArrayList<News> newsArrayList = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            News news = new News(i);
-            news.setTitle("title" + i);
-            news.setSubtitle("subTitle" + i);
-            newsArrayList.add(news);
-        }
-        return newsArrayList;
-    }
+
 
     @Override
     public void displayError(Throwable error) {
