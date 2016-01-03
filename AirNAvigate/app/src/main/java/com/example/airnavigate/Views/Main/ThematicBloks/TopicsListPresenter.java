@@ -69,29 +69,6 @@ class TopicsListPresenter implements IPresenter<ITopicsListView> {
                 view.addTopicsToDisplay(news);
             }
         });
-
-//        interactor.loadTopics(currentPage, filter, new BaseSubscriber<List<News>>(view) {
-//            @Override
-//            public void onStartImpl() {
-//                isLoading = true;
-//            }
-//
-//            @Override
-//            public void onCompletedImpl() {
-//                isLoading = false;
-//                currentPage++;
-//            }
-//
-//            @Override
-//            public void onErrorImpl(Throwable e) {
-//                isLoading = false;
-//            }
-//
-//            @Override
-//            public void onNextImpl(List<News> news) {
-//                view.addTopicsToDisplay(news);
-//            }
-//        });
     }
 
     /**
@@ -102,32 +79,32 @@ class TopicsListPresenter implements IPresenter<ITopicsListView> {
         if (isLoading) {
             return;
         }
-//        interactor.loadTopics(1, filter, new BaseSubscriber<List<News>>(view) {
-//
-//            @Override
-//            public void onStartImpl() {
-//                isLoading = true;
-//            }
-//
-//            @Override
-//            public void onCompletedImpl() {
-//                isLoading = false;
-//            }
-//
-//            @Override
-//            public void onErrorImpl(Throwable e) {
-//                isLoading = false;
-//                view.stopRefreshing();
-//            }
-//
-//            @Override
-//            public void onNextImpl(List<News> newItems) {
-//                view.stopRefreshing();
-//                //we reset the items. that is necessary so that user can further update their newsfeed, as usual
-//                view.setTopicsToDisplay(newItems);
-//                currentPage = 2;//reset page
-//            }
-//        });
+        interactor.getTopics(new BaseSubscriber<List<Topic>>(view) {
+
+            @Override
+            public void onStartImpl() {
+                isLoading = true;
+            }
+
+            @Override
+            public void onCompletedImpl() {
+                isLoading = false;
+            }
+
+            @Override
+            public void onErrorImpl(Throwable e) {
+                isLoading = false;
+                view.stopRefreshing();
+            }
+
+            @Override
+            public void onNextImpl(List<Topic> newItems) {
+                view.stopRefreshing();
+                //we reset the items. that is necessary so that user can further update their newsfeed, as usual
+                view.setTopicsToDisplay(newItems);
+                currentPage = 2;//reset page
+            }
+        });
     }
 
 

@@ -7,7 +7,6 @@ import com.example.airnavigate.Data.IDataSource;
 import com.example.airnavigate.Internal.BackgroundThread;
 import com.example.airnavigate.Internal.MainThread;
 import com.example.airnavigate.MVP.Interactor;
-import com.example.airnavigate.Model.News;
 import com.example.airnavigate.Model.Topic;
 
 import java.util.List;
@@ -27,11 +26,11 @@ public class TopicsInteractor extends Interactor {
         this.dataSource = dataSource;
     }
 
-    public void loadTopics(int page, Subscriber<List<News>> subscriber) {
+    public void loadTopics(int page, Subscriber<List<Topic>> subscriber) {
         //subscribe(dataSource.requestLatestNews(page), subscriber);
     }
 
-    public void loadTopics(int page, String filter, Subscriber<List<News>> subscriber) {
+    public void loadTopics(int page, String filter, Subscriber<List<Topic>> subscriber) {
         if (TextUtils.isEmpty(filter)) {
             loadTopics(page, subscriber);
         } else {

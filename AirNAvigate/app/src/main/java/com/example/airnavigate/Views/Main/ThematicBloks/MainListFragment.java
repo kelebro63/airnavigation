@@ -35,7 +35,7 @@ public class MainListFragment extends BaseFragment implements ITopicsListView {
     RecyclerView newsRecyclerView;
 
     @Bind(R.id.newsRefreshLayout)
-    SwipeRefreshLayout newsRefreshLayout;
+    SwipeRefreshLayout topicsRefreshLayout;
 
 //    @Bind(R.id.progressLoading)
 //    HorizontalProgress progress;
@@ -69,11 +69,11 @@ public class MainListFragment extends BaseFragment implements ITopicsListView {
         presenter.takeView(this);
         presenter.requestTopics(filter);
 
-//        newsRefreshLayout.setOnRefreshListener(() -> {
-//            if (!adapter.isLoading()) {
-//                presenter.refreshItems(filter);
-//            }
-//        });
+        topicsRefreshLayout.setOnRefreshListener(() -> {
+            if (!adapter.isLoading()) {
+                presenter.refreshItems(filter);
+            }
+        });
     }
 
     public void setupActivityFragmentComponent() {
@@ -98,18 +98,17 @@ public class MainListFragment extends BaseFragment implements ITopicsListView {
 
         //   adapter.setItemClickListener(item -> presenter.openNextScreen(item, filter));
         newsRecyclerView.setAdapter(adapter);
-        //setTopicsToDisplay(getTopics());
         newsRecyclerView.addItemDecoration(new BlackThickDividerDecor());
         newsRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                if (!adapter.isLoading() &&  //adapter is not already loading more news
-                        layoutManager.findLastCompletelyVisibleItemPosition() == adapter.getItemCount() - 1 //reached the last item
-                        ) {
-                    adapter.displayLoadingFooter();//indicate loading more news by showing footer
-                    newsRecyclerView.smoothScrollToPosition(adapter.getItemCount() - 1);//smooth scroll to footer
-                    //presenter.requestTopics(filter);//load more news
-                }
+//                if (!adapter.isLoading() &&  //adapter is not already loading more news
+//                        layoutManager.findLastCompletelyVisibleItemPosition() == adapter.getItemCount() - 1 //reached the last item
+//                        ) {
+//                    adapter.displayLoadingFooter();//indicate loading more news by showing footer
+//                    newsRecyclerView.smoothScrollToPosition(adapter.getItemCount() - 1);//smooth scroll to footer
+//                    //presenter.requestTopics(filter);//load more news
+//                }
             }
         });
     }
@@ -130,7 +129,7 @@ public class MainListFragment extends BaseFragment implements ITopicsListView {
 
     @Override
     public void stopRefreshing() {
-
+        topicsRefreshLayout.setRefreshing(false);
     }
 
     @Override
