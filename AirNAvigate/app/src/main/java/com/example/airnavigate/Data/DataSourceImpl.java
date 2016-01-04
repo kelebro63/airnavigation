@@ -60,9 +60,9 @@ public class DataSourceImpl implements IDataSource {
 
 
     @Override
-    public Observable<List<Topic>> requestGetNews(String tag) {
+    public Observable<List<Topic>> requestGetNews() {
         //return Observable.just(getTopics());
-        return serverApi.requestLatestNews(tag);
+        return serverApi.requestLatestNews();
     }
 
     private List<News> getNews() {

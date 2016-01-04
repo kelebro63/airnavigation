@@ -14,7 +14,7 @@ import rx.Observable;
  */
 public interface IDataSource {
 
-    Observable<List<Topic>> requestGetNews(String tag);
+    Observable<List<Topic>> requestGetNews();
 
 //    Observable<List<News>> requestLatestNews(int page, String tag);
 //

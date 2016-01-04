@@ -115,7 +115,7 @@ class TopicsListPresenter implements IPresenter<ITopicsListView> {
 
     @Override
     public void destroy() {
-     //   interactor.unsubscribe();
+        interactor.unsubscribe();
     }
 
 }

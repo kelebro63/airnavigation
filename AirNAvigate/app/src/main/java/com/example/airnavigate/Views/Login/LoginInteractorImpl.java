@@ -4,6 +4,8 @@ import android.os.AsyncTask;
 import android.os.Handler;
 import android.text.TextUtils;
 
+import com.example.airnavigate.Data.Credentials;
+
 import javax.inject.Inject;
 
 /**
@@ -11,8 +13,11 @@ import javax.inject.Inject;
  */
 public class LoginInteractorImpl implements LoginInteractor{
 
+    private Credentials credentials;
+
     @Inject
-    public LoginInteractorImpl() {
+    public LoginInteractorImpl(Credentials credentials) {
+        this.credentials = credentials;
     }
 
     /**
@@ -86,6 +91,11 @@ public class LoginInteractorImpl implements LoginInteractor{
                     return pieces[1].equals(mPassword);
                 }
             }
+
+            //setcredentials
+            credentials.setLogin(mEmail);
+            credentials.setPassword(mPassword);
+            credentials.setToken("app752bd9901d986ec138dccfc56336a83f0af88134");
 
             // TODO: register the new account here.
             return true;

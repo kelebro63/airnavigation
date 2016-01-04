@@ -8,12 +8,11 @@ import com.example.airnavigate.Model.Topic;
 import java.util.List;
 
 import retrofit.http.GET;
-import retrofit.http.Query;
 import rx.Observable;
 
 public interface IAirNavigateAPI {
 
     @GET("/topics.json")
-    Observable<List<Topic>> requestLatestNews(@Query("app_token") String tag);
+    Observable<List<Topic>> requestLatestNews();
 
 }

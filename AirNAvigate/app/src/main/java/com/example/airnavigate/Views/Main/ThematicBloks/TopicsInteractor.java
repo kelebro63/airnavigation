@@ -39,7 +39,7 @@ public class TopicsInteractor extends Interactor {
     }
 
     public void getTopics(Subscriber<List<Topic>> subscriber) {
-        subscribe(dataSource.requestGetNews("app752bd9901d986ec138dccfc56336a83f0af88134"), subscriber);
+        subscribe(dataSource.requestGetNews(), subscriber);
     }
 
 }

@@ -2,8 +2,10 @@ package com.example.airnavigate.Modules;
 
 import android.app.Application;
 import android.content.Context;
+import android.text.TextUtils;
 
 import com.example.airnavigate.BuildConfig;
+import com.example.airnavigate.Data.Credentials;
 import com.example.airnavigate.Data.DBManager;
 import com.example.airnavigate.Data.DataSourceImpl;
 import com.example.airnavigate.Data.IAirNavigateAPI;
@@ -21,6 +23,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
 import retrofit.client.OkClient;
 import retrofit.converter.GsonConverter;
@@ -77,12 +80,12 @@ public class AppModule {
 
     @Provides
     @Singleton
-    IAirNavigateAPI provideRestAPI(OkHttpClient client) { //, RequestInterceptor interceptor
+    IAirNavigateAPI provideRestAPI(OkHttpClient client, RequestInterceptor interceptor) { //, RequestInterceptor interceptor
 
         RestAdapter.Builder builder = new RestAdapter.Builder();
         builder.setClient(new OkClient(client));
         builder.setEndpoint("http://api.duma.gov.ru/api/3b816383786e9b28914837d27a06c50394dd5240");
-        //builder.setRequestInterceptor(interceptor);
+        builder.setRequestInterceptor(interceptor);
         Gson gson = new GsonBuilder()
                 .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create();
         builder.setConverter(new GsonConverter(gson));
@@ -96,7 +99,28 @@ public class AppModule {
 
     @Provides
     @Singleton
+    RequestInterceptor provideRequestInterceptor(Credentials credentials) {
+        return requestFacade -> {
+            if (!TextUtils.isEmpty(credentials.getToken())) {
+                //if user token is not empty, lets append dat header!
+                requestFacade.addQueryParam(
+                        "app_token", credentials.getToken()
+                );
+
+            }
+
+        };
+    }
+
+    @Provides
+    @Singleton
     Context provideContext() {
         return application;
+    }
+
+    @Provides
+    @Singleton
+    Credentials provideCredentials() {
+        return new Credentials();
     }
 }
