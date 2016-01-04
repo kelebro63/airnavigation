@@ -13,7 +13,7 @@ import com.example.airnavigate.Views.Main.ThematicBloks.MainListTopicsFragment;
 /**
  * Dispatches fragments on behalf of navigation drawer activity
  */
-public class FragmentDispatcher {
+public class FragmentDispatcher implements DetailsNavigator{
 
 
     private FragmentManager mManager;
@@ -142,6 +142,16 @@ public class FragmentDispatcher {
         }
         fragment.show(mManager, tag);
 
+
+    }
+
+    @Override
+    public void navigateToDetailsLevel(Fragment fragment, String tag) {
+        String test = "";
+    }
+
+    @Override
+    public void navigateToDetailsLevelAndCloseSearch(Fragment fragment, String tag) {
 
     }
 

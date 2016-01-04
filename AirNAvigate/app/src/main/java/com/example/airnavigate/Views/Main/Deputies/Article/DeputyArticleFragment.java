@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.example.airnavigate.Model.Deputy;
+import com.example.airnavigate.R;
 import com.example.airnavigate.Views.Base.BaseFragment;
 
 
@@ -31,7 +32,7 @@ public class DeputyArticleFragment extends BaseFragment implements IArticleView 
 
     @Override
     protected int getLayoutId() {
-        return 0;
+        return R.layout.main_deputy_article_fragment;
     }
 
     @Override

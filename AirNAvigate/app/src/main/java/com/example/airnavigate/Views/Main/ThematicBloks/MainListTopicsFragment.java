@@ -13,7 +13,6 @@ import com.example.airnavigate.MyApplication;
 import com.example.airnavigate.R;
 import com.example.airnavigate.Utils.BlackThickDividerDecor;
 import com.example.airnavigate.Views.Base.BaseFragment;
-import com.example.airnavigate.Views.Main.MainActivity;
 
 import java.util.List;
 
@@ -81,7 +80,7 @@ public class MainListTopicsFragment extends BaseFragment implements ITopicsListV
         //Debug.startMethodTracing("SplashTrace");
         MyApplication.get(getActivity())
                 .getAppComponent()
-                .initMainActivityFragmentComponent(new MainActivityFragmentModule((MainActivity) getActivity()))
+                .initMainActivityFragmentComponent(new MainActivityFragmentModule(this))
                 .inject(this);
         //Debug.stopMethodTracing();
     }
@@ -96,7 +95,7 @@ public class MainListTopicsFragment extends BaseFragment implements ITopicsListV
         newsRecyclerView.setLayoutManager(layoutManager);
         adapter = new TopicsListAdapter();
 
-        //   adapter.setItemClickListener(item -> presenter.openNextScreen(item, filter));
+        adapter.setItemClickListener(item -> presenter.openNextScreen(item, filter));
         newsRecyclerView.setAdapter(adapter);
         newsRecyclerView.addItemDecoration(new BlackThickDividerDecor());
         newsRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {

@@ -13,7 +13,6 @@ import com.example.airnavigate.MyApplication;
 import com.example.airnavigate.R;
 import com.example.airnavigate.Utils.BlackThickDividerDecor;
 import com.example.airnavigate.Views.Base.BaseFragment;
-import com.example.airnavigate.Views.Main.MainActivity;
 
 import java.util.List;
 
@@ -81,7 +80,7 @@ public class MainListDeputiesFragment extends BaseFragment implements IDeputiesL
         //Debug.startMethodTracing("SplashTrace");
         MyApplication.get(getActivity())
                 .getAppComponent()
-                .initMainActivityFragmentComponent(new MainActivityFragmentModule((MainActivity) getActivity()))
+                .initMainActivityFragmentComponent(new MainActivityFragmentModule(this))
                 .inject(this);
         //Debug.stopMethodTracing();
     }

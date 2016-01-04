@@ -7,7 +7,7 @@ import com.example.airnavigate.Model.Deputy;
 import com.example.airnavigate.Views.Base.BaseSubscriber;
 import com.example.airnavigate.Views.Common.ErrorNavigator;
 import com.example.airnavigate.Views.Main.MainInteractor;
-import com.example.airnavigate.Views.Main.ThematicBloks.TopicsNavigator;
+import com.example.airnavigate.Views.Main.MainNavigator;
 
 import java.util.List;
 
@@ -22,13 +22,13 @@ class DeputiesListPresenter implements IPresenter<IDeputiesListView> {
     private IDeputiesListView view;
     private final ErrorNavigator errorDisplayer;
     private final MainInteractor interactor;
-    private final TopicsNavigator navigator;
+    private final MainNavigator navigator;
     private final Context context;
     private int currentPage = 1;
     private boolean isLoading;
 
     @Inject
-    public DeputiesListPresenter(ErrorNavigator errorDisplayer, MainInteractor interactor, TopicsNavigator navigator, Context context) {
+    public DeputiesListPresenter(ErrorNavigator errorDisplayer, MainInteractor interactor, MainNavigator navigator, Context context) {
         this.errorDisplayer = errorDisplayer;
         this.interactor = interactor;
         this.navigator = navigator;
