@@ -1,13 +1,13 @@
-package com.example.airnavigate.Views.Main.ThematicBloks;
+package com.example.airnavigate.Views.Main.Deputies;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 
 import com.example.airnavigate.MVP.IPresenter;
-import com.example.airnavigate.Model.Topic;
+import com.example.airnavigate.Model.Deputy;
 import com.example.airnavigate.Views.Base.BaseSubscriber;
 import com.example.airnavigate.Views.Common.ErrorNavigator;
 import com.example.airnavigate.Views.Main.MainInteractor;
+import com.example.airnavigate.Views.Main.ThematicBloks.TopicsNavigator;
 
 import java.util.List;
 
@@ -18,8 +18,8 @@ import javax.inject.Inject;
  * Loads news into newsfeed. Controls pull-to-refresh.
  * Controls load more function by incrementing the number of the last fetched page
  */
-class TopicsListPresenter implements IPresenter<ITopicsListView> {
-    private ITopicsListView view;
+class DeputiesListPresenter implements IPresenter<IDeputiesListView> {
+    private IDeputiesListView view;
     private final ErrorNavigator errorDisplayer;
     private final MainInteractor interactor;
     private final TopicsNavigator navigator;
@@ -28,7 +28,7 @@ class TopicsListPresenter implements IPresenter<ITopicsListView> {
     private boolean isLoading;
 
     @Inject
-    public TopicsListPresenter(ErrorNavigator errorDisplayer, MainInteractor interactor, TopicsNavigator navigator, Context context) {
+    public DeputiesListPresenter(ErrorNavigator errorDisplayer, MainInteractor interactor, TopicsNavigator navigator, Context context) {
         this.errorDisplayer = errorDisplayer;
         this.interactor = interactor;
         this.navigator = navigator;
@@ -36,7 +36,7 @@ class TopicsListPresenter implements IPresenter<ITopicsListView> {
     }
 
     @Override
-    public void takeView(ITopicsListView view) {
+    public void takeView(IDeputiesListView view) {
         this.view = view;
     }
 
@@ -44,10 +44,10 @@ class TopicsListPresenter implements IPresenter<ITopicsListView> {
     /**
      * Request news from data source. Paging is done automatically
      */
-    public void requestTopics(@Nullable String filter) {
+    public void requestDeputies() {
         if (isLoading)
             return;
-        interactor.getTopics(new BaseSubscriber<List<Topic>>(view) {
+        interactor.loadDeputies(new BaseSubscriber<List<Deputy>>(view) {
             @Override
             public void onStartImpl() {
                 isLoading = true;
@@ -66,8 +66,8 @@ class TopicsListPresenter implements IPresenter<ITopicsListView> {
             }
 
             @Override
-            public void onNextImpl(List<Topic> news) {
-                view.addTopicsToDisplay(news);
+            public void onNextImpl(List<Deputy> deputies) {
+                view.addDeputiesToDisplay(deputies);
             }
         });
     }
@@ -76,11 +76,11 @@ class TopicsListPresenter implements IPresenter<ITopicsListView> {
      * Refresh the contents by pull-to-refresh action. That discards all the newsfeed that is already loaded,
      * and starts everything from the beginning
      */
-    public void refreshItems(@Nullable String filter) {
+    public void refreshItems() {
         if (isLoading) {
             return;
         }
-        interactor.getTopics(new BaseSubscriber<List<Topic>>(view) {
+        interactor.loadDeputies(new BaseSubscriber<List<Deputy>>(view) {
 
             @Override
             public void onStartImpl() {
@@ -99,10 +99,10 @@ class TopicsListPresenter implements IPresenter<ITopicsListView> {
             }
 
             @Override
-            public void onNextImpl(List<Topic> newItems) {
+            public void onNextImpl(List<Deputy> newItems) {
                 view.stopRefreshing();
                 //we reset the items. that is necessary so that user can further update their newsfeed, as usual
-                view.setTopicsToDisplay(newItems);
+                view.setDeputiesToDisplay(newItems);
                 currentPage = 2;//reset page
             }
         });

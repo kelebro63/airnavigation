@@ -25,8 +25,8 @@
     <!-- navigation drawer -->
     <string name="navigation_drawer_open">"Open navigation drawer"</string>
     <string name="navigation_drawer_close">"Close navigation drawer"</string>
-    <string name="MENU_RECIPES">"RECIPES"</string>
-    <string name="MENU_COOKING_TIPS">"HOW TO"</string>
+    <string name="MENU_RECIPES">"ТЕМАТИЧЕСКИЕ БЛОКИ"</string>
+    <string name="MENU_COOKING_TIPS">"ДЕПУТАТЫ"</string>
     <string name="MENU_FAVORITES">"FAVORITES"</string>
     <string name="MENU_SHOPPINGLIST">"SHOPPING"</string>
     <string name="MORE">"MORE"</string>

@@ -7,7 +7,8 @@ import android.support.v4.app.FragmentManager;
 
 import com.example.airnavigate.R;
 import com.example.airnavigate.Views.Base.BaseDialogFragment;
-import com.example.airnavigate.Views.Main.ThematicBloks.MainListFragment;
+import com.example.airnavigate.Views.Main.Deputies.MainListDeputiesFragment;
+import com.example.airnavigate.Views.Main.ThematicBloks.MainListTopicsFragment;
 
 /**
  * Dispatches fragments on behalf of navigation drawer activity
@@ -45,19 +46,19 @@ public class FragmentDispatcher {
         String tag = null;
         switch (position) {
             case NavDrawerItems.RECIPES:
-                currentSelectionFragment = mManager.findFragmentByTag(MainListFragment.TAG);
+                currentSelectionFragment = mManager.findFragmentByTag(MainListTopicsFragment.TAG);
                 if (currentSelectionFragment == null) {
-                    currentSelectionFragment = new MainListFragment();
-                    tag = MainListFragment.TAG;
+                    currentSelectionFragment = new MainListTopicsFragment();
+                    tag = MainListTopicsFragment.TAG;
                 }
                 break;
-//            case NavDrawerItems.HOWTOS:
-//                currentSelectionFragment = mManager.findFragmentByTag(HowToFragment.TAG);
-//                if (currentSelectionFragment == null) {
-//                    currentSelectionFragment = new HowToFragment();
-//                    tag = HowToFragment.TAG;
-//                }
-//                break;
+            case NavDrawerItems.HOWTOS:
+                currentSelectionFragment = mManager.findFragmentByTag(MainListDeputiesFragment.TAG);
+                if (currentSelectionFragment == null) {
+                    currentSelectionFragment = new MainListDeputiesFragment();
+                    tag = MainListDeputiesFragment.TAG;
+                }
+                break;
 //            case NavDrawerItems.FAVORITES:
 //                currentSelectionFragment = mManager.findFragmentByTag(FavoriteRecipesFragment.TAG);
 //                if (currentSelectionFragment == null) {

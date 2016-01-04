@@ -24,7 +24,7 @@ import butterknife.Bind;
 /**
  * Created by Bistrov Alexey on 17.12.2015.
  */
-public class MainListFragment extends BaseFragment implements ITopicsListView {
+public class MainListTopicsFragment extends BaseFragment implements ITopicsListView {
 
 
 
@@ -47,7 +47,7 @@ public class MainListFragment extends BaseFragment implements ITopicsListView {
     private TopicsListAdapter adapter;
 
     private LinearLayoutManager layoutManager;
-    public static final String TAG = "MainListFragment";
+    public static final String TAG = "MainListTopicsFragment";
 
     /**
      * A title used to filter the news in search
@@ -107,7 +107,7 @@ public class MainListFragment extends BaseFragment implements ITopicsListView {
 //                        ) {
 //                    adapter.displayLoadingFooter();//indicate loading more news by showing footer
 //                    newsRecyclerView.smoothScrollToPosition(adapter.getItemCount() - 1);//smooth scroll to footer
-//                    //presenter.requestTopics(filter);//load more news
+//                    //presenter.requestDeputies(filter);//load more news
 //                }
             }
         });
