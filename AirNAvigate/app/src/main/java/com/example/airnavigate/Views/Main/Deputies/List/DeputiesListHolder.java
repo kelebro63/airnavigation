@@ -1,4 +1,4 @@
-package com.example.airnavigate.Views.Main.Deputies;
+package com.example.airnavigate.Views.Main.Deputies.List;
 
 import android.content.Context;
 import android.view.View;

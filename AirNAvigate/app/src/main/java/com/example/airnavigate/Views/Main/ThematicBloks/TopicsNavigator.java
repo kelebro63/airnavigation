@@ -20,7 +20,7 @@ public class TopicsNavigator {
     }
 //
 //    public void openArticle(long newsId, @Nullable String hashtag) {
-//        NewsArticleFragment fragment = NewsArticleFragment.newInstance(newsId, hashtag);
+//        DeputyArticleFragment fragment = DeputyArticleFragment.newInstance(newsId, hashtag);
 //        detailNavigator.navigateToDetailsLevel(fragment, fragment.provideTag());
 //    }
 //

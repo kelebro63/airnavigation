@@ -1,4 +1,4 @@
-package com.example.airnavigate.Views.Main.Deputies;
+package com.example.airnavigate.Views.Main.Deputies.List;
 
 import com.example.airnavigate.MVP.IView;
 import com.example.airnavigate.Model.Deputy;

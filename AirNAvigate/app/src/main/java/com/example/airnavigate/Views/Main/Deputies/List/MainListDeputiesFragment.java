@@ -1,4 +1,4 @@
-package com.example.airnavigate.Views.Main.Deputies;
+package com.example.airnavigate.Views.Main.Deputies.List;
 
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;

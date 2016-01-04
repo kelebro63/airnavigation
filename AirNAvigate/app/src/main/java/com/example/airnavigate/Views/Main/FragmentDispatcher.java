@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentManager;
 
 import com.example.airnavigate.R;
 import com.example.airnavigate.Views.Base.BaseDialogFragment;
-import com.example.airnavigate.Views.Main.Deputies.MainListDeputiesFragment;
+import com.example.airnavigate.Views.Main.Deputies.List.MainListDeputiesFragment;
 import com.example.airnavigate.Views.Main.ThematicBloks.MainListTopicsFragment;
 
 /**
