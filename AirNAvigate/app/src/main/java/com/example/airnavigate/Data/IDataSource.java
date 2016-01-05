@@ -16,7 +16,10 @@ import rx.Observable;
 public interface IDataSource {
 
     Observable<List<Topic>> requestGetNews();
+
     Observable<List<Deputy>> requestLoadDeputies();
+
+    Observable<Deputy> requestLoadDeputy(int id);
 
 //    Observable<List<News>> requestLatestNews(int page, String tag);
 //

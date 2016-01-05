@@ -9,6 +9,7 @@ import com.example.airnavigate.Model.Topic;
 import java.util.List;
 
 import retrofit.http.GET;
+import retrofit.http.Query;
 import rx.Observable;
 
 public interface IAirNavigateAPI {
@@ -18,5 +19,8 @@ public interface IAirNavigateAPI {
 
     @GET("/deputies.json")
     Observable<List<Deputy>> requestLoadDeputies();
+
+    @GET("/deputy.json")
+    Observable<Deputy> requestLoadDeputy(@Query("id") int id);
 
 }

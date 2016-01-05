@@ -33,4 +33,8 @@ public class MainInteractor extends Interactor {
         subscribe(dataSource.requestLoadDeputies(), subscriber);
     }
 
+    public void loadDeputy(int id, Subscriber<Deputy> subscriber) {
+        subscribe(dataSource.requestLoadDeputy(id), subscriber);
+    }
+
 }

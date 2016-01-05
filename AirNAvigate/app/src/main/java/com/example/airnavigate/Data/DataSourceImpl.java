@@ -64,6 +64,11 @@ public class DataSourceImpl implements IDataSource {
         return serverApi.requestLoadDeputies();
     }
 
+    @Override
+    public Observable<Deputy> requestLoadDeputy(int id) {
+        return serverApi.requestLoadDeputy(id);
+    }
+
     private List<News> getNews() {
         List<News> newsArrayList = new ArrayList<>();
         for (int i = 0; i < 100; i++) {

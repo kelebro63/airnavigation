@@ -43,7 +43,7 @@ class DeputiesListPresenter implements IPresenter<IDeputiesListView> {
 
 
     /**
-     * Request news from data source. Paging is done automatically
+     * Request Deputes from data source. Paging is done automatically
      */
     public void requestDeputies() {
         if (isLoading)

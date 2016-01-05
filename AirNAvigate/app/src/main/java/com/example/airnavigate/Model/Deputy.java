@@ -20,11 +20,16 @@ public class Deputy {
     private String factionRegion;
     private String nameGenitive;
     private int lawcount;
-    private String[] regions;
+    //private String[] regions;
     private String familyAndInitials;
     private int speachCount;
     private String voteLink;
     private String transcriptLink;
+
+    private String family;
+    private String patronymic;
+    private String birthdate;
+
 
 
 
@@ -156,13 +161,13 @@ public class Deputy {
         this.familyAndInitials = familyAndInitials;
     }
 
-    public String[] getRegions() {
-        return regions;
-    }
-
-    public void setRegions(String[] regions) {
-        this.regions = regions;
-    }
+//    public String[] getRegions() {
+//        return regions;
+//    }
+//
+//    public void setRegions(String[] regions) {
+//        this.regions = regions;
+//    }
 
     public int getSpeachCount() {
         return speachCount;
@@ -186,5 +191,13 @@ public class Deputy {
 
     public void setTranscriptLink(String transcriptLink) {
         this.transcriptLink = transcriptLink;
+    }
+
+    public String getFamily() {
+        return family;
+    }
+
+    public void setFamily(String family) {
+        this.family = family;
     }
 }
