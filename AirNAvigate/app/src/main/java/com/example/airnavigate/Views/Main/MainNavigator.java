@@ -1,7 +1,5 @@
 package com.example.airnavigate.Views.Main;
 
-import android.support.annotation.Nullable;
-
 import com.example.airnavigate.Views.Base.BaseActivity;
 import com.example.airnavigate.Views.Main.Deputies.Article.DeputyArticleFragment;
 
@@ -22,8 +20,8 @@ public class MainNavigator {
         this.activity = activity;
     }
 
-    public void openArticle(long deputiesId, @Nullable String hashtag) {
-        DeputyArticleFragment fragment = DeputyArticleFragment.newInstance(deputiesId, hashtag);
+    public void openArticle(long deputiesId) {
+        DeputyArticleFragment fragment = DeputyArticleFragment.newInstance(deputiesId);
         fragmentDispatcher.navigateToDetailsLevel(fragment, fragment.provideTag());
     }
 }

@@ -34,7 +34,7 @@ public class MainActivity extends BaseToolbarActivity implements NavDrawerFragme
         drawer.setUp(
                 R.id.drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
-        mDispatcher.displayNavigationDrawerItem(FragmentDispatcher.NavDrawerItems.RECIPES, true);
+        mDispatcher.displayNavigationDrawerItem(FragmentDispatcher.NavDrawerItems.THEMATIC_BLOCKS, true);
     }
 
     @Override

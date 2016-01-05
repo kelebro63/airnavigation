@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
 import com.example.airnavigate.R;
+import com.example.airnavigate.Views.Base.BaseActivity;
 import com.example.airnavigate.Views.Base.BaseDialogFragment;
 import com.example.airnavigate.Views.Main.Deputies.List.MainListDeputiesFragment;
 import com.example.airnavigate.Views.Main.ThematicBloks.MainListTopicsFragment;
@@ -18,19 +19,19 @@ public class FragmentDispatcher implements DetailsNavigator{
 
     private FragmentManager mManager;
     private Resources mResources;
+    private BaseActivity activity;
 
 
     public FragmentDispatcher(@NonNull FragmentManager mManager,
-                              @NonNull Resources mResources) {
+                              @NonNull Resources mResources, BaseActivity activity) {
 
         this.mManager = mManager;
         this.mResources = mResources;
-
+        this.activity = activity;
     }
 
     void onCreate() {
        // bus.register(this);
-
     }
 
 
@@ -45,14 +46,14 @@ public class FragmentDispatcher implements DetailsNavigator{
 
         String tag = null;
         switch (position) {
-            case NavDrawerItems.RECIPES:
+            case NavDrawerItems.THEMATIC_BLOCKS:
                 currentSelectionFragment = mManager.findFragmentByTag(MainListTopicsFragment.TAG);
                 if (currentSelectionFragment == null) {
                     currentSelectionFragment = new MainListTopicsFragment();
                     tag = MainListTopicsFragment.TAG;
                 }
                 break;
-            case NavDrawerItems.HOWTOS:
+            case NavDrawerItems.DEPUTIES:
                 currentSelectionFragment = mManager.findFragmentByTag(MainListDeputiesFragment.TAG);
                 if (currentSelectionFragment == null) {
                     currentSelectionFragment = new MainListDeputiesFragment();
@@ -147,7 +148,13 @@ public class FragmentDispatcher implements DetailsNavigator{
 
     @Override
     public void navigateToDetailsLevel(Fragment fragment, String tag) {
-        String test = "";
+        if (!activity.isFinishing()) {
+            mManager.beginTransaction()
+                    .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out, 0, android.R.anim.fade_out)
+                    .add(R.id.container, fragment, tag)
+                    .addToBackStack(tag)
+                    .commit();
+        }
     }
 
     @Override
@@ -215,8 +222,8 @@ public class FragmentDispatcher implements DetailsNavigator{
 //    }
 
     public static class NavDrawerItems {
-        public static final int RECIPES = 1;
-        public static final int HOWTOS = 2;
+        public static final int THEMATIC_BLOCKS = 1;
+        public static final int DEPUTIES = 2;
         public static final int FAVORITES = 3;
         public static final int SHOPPING = 4;
         public static final int ESSENTIALS = 6;

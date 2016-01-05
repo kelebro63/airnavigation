@@ -28,6 +28,6 @@ public class MainActivityFragmentModule {
 
     @Provides
     FragmentDispatcher getFragmentDispatcher() {
-        return new FragmentDispatcher(activity.getSupportFragmentManager(), activity.getResources());
+        return new FragmentDispatcher(activity.getSupportFragmentManager(), activity.getResources(), activity);
     }
 }

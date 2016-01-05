@@ -1,6 +1,7 @@
 package com.example.airnavigate.Views.Main.Deputies.List;
 
 import android.content.Context;
+import android.support.annotation.Nullable;
 
 import com.example.airnavigate.MVP.IPresenter;
 import com.example.airnavigate.Model.Deputy;
@@ -109,7 +110,54 @@ class DeputiesListPresenter implements IPresenter<IDeputiesListView> {
     }
 
 
+    public void openNextScreen(Deputy item, @Nullable String filter) {
 
+        String test = "";
+        if (item == null ) {
+            //thats unexpected
+            if (item == null) {
+               // Cr.e(this, new Throwable("item is null; filter is :" + filter));
+            } else {
+               // Cr.e(this, new Throwable("item is not null; contenttype is : " + item.getContentType() + " ; filter: " + filter));
+            }
+            //just don't crash please
+            return;
+        }
+        navigator.openArticle(Integer.valueOf(item.getId()));
+//        StringArrayList tags = item.getTags();
+//
+//        EventTracker tracker = GokixxApp.analytixx(context).eventTracker;
+//        String tag = null;
+//        if (tags != null && tags.size() > 0) {
+//            tag = tags.get(0);
+//        }
+//
+//        if (item.getContentType().equals(ContentType.NEWS.value())) {
+//
+//
+//            navigator.openArticle(item.getId(), tag);
+//            if (filter == null) {
+//                tracker.trackArticleOpenFromNewsfeed(item.getTitle());
+//            } else {
+//                tracker.trackArticleOpenFromHashtags(item.getTitle(), filter);
+//            }
+//
+//        } else if (item.getContentType().equals(ContentType.VIDEO.value())) {
+//            openYoutubeVideo(item);
+//            if (filter == null) {
+//                tracker.trackClickVideoItemFromNewsfeed(item.getTitle());
+//            } else {
+//                tracker.trackClickVideoItemFromHashtagsTab(item.getTitle(), filter);
+//            }
+//        } else {
+//            navigator.openTwitterPost(item.getId(), tag);
+//            if (filter == null) {
+//                tracker.trackTweetOpenFromNewsfeed(item.getTitle());
+//            } else {
+//                tracker.trackTweetOpenFromHashtags(item.getTitle(), filter);
+//            }
+//        }
+    }
 
 
 

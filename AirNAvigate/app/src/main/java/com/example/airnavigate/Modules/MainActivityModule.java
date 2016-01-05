@@ -27,7 +27,7 @@ public class MainActivityModule {
     @Provides
     @ActivityScope
     FragmentDispatcher provideFragmentDispatcher() {
-        return new FragmentDispatcher(mainActivity.getSupportFragmentManager(), mainActivity.getResources());
+        return new FragmentDispatcher(mainActivity.getSupportFragmentManager(), mainActivity.getResources(), mainActivity);
     }
 
 

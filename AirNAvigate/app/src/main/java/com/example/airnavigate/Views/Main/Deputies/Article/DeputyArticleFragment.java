@@ -1,7 +1,6 @@
 package com.example.airnavigate.Views.Main.Deputies.Article;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 
 import com.example.airnavigate.Model.Deputy;
 import com.example.airnavigate.R;
@@ -14,10 +13,9 @@ public class DeputyArticleFragment extends BaseFragment implements IArticleView 
 
 
 
-    public static DeputyArticleFragment newInstance(long deputyId, @Nullable String hashtag) {
+    public static DeputyArticleFragment newInstance(long deputyId) {
         Bundle bundle = new Bundle();
         bundle.putLong("deputy_id", deputyId);
-        bundle.putString("hashtag", hashtag);
         DeputyArticleFragment fragment = new DeputyArticleFragment();
         fragment.setArguments(bundle);
         return fragment;

@@ -95,7 +95,7 @@ public class MainListDeputiesFragment extends BaseFragment implements IDeputiesL
         newsRecyclerView.setLayoutManager(layoutManager);
         adapter = new DeputiesListAdapter();
 
-        //   adapter.setItemClickListener(item -> presenter.openNextScreen(item, filter));
+        adapter.setItemClickListener(item -> presenter.openNextScreen(item, filter));
         newsRecyclerView.setAdapter(adapter);
         newsRecyclerView.addItemDecoration(new BlackThickDividerDecor());
         newsRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {

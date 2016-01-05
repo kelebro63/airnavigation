@@ -45,7 +45,7 @@ public class NavDrawerFragment extends BaseFragment implements DrawerAdapter.Dra
     private RecyclerView mDrawerListView;
     private View mFragmentContainerView;
 
-    private int mCurrentSelectedPosition = FragmentDispatcher.NavDrawerItems.RECIPES;
+    private int mCurrentSelectedPosition = FragmentDispatcher.NavDrawerItems.THEMATIC_BLOCKS;
     private boolean mFromSavedInstanceState;
    // private boolean mUserLearnedDrawer;
 
