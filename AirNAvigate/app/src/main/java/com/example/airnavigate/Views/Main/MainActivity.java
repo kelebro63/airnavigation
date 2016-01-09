@@ -2,7 +2,6 @@ package com.example.airnavigate.Views.Main;
 
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -14,10 +13,16 @@ import com.example.airnavigate.Views.Drawer.NavDrawerFragment;
 
 import javax.inject.Inject;
 
+import butterknife.Bind;
+
 public class MainActivity extends BaseToolbarActivity implements NavDrawerFragment.NavigationDrawerCallbacks
 {
 
+    ToolbarControls toolbarControls;
     NavDrawerFragment drawer;
+
+    @Bind(R.id.drawer_layout)
+    DrawerLayout drawerLayout;
 
     @Inject
     FragmentDispatcher mDispatcher;
@@ -26,8 +31,6 @@ public class MainActivity extends BaseToolbarActivity implements NavDrawerFragme
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setupActivityComponent();
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         mDispatcher.onCreate();
         drawer = (NavDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.drawer);
@@ -35,6 +38,8 @@ public class MainActivity extends BaseToolbarActivity implements NavDrawerFragme
                 R.id.drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
         mDispatcher.displayNavigationDrawerItem(FragmentDispatcher.NavDrawerItems.THEMATIC_BLOCKS, true);
+        toolbarControls = new ToolbarControls(this, drawerLayout, drawer, getSupportFragmentManager(), toolbar);
+        toolbarControls.setup();
     }
 
     @Override

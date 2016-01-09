@@ -36,4 +36,9 @@
     <string name="MENU_FEEDBACK">"Feedback"</string>
     <string name="MENU_SETTINGS">"SETTINGS"</string>
 
+
+    <!-- toolbar controls -->
+    <string name="drawer_action_open">drawer_action_open</string>
+    <string name="drawer_action_close">drawer_action_close</string>
+
 </resources>
