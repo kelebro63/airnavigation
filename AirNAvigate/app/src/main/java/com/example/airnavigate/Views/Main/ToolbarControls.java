@@ -18,7 +18,7 @@ import com.example.airnavigate.Views.Drawer.NavDrawerFragment;
 /**
  * Encapsulates toolbar appearance and behaviour
  * */
-class ToolbarControls implements FragmentManager.OnBackStackChangedListener {
+public class ToolbarControls implements FragmentManager.OnBackStackChangedListener {
 
     final MainActivity activity;
     final DrawerLayout drawerLayout;
@@ -29,6 +29,7 @@ class ToolbarControls implements FragmentManager.OnBackStackChangedListener {
     final TextView toolbarTitle;
 
     Mode mode = Mode.MENU;//default
+
 
     ToolbarControls(MainActivity activity, DrawerLayout drawerLayout, NavDrawerFragment drawer, FragmentManager fm, Toolbar toolbar) {
         this.drawerLayout = drawerLayout;

@@ -1,6 +1,7 @@
 package com.example.airnavigate.Views.Main;
 
 import android.os.Bundle;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,25 +32,20 @@ public class MainActivity extends BaseToolbarActivity implements NavDrawerFragme
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setupActivityComponent();
-
+        toolbarControls = new ToolbarControls(this, drawerLayout, drawer, getSupportFragmentManager(), toolbar);
+        toolbarControls.setup();
         mDispatcher.onCreate();
         drawer = (NavDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.drawer);
         drawer.setUp(
                 R.id.drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
         mDispatcher.displayNavigationDrawerItem(FragmentDispatcher.NavDrawerItems.THEMATIC_BLOCKS, true);
-        toolbarControls = new ToolbarControls(this, drawerLayout, drawer, getSupportFragmentManager(), toolbar);
-        toolbarControls.setup();
+        mDispatcher.addOnBackStackChangedListener(toolbarControls);
     }
 
     @Override
     protected int getLayoutId() {
         return R.layout.main_activity;
-    }
-
-    @Override
-    public void onBackPressed() {
-
     }
 
     @Override
@@ -99,5 +95,14 @@ public class MainActivity extends BaseToolbarActivity implements NavDrawerFragme
     @Override
     public void onReportDrawerStatus(boolean isOpened) {
         String test = "";
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawers();
+        } else {
+            super.onBackPressed();
+        }
     }
 }

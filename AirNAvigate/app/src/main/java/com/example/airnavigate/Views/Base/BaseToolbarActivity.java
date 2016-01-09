@@ -13,6 +13,7 @@ public abstract class BaseToolbarActivity extends BaseActivity {
     @Bind(R.id.toolbar)
     protected Toolbar toolbar;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

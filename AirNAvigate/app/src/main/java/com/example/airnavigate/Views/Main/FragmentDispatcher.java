@@ -32,6 +32,7 @@ public class FragmentDispatcher implements DetailsNavigator{
 
     void onCreate() {
        // bus.register(this);
+
     }
 
 
@@ -160,6 +161,10 @@ public class FragmentDispatcher implements DetailsNavigator{
     @Override
     public void navigateToDetailsLevelAndCloseSearch(Fragment fragment, String tag) {
 
+    }
+
+    public void addOnBackStackChangedListener(ToolbarControls toolbarControls) {
+        mManager.addOnBackStackChangedListener(toolbarControls);
     }
 
 //    boolean isSpecialCasePosition(int position) {
