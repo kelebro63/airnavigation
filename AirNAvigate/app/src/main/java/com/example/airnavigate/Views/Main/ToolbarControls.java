@@ -3,6 +3,7 @@ package com.example.airnavigate.Views.Main;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -58,7 +59,7 @@ public class ToolbarControls implements FragmentManager.OnBackStackChangedListen
     }
 
     private void updateTitle() {
-//        Fragment fragmentById = fm.findFragmentById(R.id.content_frame);
+        Fragment fragmentById = fm.findFragmentById(R.id.container);
 //        if (fragmentById instanceof TitleAwareFragment) {
 //            setTitle(((TitleAwareFragment) fragmentById).getToolbarTitle());
 //        }

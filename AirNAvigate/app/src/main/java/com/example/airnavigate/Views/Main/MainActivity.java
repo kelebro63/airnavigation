@@ -1,5 +1,6 @@
 package com.example.airnavigate.Views.Main;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -46,6 +47,12 @@ public class MainActivity extends BaseToolbarActivity implements NavDrawerFragme
     @Override
     protected int getLayoutId() {
         return R.layout.main_activity;
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        toolbarControls.restoreState(savedInstanceState);
     }
 
     @Override
@@ -105,4 +112,27 @@ public class MainActivity extends BaseToolbarActivity implements NavDrawerFragme
             super.onBackPressed();
         }
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        toolbarControls.saveInstanceState(outState);
+    }
+
+    @Override
+    protected void onDestroy() {
+        mDispatcher.removeOnBackStackChangedListener(toolbarControls);
+        super.onDestroy();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        toolbarControls.onConfigurationChanged(newConfig);
+    }
+
+//    @Override
+//    public void setCurrentTitle(String currentTitle) {
+//        toolbarControls.setTitle(currentTitle);
+//    }
 }

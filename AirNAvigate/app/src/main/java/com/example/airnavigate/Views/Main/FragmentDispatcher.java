@@ -167,6 +167,10 @@ public class FragmentDispatcher implements DetailsNavigator{
         mManager.addOnBackStackChangedListener(toolbarControls);
     }
 
+    public void removeOnBackStackChangedListener(ToolbarControls toolbarControls) {
+        mManager.removeOnBackStackChangedListener(toolbarControls);
+    }
+
 //    boolean isSpecialCasePosition(int position) {
 //        boolean isSettingsDialog = position == NavDrawerItems.SETTINGS
 //                && mResources.getBoolean(R.bool.show_settings_as_dialog);
