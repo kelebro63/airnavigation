@@ -7,7 +7,7 @@ import com.example.airnavigate.Dao.DaoMaster;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
 /**
- * Created by dtx12 on 01.09.2015.
+ * Created by kelebro63.
  */
 public class DBOpenHelper extends SQLiteAssetHelper {
     public DBOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
