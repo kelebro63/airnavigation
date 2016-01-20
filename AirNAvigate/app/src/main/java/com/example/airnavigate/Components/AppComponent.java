@@ -9,6 +9,7 @@ import com.example.airnavigate.Modules.AppModule;
 import com.example.airnavigate.Modules.LoginActivityModule;
 import com.example.airnavigate.Modules.MainActivityFragmentModule;
 import com.example.airnavigate.Modules.MainActivityModule;
+import com.example.airnavigate.Utils.Prefs;
 
 import javax.inject.Singleton;
 
@@ -38,5 +39,7 @@ public interface AppComponent {
     IDataSource provideDataSource();
 
     Context context();
+
+    Prefs prefs();
 
 }

@@ -21,7 +21,7 @@ public class DBManager {
     @Inject
     public DBManager(@Singleton Context context, @Singleton Prefs prefs) {
         this.context = context;
-        DBOpenHelper helper = new DBOpenHelper(context, "gokixx-db", null, 1);
+        DBOpenHelper helper = new DBOpenHelper(context, "airnavigate-db", null, 1);
         SQLiteDatabase database = helper.getWritableDatabase();
         DaoMaster daoMaster = new DaoMaster(database);
         DaoSession session = daoMaster.newSession();

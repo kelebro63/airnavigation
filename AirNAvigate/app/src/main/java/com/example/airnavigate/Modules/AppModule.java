@@ -2,6 +2,8 @@ package com.example.airnavigate.Modules;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
 import com.example.airnavigate.BuildConfig;
@@ -12,6 +14,7 @@ import com.example.airnavigate.Data.IAirNavigateAPI;
 import com.example.airnavigate.Data.IDataSource;
 import com.example.airnavigate.Internal.BackgroundThread;
 import com.example.airnavigate.Internal.MainThread;
+import com.example.airnavigate.Utils.Prefs;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -64,10 +67,14 @@ public class AppModule {
 
     @Provides
     @Singleton
-    IDataSource provideDataSource(IAirNavigateAPI api, @BackgroundThread Scheduler scheduler, DBManager manager) { //, Prefs prefs
-        return new DataSourceImpl(api, scheduler, manager, null);
+    IDataSource provideDataSource(IAirNavigateAPI api, @BackgroundThread Scheduler scheduler, DBManager manager, Prefs prefs) { //, Prefs prefs
+        return new DataSourceImpl(api, scheduler, manager, prefs);
     }
 
+    @Provides
+    SharedPreferences preferences(Context context) {
+        return PreferenceManager.getDefaultSharedPreferences(context);
+    }
 
     @Provides
     @Singleton
