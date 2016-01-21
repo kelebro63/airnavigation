@@ -1,7 +1,7 @@
 package com.example.airnavigate.Data;
 
+import com.example.airnavigate.Dao.Topic;
 import com.example.airnavigate.Model.Deputy;
-import com.example.airnavigate.Model.Topic;
 
 import java.util.List;
 

@@ -2,7 +2,7 @@ package com.example.airnavigate.Views.Main.ThematicBloks;
 
 import android.view.View;
 
-import com.example.airnavigate.Model.Topic;
+import com.example.airnavigate.Dao.Topic;
 import com.example.airnavigate.Views.Base.Adapter.BaseViewHolder;
 
 

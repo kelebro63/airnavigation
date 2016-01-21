@@ -3,8 +3,8 @@ package com.example.airnavigate.Views.Main.ThematicBloks;
 import android.content.Context;
 import android.support.annotation.Nullable;
 
+import com.example.airnavigate.Dao.Topic;
 import com.example.airnavigate.MVP.IPresenter;
-import com.example.airnavigate.Model.Topic;
 import com.example.airnavigate.Views.Base.BaseSubscriber;
 import com.example.airnavigate.Views.Common.ErrorNavigator;
 import com.example.airnavigate.Views.Main.MainInteractor;

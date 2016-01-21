@@ -1,7 +1,7 @@
 package com.example.airnavigate.Views.Main.ThematicBloks;
 
+import com.example.airnavigate.Dao.Topic;
 import com.example.airnavigate.MVP.IView;
-import com.example.airnavigate.Model.Topic;
 
 import java.util.List;
 

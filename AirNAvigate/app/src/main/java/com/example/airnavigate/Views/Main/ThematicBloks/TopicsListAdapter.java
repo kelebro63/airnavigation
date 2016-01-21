@@ -3,7 +3,7 @@ package com.example.airnavigate.Views.Main.ThematicBloks;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.example.airnavigate.Model.Topic;
+import com.example.airnavigate.Dao.Topic;
 import com.example.airnavigate.R;
 import com.example.airnavigate.Views.Base.Adapter.BaseArrayAdapter;
 

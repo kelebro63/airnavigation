@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.airnavigate.Model.Topic;
+import com.example.airnavigate.Dao.Topic;
 import com.example.airnavigate.R;
 
 import butterknife.Bind;

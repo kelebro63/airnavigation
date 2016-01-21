@@ -1,10 +1,10 @@
 package com.example.airnavigate.Data;
 
 
+import com.example.airnavigate.Dao.Topic;
 import com.example.airnavigate.Internal.BackgroundThread;
 import com.example.airnavigate.Model.Deputy;
 import com.example.airnavigate.Model.News;
-import com.example.airnavigate.Model.Topic;
 import com.example.airnavigate.Utils.Prefs;
 
 import java.util.ArrayList;
@@ -56,7 +56,11 @@ public class DataSourceImpl implements IDataSource {
 
     @Override
     public Observable<List<Topic>> requestGetNews() {
-        return serverApi.requestLatestNews();
+        return serverApi.requestLatestNews()
+                .doOnNext(manager::saveTopics)
+                .onErrorResumeNext(
+                        Observable.just(manager.getTopics())
+                );
     }
 
     @Override
