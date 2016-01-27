@@ -15,7 +15,6 @@ import com.example.airnavigate.Data.IDataSource;
 import com.example.airnavigate.Internal.BackgroundThread;
 import com.example.airnavigate.Internal.MainThread;
 import com.example.airnavigate.Utils.Prefs;
-import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.squareup.okhttp.OkHttpClient;
@@ -92,9 +91,10 @@ public class AppModule {
         RestAdapter.Builder builder = new RestAdapter.Builder();
         builder.setClient(new OkClient(client));
         builder.setEndpoint("http://api.duma.gov.ru/api/3b816383786e9b28914837d27a06c50394dd5240");
+        builder.setLogLevel(RestAdapter.LogLevel.FULL);
         builder.setRequestInterceptor(interceptor);
-        Gson gson = new GsonBuilder()
-                .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create();
+        Gson gson = new GsonBuilder().create();
+        //.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create();
         builder.setConverter(new GsonConverter(gson));
 
         if (BuildConfig.DEBUG) {

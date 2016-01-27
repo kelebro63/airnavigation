@@ -26,7 +26,7 @@ public class MainInteractor extends Interactor {
     }
 
     public void getTopics(Subscriber<List<Topic>> subscriber) {
-        subscribe(dataSource.requestGetNews(), subscriber);
+        subscribe(dataSource.requestGetTopics(), subscriber);
     }
 
     public void loadDeputies(Subscriber<List<Deputy>> subscriber) {

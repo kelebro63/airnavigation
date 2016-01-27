@@ -33,4 +33,34 @@ public class Generator {
         topic.addIdProperty().notNull();//autoincrement();
         topic.addStringProperty("name");
     }
+
+    private static void addDeputy(Schema schema) {
+        Entity topic = schema.addEntity("Deputy");
+        topic.addIdProperty().notNull();//autoincrement();
+        topic.addStringProperty("name");
+        topic.addStringProperty("family");
+        topic.addStringProperty("patronymic");
+        topic.addStringProperty("birthdate");
+        topic.addStringProperty("credentialsStart");
+        topic.addStringProperty("credentialsEnd");
+        topic.addStringProperty("factionId");
+        topic.addStringProperty("factionName");
+        topic.addStringProperty("factionRole");
+        topic.addStringProperty("partyNameInstr");
+        topic.addBooleanProperty("isActual").notNull();
+        topic.addStringProperty("homePage");
+        topic.addStringProperty("factionRegion");
+        topic.addStringProperty("nameGenitive");
+        topic.addStringProperty("familyAndInitials");
+        topic.addStringProperty("voteLink");
+        topic.addStringProperty("transcriptLink");
+        topic.addIntProperty("lawcount");
+        topic.addIntProperty("speachCount");
+    }
+
+    private static void addActivity(Schema schema) {
+        Entity topic = schema.addEntity("Topic");
+        topic.addIdProperty().notNull();//autoincrement();
+        topic.addStringProperty("name");
+    }
 }

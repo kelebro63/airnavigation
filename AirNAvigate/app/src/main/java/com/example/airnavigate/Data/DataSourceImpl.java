@@ -55,7 +55,7 @@ public class DataSourceImpl implements IDataSource {
 
 
     @Override
-    public Observable<List<Topic>> requestGetNews() {
+    public Observable<List<Topic>> requestGetTopics() {
         return serverApi.requestLatestNews()
                 .doOnNext(manager::saveTopics)
                 .onErrorResumeNext(

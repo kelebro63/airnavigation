@@ -13,7 +13,7 @@ import javax.inject.Inject;
 
 
 /**
- * Loads news into newsfeed. Controls pull-to-refresh.
+ * Loads Deputyes. Controls pull-to-refresh.
  * Controls load more function by incrementing the number of the last fetched page
  */
 class DeputyArticlePresenter implements IPresenter<IArticleView> {
