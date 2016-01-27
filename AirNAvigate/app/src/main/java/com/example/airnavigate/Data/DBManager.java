@@ -5,6 +5,8 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.airnavigate.Dao.DaoMaster;
 import com.example.airnavigate.Dao.DaoSession;
+import com.example.airnavigate.Dao.Deputy;
+import com.example.airnavigate.Dao.DeputyDao;
 import com.example.airnavigate.Dao.Topic;
 import com.example.airnavigate.Dao.TopicDao;
 import com.example.airnavigate.Utils.Prefs;
@@ -22,6 +24,7 @@ public class DBManager {
     private final Prefs prefs;
     private final Context context;
     private final TopicDao topicDao;
+    private final DeputyDao deputyDao;
 
     @Inject
     public DBManager(@Singleton Context context, @Singleton Prefs prefs) {
@@ -31,7 +34,7 @@ public class DBManager {
         DaoMaster daoMaster = new DaoMaster(database);
         DaoSession session = daoMaster.newSession();
         topicDao = session.getTopicDao();
-
+        deputyDao = session.getDeputyDao();
         this.prefs = prefs;
     }
 
@@ -41,7 +44,21 @@ public class DBManager {
         }
     }
 
+    public void saveDeputies(List<Deputy> deputyList) {
+        for (Deputy deputy: deputyList) {
+            deputyDao.insertOrReplace(deputy);
+        }
+    }
+
+    public void saveDeputy(Deputy deputy) {
+        deputyDao.insertOrReplace(deputy);
+    }
+
     public List<Topic> getTopics() {
         return topicDao.loadAll();
+    }
+
+    public List<Deputy> getDeputies() {
+        return deputyDao.loadAll();
     }
 }

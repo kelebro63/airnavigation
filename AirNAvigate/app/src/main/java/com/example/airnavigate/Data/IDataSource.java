@@ -1,7 +1,7 @@
 package com.example.airnavigate.Data;
 
+import com.example.airnavigate.Dao.Deputy;
 import com.example.airnavigate.Dao.Topic;
-import com.example.airnavigate.Model.Deputy;
 
 import java.util.List;
 
@@ -21,9 +21,9 @@ public interface IDataSource {
 
     Observable<Deputy> requestLoadDeputy(int id);
 
-//    Observable<List<News>> requestLatestNews(int page, String tag);
+//    Observable<List<News>> requestLoadTopics(int page, String tag);
 //
-//    Observable<List<News>> requestLatestNews(int page);
+//    Observable<List<News>> requestLoadTopics(int page);
 //
 //
 //    Observable<List<Tag>> requestFeaturedTags();

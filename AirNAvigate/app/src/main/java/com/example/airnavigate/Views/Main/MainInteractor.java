@@ -1,12 +1,12 @@
 package com.example.airnavigate.Views.Main;
 
 
+import com.example.airnavigate.Dao.Deputy;
 import com.example.airnavigate.Dao.Topic;
 import com.example.airnavigate.Data.IDataSource;
 import com.example.airnavigate.Internal.BackgroundThread;
 import com.example.airnavigate.Internal.MainThread;
 import com.example.airnavigate.MVP.Interactor;
-import com.example.airnavigate.Model.Deputy;
 
 import java.util.List;
 

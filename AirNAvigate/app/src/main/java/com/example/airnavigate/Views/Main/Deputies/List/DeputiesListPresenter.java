@@ -3,8 +3,8 @@ package com.example.airnavigate.Views.Main.Deputies.List;
 import android.content.Context;
 import android.support.annotation.Nullable;
 
+import com.example.airnavigate.Dao.Deputy;
 import com.example.airnavigate.MVP.IPresenter;
-import com.example.airnavigate.Model.Deputy;
 import com.example.airnavigate.Views.Base.BaseSubscriber;
 import com.example.airnavigate.Views.Common.ErrorNavigator;
 import com.example.airnavigate.Views.Main.MainInteractor;
@@ -123,7 +123,7 @@ class DeputiesListPresenter implements IPresenter<IDeputiesListView> {
             //just don't crash please
             return;
         }
-        navigator.openArticle(Integer.valueOf(item.getId()));
+        navigator.openArticle((int) item.getId());
 //        StringArrayList tags = item.getTags();
 //
 //        EventTracker tracker = GokixxApp.analytixx(context).eventTracker;

@@ -2,7 +2,7 @@ package com.example.airnavigate.Views.Main.Deputies.List;
 
 import android.view.View;
 
-import com.example.airnavigate.Model.Deputy;
+import com.example.airnavigate.Dao.Deputy;
 
 /**
  * A "load more" footer displayed as list footer

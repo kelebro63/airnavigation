@@ -1,7 +1,7 @@
 package com.example.airnavigate.Views.Main.Deputies.List;
 
+import com.example.airnavigate.Dao.Deputy;
 import com.example.airnavigate.MVP.IView;
-import com.example.airnavigate.Model.Deputy;
 
 import java.util.List;
 

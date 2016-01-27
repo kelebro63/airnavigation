@@ -3,7 +3,7 @@ package com.example.airnavigate.Views.Main.Deputies.List;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.example.airnavigate.Model.Deputy;
+import com.example.airnavigate.Dao.Deputy;
 import com.example.airnavigate.R;
 import com.example.airnavigate.Views.Base.Adapter.BaseArrayAdapter;
 
@@ -37,7 +37,7 @@ class DeputiesListAdapter extends BaseArrayAdapter<Deputy, AbstractDeputiesHolde
     @Override
     public long getItemId(int position) {
         Deputy item = getItem(position);
-        return item == null ? ID_PROGRESS_ITEM : Integer.valueOf(item.getId());
+        return item == null ? ID_PROGRESS_ITEM : (int) item.getId();
     }
 
     @Override

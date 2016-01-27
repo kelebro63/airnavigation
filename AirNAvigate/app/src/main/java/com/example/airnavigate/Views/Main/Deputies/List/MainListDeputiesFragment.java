@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.airnavigate.Model.Deputy;
+import com.example.airnavigate.Dao.Deputy;
 import com.example.airnavigate.Modules.MainActivityFragmentModule;
 import com.example.airnavigate.MyApplication;
 import com.example.airnavigate.R;

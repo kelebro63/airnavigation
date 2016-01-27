@@ -1,9 +1,9 @@
 package com.example.airnavigate.Data;
 
 
+import com.example.airnavigate.Dao.Deputy;
 import com.example.airnavigate.Dao.Topic;
 import com.example.airnavigate.Internal.BackgroundThread;
-import com.example.airnavigate.Model.Deputy;
 import com.example.airnavigate.Model.News;
 import com.example.airnavigate.Utils.Prefs;
 
@@ -56,7 +56,7 @@ public class DataSourceImpl implements IDataSource {
 
     @Override
     public Observable<List<Topic>> requestGetTopics() {
-        return serverApi.requestLatestNews()
+        return serverApi.requestLoadTopics()
                 .doOnNext(manager::saveTopics)
                 .onErrorResumeNext(
                         Observable.just(manager.getTopics())
@@ -65,12 +65,17 @@ public class DataSourceImpl implements IDataSource {
 
     @Override
     public Observable<List<Deputy>> requestLoadDeputies() {
-        return serverApi.requestLoadDeputies();
+        return serverApi.requestLoadDeputies()
+                .doOnNext(manager::saveDeputies)
+                .onErrorResumeNext(
+                        Observable.<List<Deputy>>empty().just(manager.getDeputies())
+                );
     }
 
     @Override
     public Observable<Deputy> requestLoadDeputy(int id) {
-        return serverApi.requestLoadDeputy(id);
+        return serverApi.requestLoadDeputy(id)
+                .doOnNext(manager::saveDeputy);
     }
 
     private List<News> getNews() {
