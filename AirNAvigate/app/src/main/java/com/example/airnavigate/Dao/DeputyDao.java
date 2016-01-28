@@ -45,6 +45,8 @@ public class DeputyDao extends AbstractDao<Deputy, Long> {
         public final static Property SpeachCount = new Property(19, Integer.class, "speachCount", false, "SPEACH_COUNT");
     };
 
+    private DaoSession daoSession;
+
 
     public DeputyDao(DaoConfig config) {
         super(config);
@@ -52,6 +54,7 @@ public class DeputyDao extends AbstractDao<Deputy, Long> {
     
     public DeputyDao(DaoConfig config, DaoSession daoSession) {
         super(config, daoSession);
+        this.daoSession = daoSession;
     }
 
     /** Creates the underlying database table. */
@@ -182,6 +185,12 @@ public class DeputyDao extends AbstractDao<Deputy, Long> {
         if (speachCount != null) {
             stmt.bindLong(20, speachCount);
         }
+    }
+
+    @Override
+    protected void attachEntity(Deputy entity) {
+        super.attachEntity(entity);
+        entity.__setDaoSession(daoSession);
     }
 
     /** @inheritdoc */
