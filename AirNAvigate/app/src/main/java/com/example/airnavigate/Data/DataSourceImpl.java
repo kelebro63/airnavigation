@@ -4,10 +4,8 @@ package com.example.airnavigate.Data;
 import com.example.airnavigate.Dao.Deputy;
 import com.example.airnavigate.Dao.Topic;
 import com.example.airnavigate.Internal.BackgroundThread;
-import com.example.airnavigate.Model.News;
 import com.example.airnavigate.Utils.Prefs;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -78,16 +76,7 @@ public class DataSourceImpl implements IDataSource {
                 .doOnNext(manager::saveDeputy);
     }
 
-    private List<News> getNews() {
-        List<News> newsArrayList = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            News news = new News(i);
-            news.setTitle("title" + i);
-            news.setSubtitle("subTitle" + i);
-            newsArrayList.add(news);
-        }
-        return newsArrayList;
-    }
+
 
 
 }
