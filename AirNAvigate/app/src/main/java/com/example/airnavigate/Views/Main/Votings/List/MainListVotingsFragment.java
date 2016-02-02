@@ -65,7 +65,7 @@ public class MainListVotingsFragment extends BaseFragment implements IVotingsLis
         initRecyclerView();
 //
         presenter.takeView(this);
-        presenter.requestVotings();
+        presenter.requestVotings(1);
 
         topicsRefreshLayout.setOnRefreshListener(() -> {
 

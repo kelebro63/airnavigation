@@ -22,7 +22,7 @@ public interface IDataSource {
 
     Observable<Deputy> requestLoadDeputy(int id);
 
-    Observable<Voting> requestLoadVotings(int page);
+    Observable<List<Voting>> requestLoadVotings(int page);
 
 //    Observable<List<News>> requestLoadTopics(int page, String tag);
 //

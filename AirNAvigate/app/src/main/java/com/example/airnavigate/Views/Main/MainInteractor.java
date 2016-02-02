@@ -38,7 +38,7 @@ public class MainInteractor extends Interactor {
         subscribe(dataSource.requestLoadDeputy(id), subscriber);
     }
 
-    public void loadVotings(int page, Subscriber<Voting> subscriber) {
+    public void loadVotings(int page, Subscriber<List<Voting>> subscriber) {
         subscribe(dataSource.requestLoadVotings(page), subscriber);
     }
 
