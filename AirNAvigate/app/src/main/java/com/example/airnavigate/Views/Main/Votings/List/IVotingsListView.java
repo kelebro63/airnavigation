@@ -1,7 +1,7 @@
 package com.example.airnavigate.Views.Main.Votings.List;
 
-import com.example.airnavigate.Dao.Deputy;
 import com.example.airnavigate.MVP.IView;
+import com.example.airnavigate.Model.Voting;
 
 import java.util.List;
 

@@ -114,15 +114,15 @@ public class NavDrawerFragment extends BaseFragment implements DrawerAdapter.Dra
         items.add(new DrawerItem(
                 DrawerItem.Type.MAIN_ITEM,
                 new DrawerItem.TwoStateIcon(R.drawable.ic_nd_recipes, R.drawable.ic_nd_recipes_selected),
-                getString(R.string.MENU_RECIPES)));
+                getString(R.string.MENU_BLOCKS)));
         items.add(new DrawerItem(
                 DrawerItem.Type.MAIN_ITEM,
                 new DrawerItem.TwoStateIcon(R.drawable.ic_nd_howto, R.drawable.ic_nd_howto_selected),
-                getString(R.string.MENU_COOKING_TIPS)));
+                getString(R.string.MENU_DEPUTIES)));
         items.add(new DrawerItem(
                 DrawerItem.Type.MAIN_ITEM,
                 new DrawerItem.TwoStateIcon(R.drawable.ic_nd_myfavorites, R.drawable.ic_nd_myfavorites_selected),
-                getString(R.string.MENU_FAVORITES)));
+                getString(R.string.MENU_VOTINS)));
         items.add(new DrawerItem(
                 DrawerItem.Type.MAIN_ITEM,
                 new DrawerItem.TwoStateIcon(R.drawable.ic_nd_shopping, R.drawable.ic_nd_shopping_selected),

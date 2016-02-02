@@ -7,15 +7,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.airnavigate.Dao.Deputy;
+import com.example.airnavigate.Model.Voting;
 import com.example.airnavigate.Modules.MainActivityFragmentModule;
 import com.example.airnavigate.MyApplication;
 import com.example.airnavigate.R;
 import com.example.airnavigate.Utils.BlackThickDividerDecor;
 import com.example.airnavigate.Views.Base.BaseFragment;
-import com.example.airnavigate.Views.Main.Deputies.List.DeputiesListAdapter;
-import com.example.airnavigate.Views.Main.Deputies.List.DeputiesListPresenter;
-import com.example.airnavigate.Views.Main.Deputies.List.IDeputiesListView;
 
 import java.util.List;
 
@@ -46,10 +43,9 @@ public class MainListVotingsFragment extends BaseFragment implements IVotingsLis
     VotinsListPresenter presenter;
 
 
-    private DeputiesListAdapter adapter;
 
     private LinearLayoutManager layoutManager;
-    public static final String TAG = "MainListDeputiesFragment";
+    public static final String TAG = "MainListVotingsFragment";
 
     /**
      * A title used to filter the news in search
@@ -69,12 +65,10 @@ public class MainListVotingsFragment extends BaseFragment implements IVotingsLis
         initRecyclerView();
 //
         presenter.takeView(this);
-        presenter.requestDeputies();
+        presenter.requestVotings();
 
         topicsRefreshLayout.setOnRefreshListener(() -> {
-            if (!adapter.isLoading()) {
-                presenter.refreshItems();
-            }
+
         });
     }
 
@@ -96,10 +90,7 @@ public class MainListVotingsFragment extends BaseFragment implements IVotingsLis
     private void initRecyclerView() {
         layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         newsRecyclerView.setLayoutManager(layoutManager);
-        adapter = new DeputiesListAdapter();
 
-        adapter.setItemClickListener(item -> presenter.openNextScreen(item, filter));
-        newsRecyclerView.setAdapter(adapter);
         newsRecyclerView.addItemDecoration(new BlackThickDividerDecor());
         newsRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -117,16 +108,11 @@ public class MainListVotingsFragment extends BaseFragment implements IVotingsLis
 
     @Override
     public void addVotingsToDisplay(List<Voting> deputies) {
-        adapter.addAll(deputies);
-        updateContentVisibility();
+
     }
 
     public void setVotingsToDisplay(List<Voting> deputies) {
-        adapter.setItems(deputies);
-        if (deputies != null && deputies.size() > 0) {
-            newsRecyclerView.animate().alpha(1).setDuration(getResources().getInteger(android.R.integer.config_shortAnimTime));
-        }
-        updateContentVisibility();
+
     }
 
     @Override
@@ -139,10 +125,7 @@ public class MainListVotingsFragment extends BaseFragment implements IVotingsLis
 
     }
 
-    private void updateContentVisibility() {
-        emptyStub.setVisibility(adapter.isEmpty() ? View.VISIBLE : View.GONE);
-        animateRecycler(adapter.isEmpty());
-    }
+
 
     private void animateRecycler(boolean isEmpty) {
         float val = isEmpty ? 0 : 1;

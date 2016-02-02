@@ -4,6 +4,7 @@ package com.example.airnavigate.Data;
 import com.example.airnavigate.Dao.Deputy;
 import com.example.airnavigate.Dao.Topic;
 import com.example.airnavigate.Internal.BackgroundThread;
+import com.example.airnavigate.Model.Voting;
 import com.example.airnavigate.Utils.Prefs;
 
 import java.util.List;
@@ -76,7 +77,11 @@ public class DataSourceImpl implements IDataSource {
                 .doOnNext(manager::saveDeputy);
     }
 
-
+    @Override
+    public Observable<List<Voting>> requestLoadVotings(int page) {
+        return serverApi.requestLoadVotings(page)
+                .doOnNext(manager::saveVoting);
+    }
 
 
 }

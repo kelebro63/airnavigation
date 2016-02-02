@@ -10,6 +10,7 @@ import com.example.airnavigate.Views.Base.BaseActivity;
 import com.example.airnavigate.Views.Base.BaseDialogFragment;
 import com.example.airnavigate.Views.Main.Deputies.List.MainListDeputiesFragment;
 import com.example.airnavigate.Views.Main.ThematicBloks.MainListTopicsFragment;
+import com.example.airnavigate.Views.Main.Votings.List.MainListVotingsFragment;
 
 /**
  * Dispatches fragments on behalf of navigation drawer activity
@@ -61,12 +62,12 @@ public class FragmentDispatcher implements DetailsNavigator{
                     tag = MainListDeputiesFragment.TAG;
                 }
                 break;
-//            case NavDrawerItems.FAVORITES:
-//                currentSelectionFragment = mManager.findFragmentByTag(FavoriteRecipesFragment.TAG);
-//                if (currentSelectionFragment == null) {
-//                    currentSelectionFragment = new FavoriteRecipesFragment();
-//                    tag = FavoriteRecipesFragment.TAG;
-//                }
+            case NavDrawerItems.VOTINGS:
+                currentSelectionFragment = mManager.findFragmentByTag(MainListVotingsFragment.TAG);
+                if (currentSelectionFragment == null) {
+                    currentSelectionFragment = new MainListVotingsFragment();
+                    tag = MainListVotingsFragment.TAG;
+                }
 //                break;
 //            case NavDrawerItems.SHOPPING:
 //                if (calledByUserClick || mManager.getBackStackEntryCount() <= 0) {
@@ -233,7 +234,7 @@ public class FragmentDispatcher implements DetailsNavigator{
     public static class NavDrawerItems {
         public static final int THEMATIC_BLOCKS = 1;
         public static final int DEPUTIES = 2;
-        public static final int FAVORITES = 3;
+        public static final int VOTINGS = 3;
         public static final int SHOPPING = 4;
         public static final int ESSENTIALS = 6;
         public static final int ABOUT_US = 7;

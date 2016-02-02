@@ -5,9 +5,9 @@ import android.support.annotation.Nullable;
 
 import com.example.airnavigate.Dao.Deputy;
 import com.example.airnavigate.MVP.IPresenter;
+import com.example.airnavigate.Model.Voting;
 import com.example.airnavigate.Views.Base.BaseSubscriber;
 import com.example.airnavigate.Views.Common.ErrorNavigator;
-import com.example.airnavigate.Views.Main.Deputies.List.IDeputiesListView;
 import com.example.airnavigate.Views.Main.MainInteractor;
 import com.example.airnavigate.Views.Main.MainNavigator;
 
@@ -46,30 +46,28 @@ class VotinsListPresenter implements IPresenter<IVotingsListView> { //http://lor
     /**
      * Request Deputes from data source. Paging is done automatically
      */
-    public void requestDeputies() {
+    public void requestVotings(int page) {
         if (isLoading)
             return;
-        interactor.loadDeputies(new BaseSubscriber<List<Deputy>>(view) {
+        interactor.loadVotings(page, new BaseSubscriber<List<Voting>>(view) {
             @Override
             public void onStartImpl() {
-                isLoading = true;
+
             }
 
             @Override
             public void onCompletedImpl() {
-                isLoading = false;
-                currentPage++;
+
             }
 
             @Override
             public void onErrorImpl(Throwable e) {
-                isLoading = false;
-                e.printStackTrace();
+
             }
 
             @Override
-            public void onNextImpl(List<Deputy> deputies) {
-                view.addDeputiesToDisplay(deputies);
+            public void onNextImpl(List<Voting> votings) {
+
             }
         });
     }
@@ -86,26 +84,22 @@ class VotinsListPresenter implements IPresenter<IVotingsListView> { //http://lor
 
             @Override
             public void onStartImpl() {
-                isLoading = true;
+
             }
 
             @Override
             public void onCompletedImpl() {
-                isLoading = false;
+
             }
 
             @Override
             public void onErrorImpl(Throwable e) {
-                isLoading = false;
-                view.stopRefreshing();
+
             }
 
             @Override
             public void onNextImpl(List<Deputy> newItems) {
-                view.stopRefreshing();
-                //we reset the items. that is necessary so that user can further update their newsfeed, as usual
-                view.setDeputiesToDisplay(newItems);
-                currentPage = 2;//reset page
+
             }
         });
     }

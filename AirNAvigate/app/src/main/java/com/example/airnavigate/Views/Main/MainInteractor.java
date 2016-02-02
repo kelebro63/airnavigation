@@ -7,6 +7,7 @@ import com.example.airnavigate.Data.IDataSource;
 import com.example.airnavigate.Internal.BackgroundThread;
 import com.example.airnavigate.Internal.MainThread;
 import com.example.airnavigate.MVP.Interactor;
+import com.example.airnavigate.Model.Voting;
 
 import java.util.List;
 
@@ -35,6 +36,10 @@ public class MainInteractor extends Interactor {
 
     public void loadDeputy(int id, Subscriber<Deputy> subscriber) {
         subscribe(dataSource.requestLoadDeputy(id), subscriber);
+    }
+
+    public void loadVotings(int page, Subscriber<Voting> subscriber) {
+        subscribe(dataSource.requestLoadVotings(page), subscriber);
     }
 
 }
