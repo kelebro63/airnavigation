@@ -30,10 +30,10 @@ public class MainListTopicsFragment extends BaseFragment implements ITopicsListV
     @Bind(R.id.emptyStub)
     TextView emptyStub;
 
-    @Bind(R.id.newsRecyclerView)
-    RecyclerView newsRecyclerView;
+    @Bind(R.id.topicsRecyclerView)
+    RecyclerView topicsRecyclerView;
 
-    @Bind(R.id.newsRefreshLayout)
+    @Bind(R.id.topicsRefreshLayout)
     SwipeRefreshLayout topicsRefreshLayout;
 
 //    @Bind(R.id.progressLoading)
@@ -87,25 +87,25 @@ public class MainListTopicsFragment extends BaseFragment implements ITopicsListV
 
     @Override
     protected int getLayoutId() {
-        return R.layout.main_list_fragment;
+        return R.layout.main_list_topics_fragment;
     }
 
     private void initRecyclerView() {
         layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-        newsRecyclerView.setLayoutManager(layoutManager);
+        topicsRecyclerView.setLayoutManager(layoutManager);
         adapter = new TopicsListAdapter();
 
         adapter.setItemClickListener(item -> presenter.openNextScreen(item, filter));
-        newsRecyclerView.setAdapter(adapter);
-        newsRecyclerView.addItemDecoration(new BlackThickDividerDecor());
-        newsRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        topicsRecyclerView.setAdapter(adapter);
+        topicsRecyclerView.addItemDecoration(new BlackThickDividerDecor());
+        topicsRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
 //                if (!adapter.isLoading() &&  //adapter is not already loading more news
 //                        layoutManager.findLastCompletelyVisibleItemPosition() == adapter.getItemCount() - 1 //reached the last item
 //                        ) {
 //                    adapter.displayLoadingFooter();//indicate loading more news by showing footer
-//                    newsRecyclerView.smoothScrollToPosition(adapter.getItemCount() - 1);//smooth scroll to footer
+//                    topicsRecyclerView.smoothScrollToPosition(adapter.getItemCount() - 1);//smooth scroll to footer
 //                    //presenter.requestDeputies(filter);//load more news
 //                }
             }
@@ -121,7 +121,7 @@ public class MainListTopicsFragment extends BaseFragment implements ITopicsListV
     public void setTopicsToDisplay(List<Topic> news) {
         adapter.setItems(news);
         if (news != null && news.size() > 0) {
-            newsRecyclerView.animate().alpha(1).setDuration(getResources().getInteger(android.R.integer.config_shortAnimTime));
+            topicsRecyclerView.animate().alpha(1).setDuration(getResources().getInteger(android.R.integer.config_shortAnimTime));
         }
         updateContentVisibility();
     }
@@ -144,7 +144,7 @@ public class MainListTopicsFragment extends BaseFragment implements ITopicsListV
     private void animateRecycler(boolean isEmpty) {
         float val = isEmpty ? 0 : 1;
         int duration = getResources().getInteger(android.R.integer.config_mediumAnimTime);
-        newsRecyclerView.animate().alpha(val).setDuration(duration);
+        topicsRecyclerView.animate().alpha(val).setDuration(duration);
     }
 
 

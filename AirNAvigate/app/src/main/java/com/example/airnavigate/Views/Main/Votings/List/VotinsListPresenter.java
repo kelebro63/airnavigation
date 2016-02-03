@@ -1,7 +1,6 @@
 package com.example.airnavigate.Views.Main.Votings.List;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 
 import com.example.airnavigate.Dao.Deputy;
 import com.example.airnavigate.MVP.IPresenter;
@@ -105,7 +104,7 @@ class VotinsListPresenter implements IPresenter<IVotingsListView> { //http://lor
     }
 
 
-    public void openNextScreen(Deputy item, @Nullable String filter) {
+    public void openNextScreen(Deputy item) {
         if (item == null ) {
             //thats unexpected
             if (item == null) {

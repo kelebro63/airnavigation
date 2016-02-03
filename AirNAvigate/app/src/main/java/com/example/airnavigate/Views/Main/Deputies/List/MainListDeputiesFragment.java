@@ -30,11 +30,11 @@ public class MainListDeputiesFragment extends BaseFragment implements IDeputiesL
     @Bind(R.id.emptyStub)
     TextView emptyStub;
 
-    @Bind(R.id.newsRecyclerView)
-    RecyclerView newsRecyclerView;
+    @Bind(R.id.deputiesRecyclerView)
+    RecyclerView deputiesRecyclerView;
 
-    @Bind(R.id.newsRefreshLayout)
-    SwipeRefreshLayout topicsRefreshLayout;
+    @Bind(R.id.deputiesRefreshLayout)
+    SwipeRefreshLayout deputiesRefreshLayout;
 
 //    @Bind(R.id.progressLoading)
 //    HorizontalProgress progress;
@@ -68,7 +68,7 @@ public class MainListDeputiesFragment extends BaseFragment implements IDeputiesL
         presenter.takeView(this);
         presenter.requestDeputies();
 
-        topicsRefreshLayout.setOnRefreshListener(() -> {
+        deputiesRefreshLayout.setOnRefreshListener(() -> {
             if (!adapter.isLoading()) {
                 presenter.refreshItems();
             }
@@ -92,20 +92,20 @@ public class MainListDeputiesFragment extends BaseFragment implements IDeputiesL
 
     private void initRecyclerView() {
         layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-        newsRecyclerView.setLayoutManager(layoutManager);
+        deputiesRecyclerView.setLayoutManager(layoutManager);
         adapter = new DeputiesListAdapter();
 
         adapter.setItemClickListener(item -> presenter.openNextScreen(item, filter));
-        newsRecyclerView.setAdapter(adapter);
-        newsRecyclerView.addItemDecoration(new BlackThickDividerDecor());
-        newsRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        deputiesRecyclerView.setAdapter(adapter);
+        deputiesRecyclerView.addItemDecoration(new BlackThickDividerDecor());
+        deputiesRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
 //                if (!adapter.isLoading() &&  //adapter is not already loading more news
 //                        layoutManager.findLastCompletelyVisibleItemPosition() == adapter.getItemCount() - 1 //reached the last item
 //                        ) {
 //                    adapter.displayLoadingFooter();//indicate loading more news by showing footer
-//                    newsRecyclerView.smoothScrollToPosition(adapter.getItemCount() - 1);//smooth scroll to footer
+//                    deputiesRecyclerView.smoothScrollToPosition(adapter.getItemCount() - 1);//smooth scroll to footer
 //                    //presenter.requestDeputies(filter);//load more news
 //                }
             }
@@ -121,14 +121,14 @@ public class MainListDeputiesFragment extends BaseFragment implements IDeputiesL
     public void setDeputiesToDisplay(List<Deputy> deputies) {
         adapter.setItems(deputies);
         if (deputies != null && deputies.size() > 0) {
-            newsRecyclerView.animate().alpha(1).setDuration(getResources().getInteger(android.R.integer.config_shortAnimTime));
+            deputiesRecyclerView.animate().alpha(1).setDuration(getResources().getInteger(android.R.integer.config_shortAnimTime));
         }
         updateContentVisibility();
     }
 
     @Override
     public void stopRefreshing() {
-        topicsRefreshLayout.setRefreshing(false);
+        deputiesRefreshLayout.setRefreshing(false);
     }
 
     @Override
@@ -144,7 +144,7 @@ public class MainListDeputiesFragment extends BaseFragment implements IDeputiesL
     private void animateRecycler(boolean isEmpty) {
         float val = isEmpty ? 0 : 1;
         int duration = getResources().getInteger(android.R.integer.config_mediumAnimTime);
-        newsRecyclerView.animate().alpha(val).setDuration(duration);
+        deputiesRecyclerView.animate().alpha(val).setDuration(duration);
     }
 
 

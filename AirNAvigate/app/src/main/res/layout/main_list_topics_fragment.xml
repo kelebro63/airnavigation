@@ -7,12 +7,12 @@
     android:background="@color/white.almost">
 
     <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/deputiesRefreshLayout"
+        android:id="@+id/topicsRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/deputiesRecyclerView"
+            android:id="@+id/topicsRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:alpha="0"

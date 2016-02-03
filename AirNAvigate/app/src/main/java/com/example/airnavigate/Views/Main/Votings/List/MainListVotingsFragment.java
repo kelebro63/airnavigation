@@ -13,6 +13,7 @@ import com.example.airnavigate.MyApplication;
 import com.example.airnavigate.R;
 import com.example.airnavigate.Utils.BlackThickDividerDecor;
 import com.example.airnavigate.Views.Base.BaseFragment;
+import com.example.airnavigate.Views.Widgets.HorizontalProgress;
 
 import java.util.List;
 
@@ -30,20 +31,20 @@ public class MainListVotingsFragment extends BaseFragment implements IVotingsLis
     @Bind(R.id.emptyStub)
     TextView emptyStub;
 
-    @Bind(R.id.newsRecyclerView)
-    RecyclerView newsRecyclerView;
+    @Bind(R.id.votingsRecyclerView)
+    RecyclerView votingsRecyclerView;
 
-    @Bind(R.id.newsRefreshLayout)
-    SwipeRefreshLayout topicsRefreshLayout;
+    @Bind(R.id.votingsRefreshLayout)
+    SwipeRefreshLayout votingsRefreshLayout;
 
-//    @Bind(R.id.progressLoading)
-//    HorizontalProgress progress;
+    @Bind(R.id.progressLoading)
+    HorizontalProgress progress;
 
     @Inject
     VotinsListPresenter presenter;
 
 
-
+    private VotingsListAdapter adapter;
     private LinearLayoutManager layoutManager;
     public static final String TAG = "MainListVotingsFragment";
 
@@ -67,8 +68,10 @@ public class MainListVotingsFragment extends BaseFragment implements IVotingsLis
         presenter.takeView(this);
         presenter.requestVotings(1);
 
-        topicsRefreshLayout.setOnRefreshListener(() -> {
-
+        votingsRefreshLayout.setOnRefreshListener(() -> {
+            if (!adapter.isLoading()) {
+                presenter.refreshItems();
+            }
         });
     }
 
@@ -84,22 +87,23 @@ public class MainListVotingsFragment extends BaseFragment implements IVotingsLis
 
     @Override
     protected int getLayoutId() {
-        return R.layout.main_list_fragment;
+        return R.layout.main_list_votings_fragment;
     }
 
     private void initRecyclerView() {
         layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-        newsRecyclerView.setLayoutManager(layoutManager);
-
-        newsRecyclerView.addItemDecoration(new BlackThickDividerDecor());
-        newsRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        votingsRecyclerView.setLayoutManager(layoutManager);
+        adapter = new VotingsListAdapter();
+        votingsRecyclerView.addItemDecoration(new BlackThickDividerDecor());
+        votingsRecyclerView.setAdapter(adapter);
+        votingsRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
 //                if (!adapter.isLoading() &&  //adapter is not already loading more news
 //                        layoutManager.findLastCompletelyVisibleItemPosition() == adapter.getItemCount() - 1 //reached the last item
 //                        ) {
 //                    adapter.displayLoadingFooter();//indicate loading more news by showing footer
-//                    newsRecyclerView.smoothScrollToPosition(adapter.getItemCount() - 1);//smooth scroll to footer
+//                    votingsRecyclerView.smoothScrollToPosition(adapter.getItemCount() - 1);//smooth scroll to footer
 //                    //presenter.requestDeputies(filter);//load more news
 //                }
             }
@@ -107,17 +111,23 @@ public class MainListVotingsFragment extends BaseFragment implements IVotingsLis
     }
 
     @Override
-    public void addVotingsToDisplay(List<Voting> deputies) {
-
+    public void addVotingsToDisplay(List<Voting> votings) {
+        adapter.addAll(votings);
+        updateContentVisibility();
     }
 
-    public void setVotingsToDisplay(List<Voting> deputies) {
+    private void updateContentVisibility() {
+        emptyStub.setVisibility(adapter.isEmpty() ? View.VISIBLE : View.GONE);
+        animateRecycler(adapter.isEmpty());
+    }
+
+    public void setVotingsToDisplay(List<Voting> votings) {
 
     }
 
     @Override
     public void stopRefreshing() {
-        topicsRefreshLayout.setRefreshing(false);
+        votingsRefreshLayout.setRefreshing(false);
     }
 
     @Override
@@ -130,7 +140,7 @@ public class MainListVotingsFragment extends BaseFragment implements IVotingsLis
     private void animateRecycler(boolean isEmpty) {
         float val = isEmpty ? 0 : 1;
         int duration = getResources().getInteger(android.R.integer.config_mediumAnimTime);
-        newsRecyclerView.animate().alpha(val).setDuration(duration);
+        votingsRecyclerView.animate().alpha(val).setDuration(duration);
     }
 
 
