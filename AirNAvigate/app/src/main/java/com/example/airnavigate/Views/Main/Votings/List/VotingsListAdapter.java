@@ -42,12 +42,8 @@ class VotingsListAdapter extends BaseArrayAdapter<Voting, AbstractVotingHolder> 
     public AbstractVotingHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         switch (viewType) {
             case TYPE_STANDART_VOTING:
-                return new AbstractVotingHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.news_item, parent, false)) {
-                    @Override
-                    public void bind(Voting voting) {
+                return new VotingsListHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.voting_item, parent, false));
 
-                    }
-                };
             default:
                 throw new IllegalStateException("ViewHolder is not implemented");
         }

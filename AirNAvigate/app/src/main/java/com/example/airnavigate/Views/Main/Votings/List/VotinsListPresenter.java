@@ -19,7 +19,7 @@ import javax.inject.Inject;
  * Loads news into newsfeed. Controls pull-to-refresh.
  * Controls load more function by incrementing the number of the last fetched page
  */
-class VotinsListPresenter implements IPresenter<IVotingsListView> { //http://lorempixel.com/
+class VotinsListPresenter implements IPresenter<IVotingsListView> {
     private IVotingsListView view;
     private final ErrorNavigator errorDisplayer;
     private final MainInteractor interactor;
