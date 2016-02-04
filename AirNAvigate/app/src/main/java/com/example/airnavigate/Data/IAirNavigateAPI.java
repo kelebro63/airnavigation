@@ -5,7 +5,7 @@ package com.example.airnavigate.Data;
 
 import com.example.airnavigate.Dao.Deputy;
 import com.example.airnavigate.Dao.Topic;
-import com.example.airnavigate.Model.Voting;
+import com.example.airnavigate.Model.VotingResult;
 
 import java.util.List;
 
@@ -25,6 +25,6 @@ public interface IAirNavigateAPI {
     Observable<Deputy> requestLoadDeputy(@Query("id") int id);
 
     @GET("/voteSearch.json")
-    Observable<List<Voting>> requestLoadVotings(@Query("page") int page);
+    Observable<VotingResult> requestLoadVotings(@Query("page") int page);
 
 }

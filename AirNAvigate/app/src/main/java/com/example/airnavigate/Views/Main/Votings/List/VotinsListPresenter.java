@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.example.airnavigate.Dao.Deputy;
 import com.example.airnavigate.MVP.IPresenter;
-import com.example.airnavigate.Model.Voting;
+import com.example.airnavigate.Model.VotingResult;
 import com.example.airnavigate.Views.Base.BaseSubscriber;
 import com.example.airnavigate.Views.Common.ErrorNavigator;
 import com.example.airnavigate.Views.Main.MainInteractor;
@@ -48,7 +48,7 @@ class VotinsListPresenter implements IPresenter<IVotingsListView> { //http://lor
     public void requestVotings(int page) {
         if (isLoading)
             return;
-        interactor.loadVotings(page, new BaseSubscriber<List<Voting>>(view) {
+        interactor.loadVotings(page, new BaseSubscriber<VotingResult>(view) {
             @Override
             public void onStartImpl() {
 
@@ -65,8 +65,8 @@ class VotinsListPresenter implements IPresenter<IVotingsListView> { //http://lor
             }
 
             @Override
-            public void onNextImpl(List<Voting> votings) {
-
+            public void onNextImpl(VotingResult votingResult) {
+                view.addVotingsToDisplay(votingResult.getVotes());
             }
         });
     }

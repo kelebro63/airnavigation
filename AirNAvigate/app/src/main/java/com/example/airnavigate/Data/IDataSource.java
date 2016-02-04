@@ -2,7 +2,7 @@ package com.example.airnavigate.Data;
 
 import com.example.airnavigate.Dao.Deputy;
 import com.example.airnavigate.Dao.Topic;
-import com.example.airnavigate.Model.Voting;
+import com.example.airnavigate.Model.VotingResult;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ public interface IDataSource {
 
     Observable<Deputy> requestLoadDeputy(int id);
 
-    Observable<List<Voting>> requestLoadVotings(int page);
+    Observable<VotingResult> requestLoadVotings(int page);
 
 //    Observable<List<News>> requestLoadTopics(int page, String tag);
 //

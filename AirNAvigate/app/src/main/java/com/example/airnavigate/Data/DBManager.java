@@ -9,7 +9,7 @@ import com.example.airnavigate.Dao.Deputy;
 import com.example.airnavigate.Dao.DeputyDao;
 import com.example.airnavigate.Dao.Topic;
 import com.example.airnavigate.Dao.TopicDao;
-import com.example.airnavigate.Model.Voting;
+import com.example.airnavigate.Model.VotingResult;
 import com.example.airnavigate.Utils.Prefs;
 
 import java.util.List;
@@ -55,7 +55,7 @@ public class DBManager {
         deputyDao.insertOrReplace(deputy);
     }
 
-    public void saveVoting(List<Voting> votings) {
+    public void saveVoting(VotingResult votingResult) {
         //deputyDao.insertOrReplace(voting);
     }
 
