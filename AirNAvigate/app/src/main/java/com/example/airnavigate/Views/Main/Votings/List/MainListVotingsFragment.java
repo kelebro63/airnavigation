@@ -122,7 +122,11 @@ public class MainListVotingsFragment extends BaseFragment implements IVotingsLis
     }
 
     public void setVotingsToDisplay(List<Voting> votings) {
-
+        adapter.setItems(votings);
+        if (votings != null && votings.size() > 0) {
+            votingsRecyclerView.animate().alpha(1).setDuration(getResources().getInteger(android.R.integer.config_shortAnimTime));
+        }
+        updateContentVisibility();
     }
 
     @Override

@@ -10,8 +10,6 @@ import com.example.airnavigate.Views.Common.ErrorNavigator;
 import com.example.airnavigate.Views.Main.MainInteractor;
 import com.example.airnavigate.Views.Main.MainNavigator;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 
@@ -82,16 +80,20 @@ class VotinsListPresenter implements IPresenter<IVotingsListView> {
         if (isLoading) {
             return;
         }
-        interactor.loadDeputies(new BaseSubscriber<List<Deputy>>(view) {
-
+        currentPage = 1;
+        interactor.loadVotings(currentPage, new BaseSubscriber<VotingResult>(view) {
             @Override
             public void onStartImpl() {
-
+                isLoading = true;
+                //view.setInProgress(true);
             }
 
             @Override
             public void onCompletedImpl() {
-
+                view.stopRefreshing();
+                isLoading = false;
+                currentPage++;
+                //view.setInProgress(false);
             }
 
             @Override
@@ -100,8 +102,8 @@ class VotinsListPresenter implements IPresenter<IVotingsListView> {
             }
 
             @Override
-            public void onNextImpl(List<Deputy> newItems) {
-
+            public void onNextImpl(VotingResult votingResult) {
+                view.setVotingsToDisplay(votingResult.getVotes());
             }
         });
     }
