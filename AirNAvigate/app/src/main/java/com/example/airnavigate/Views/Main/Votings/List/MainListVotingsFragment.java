@@ -66,7 +66,7 @@ public class MainListVotingsFragment extends BaseFragment implements IVotingsLis
         initRecyclerView();
 //
         presenter.takeView(this);
-        presenter.requestVotings(1);
+        presenter.requestVotings();
 
         votingsRefreshLayout.setOnRefreshListener(() -> {
             if (!adapter.isLoading()) {
@@ -99,13 +99,13 @@ public class MainListVotingsFragment extends BaseFragment implements IVotingsLis
         votingsRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-//                if (!adapter.isLoading() &&  //adapter is not already loading more news
-//                        layoutManager.findLastCompletelyVisibleItemPosition() == adapter.getItemCount() - 1 //reached the last item
-//                        ) {
-//                    adapter.displayLoadingFooter();//indicate loading more news by showing footer
-//                    votingsRecyclerView.smoothScrollToPosition(adapter.getItemCount() - 1);//smooth scroll to footer
-//                    //presenter.requestDeputies(filter);//load more news
-//                }
+                if (!adapter.isLoading() &&  //adapter is not already loading more news
+                        layoutManager.findLastCompletelyVisibleItemPosition() == adapter.getItemCount() - 1 //reached the last item
+                        ) {
+                    adapter.displayLoadingFooter();//indicate loading more news by showing footer
+                    votingsRecyclerView.smoothScrollToPosition(adapter.getItemCount() - 1);//smooth scroll to footer
+                    presenter.requestVotings();//load more news
+                }
             }
         });
     }

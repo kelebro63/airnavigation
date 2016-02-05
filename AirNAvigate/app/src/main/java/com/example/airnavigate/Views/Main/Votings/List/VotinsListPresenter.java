@@ -45,18 +45,21 @@ class VotinsListPresenter implements IPresenter<IVotingsListView> {
     /**
      * Request Deputes from data source. Paging is done automatically
      */
-    public void requestVotings(int page) {
+    public void requestVotings() {
         if (isLoading)
             return;
-        interactor.loadVotings(page, new BaseSubscriber<VotingResult>(view) {
+        interactor.loadVotings(currentPage, new BaseSubscriber<VotingResult>(view) {
             @Override
             public void onStartImpl() {
-
+                isLoading = true;
+                //view.setInProgress(true);
             }
 
             @Override
             public void onCompletedImpl() {
-
+                isLoading = false;
+                currentPage++;
+                //view.setInProgress(false);
             }
 
             @Override
