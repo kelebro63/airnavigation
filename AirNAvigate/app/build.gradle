@@ -35,24 +35,33 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
+
     //compat
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:design:23.1.1'
+
     //utils
     compile 'com.jakewharton:butterknife:7.0.1'
+
     //retrofit + okhttp + rxandroid
     compile 'io.reactivex:rxandroid:1.0.0'
     compile 'com.squareup.retrofit:retrofit:1.9.0'
     compile 'com.squareup.okhttp:okhttp:2.3.0'
     compile 'com.squareup.okhttp:okhttp-urlconnection:2.3.0'
+
     //widgets
     compile 'com.android.support:recyclerview-v7:23.0.1'
     compile 'com.android.support:gridlayout-v7:23.0.1'
+
     //dagger-related
     compile 'com.google.dagger:dagger:2.0'
     apt "com.google.dagger:dagger-compiler:2.0"
     provided 'org.glassfish:javax.annotation:10.0-b28'
+
     //orm
     compile 'de.greenrobot:greendao:2.0.0'
     compile 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
+
+    //images loading and caching
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }

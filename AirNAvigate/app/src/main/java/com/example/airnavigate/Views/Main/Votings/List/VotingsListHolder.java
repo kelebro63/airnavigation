@@ -7,6 +7,9 @@ import android.widget.TextView;
 
 import com.example.airnavigate.Model.Voting;
 import com.example.airnavigate.R;
+import com.squareup.picasso.Picasso;
+
+import java.util.Random;
 
 import butterknife.Bind;
 
@@ -37,10 +40,11 @@ class VotingsListHolder extends AbstractVotingHolder {
 //        http://lorempixel.com/
 //        String altVersion = news.getImage();
 //        String primaryVersion = news.getImage2();
-//        String url = TextUtils.isEmpty(primaryVersion) ? altVersion : primaryVersion;
+        final Random random = new Random();
+        String url = "http://lorempixel.com/400/200/sports/" + random.nextInt(11);
 
-//        Picasso.with(context).cancelRequest(newsPreviewImage);
-//        Picasso.with(context).load(url).into(newsPreviewImage);
+        Picasso.with(context).cancelRequest(votingPreviewImage);
+        Picasso.with(context).load(url).placeholder(android.R.drawable.gallery_thumb).resize(216, 216).centerCrop().into(votingPreviewImage);
 
     }
 
