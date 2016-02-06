@@ -9,7 +9,10 @@ import com.example.airnavigate.Dao.Deputy;
 import com.example.airnavigate.Dao.DeputyDao;
 import com.example.airnavigate.Dao.Topic;
 import com.example.airnavigate.Dao.TopicDao;
-import com.example.airnavigate.Model.VotingResult;
+import com.example.airnavigate.Dao.Voting;
+import com.example.airnavigate.Dao.VotingDao;
+import com.example.airnavigate.Dao.VotingResult;
+import com.example.airnavigate.Dao.VotingResultDao;
 import com.example.airnavigate.Utils.Prefs;
 
 import java.util.List;
@@ -26,6 +29,9 @@ public class DBManager {
     private final Context context;
     private final TopicDao topicDao;
     private final DeputyDao deputyDao;
+    private final VotingResultDao votingResultDao;
+    private final VotingDao votingDao;
+
 
     @Inject
     public DBManager(@Singleton Context context, @Singleton Prefs prefs) {
@@ -36,6 +42,8 @@ public class DBManager {
         DaoSession session = daoMaster.newSession();
         topicDao = session.getTopicDao();
         deputyDao = session.getDeputyDao();
+        votingResultDao = session.getVotingResultDao();
+        votingDao = session.getVotingDao();
         this.prefs = prefs;
     }
 
@@ -56,7 +64,10 @@ public class DBManager {
     }
 
     public void saveVoting(VotingResult votingResult) {
-        //deputyDao.insertOrReplace(voting);
+        votingResultDao.insertOrReplace(votingResult);
+        for (Voting voting:votingResult.getVotes() ) {
+            votingDao.insertOrReplace(voting);
+        }
     }
 
     public List<Topic> getTopics() {

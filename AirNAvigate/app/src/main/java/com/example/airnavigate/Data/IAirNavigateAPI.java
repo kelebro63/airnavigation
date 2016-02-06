@@ -5,7 +5,7 @@ package com.example.airnavigate.Data;
 
 import com.example.airnavigate.Dao.Deputy;
 import com.example.airnavigate.Dao.Topic;
-import com.example.airnavigate.Model.VotingResult;
+import com.example.airnavigate.Dao.VotingResult;
 
 import java.util.List;
 

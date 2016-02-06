@@ -2,7 +2,7 @@ package com.example.airnavigate.Views.Main.Votings.List;
 
 import android.view.View;
 
-import com.example.airnavigate.Model.Voting;
+import com.example.airnavigate.Dao.Voting;
 
 /**
  * A "load more" footer displayed as list footer

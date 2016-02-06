@@ -1,4 +1,4 @@
-package com.example.airnavigate.Model;
+package com.example.airnavigate.Model.old;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

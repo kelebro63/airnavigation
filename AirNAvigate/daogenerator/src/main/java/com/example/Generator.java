@@ -4,7 +4,9 @@ import java.io.File;
 
 import de.greenrobot.daogenerator.DaoGenerator;
 import de.greenrobot.daogenerator.Entity;
+import de.greenrobot.daogenerator.Property;
 import de.greenrobot.daogenerator.Schema;
+import de.greenrobot.daogenerator.ToMany;
 
 public class Generator {
     public static void main(String[] args) throws Exception {
@@ -12,6 +14,7 @@ public class Generator {
         schema.enableKeepSectionsByDefault();
         addTopic(schema);
         addDeputy(schema);
+        addVoteResult(schema);
 
         File outDir = null;
         String[] paths = {"../app/src/main/java", "app/src/main/java"};
@@ -28,6 +31,7 @@ public class Generator {
 
         new DaoGenerator().generateAll(schema, outDir.getPath());
     }
+
 
     private static void addTopic(Schema schema) {
         Entity topic = schema.addEntity("Topic");
@@ -59,6 +63,34 @@ public class Generator {
         deputy.addIntProperty("speachCount");
         deputy.addStringProperty("activity").customType("com.example.airnavigate.Model.ActivityArrayList", "com.example.airnavigate.Model.Converters.ActivityListPropertyConverter");
         deputy.addStringProperty("educations").customType("com.example.airnavigate.Model.EducationArrayList", "com.example.airnavigate.Model.Converters.EducationListPropertyConverter");
+
+    }
+
+    private static void addVoteResult(Schema schema) {
+        Entity votingResult = schema.addEntity("VotingResult");
+        votingResult.addIdProperty().notNull().autoincrement();
+        votingResult.addStringProperty("totalCount");
+        votingResult.addStringProperty("page");
+        votingResult.addStringProperty("pageSize");
+        votingResult.addStringProperty("wording");
+
+        Entity voting = schema.addEntity("Voting");
+        voting.setTableName("VOTING");
+        voting.addIntProperty("id");
+        voting.addStringProperty("subject");
+        voting.addStringProperty("voteDate");
+        voting.addIntProperty("voteCount");
+        voting.addIntProperty("forCount");
+        voting.addIntProperty("againstCount");
+        voting.addIntProperty("abstainCount");
+        voting.addIntProperty("absentCount");
+        voting.addStringProperty("resultType");
+        voting.addBooleanProperty("result");
+        Property votingResultId = voting.addLongProperty("votingResultId").notNull().getProperty();
+        voting.addToOne(votingResult, votingResultId);
+
+        ToMany resultToVotings = votingResult.addToMany(voting, votingResultId);
+        resultToVotings.setName("votes");
 
     }
 }

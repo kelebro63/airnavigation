@@ -7,7 +7,7 @@ import com.example.airnavigate.Data.IDataSource;
 import com.example.airnavigate.Internal.BackgroundThread;
 import com.example.airnavigate.Internal.MainThread;
 import com.example.airnavigate.MVP.Interactor;
-import com.example.airnavigate.Model.VotingResult;
+import com.example.airnavigate.Dao.VotingResult;
 
 import java.util.List;
 

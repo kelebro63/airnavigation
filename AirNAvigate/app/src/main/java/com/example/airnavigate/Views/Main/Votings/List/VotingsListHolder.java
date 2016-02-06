@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.airnavigate.Model.Voting;
+import com.example.airnavigate.Dao.Voting;
 import com.example.airnavigate.R;
 import com.squareup.picasso.Picasso;
 

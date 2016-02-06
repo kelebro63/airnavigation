@@ -6,8 +6,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
+import com.example.airnavigate.Dao.Voting;
 
-import com.example.airnavigate.Model.Voting;
 import com.example.airnavigate.Modules.MainActivityFragmentModule;
 import com.example.airnavigate.MyApplication;
 import com.example.airnavigate.R;

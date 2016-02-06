@@ -3,9 +3,8 @@ package com.example.airnavigate.Data;
 
 import com.example.airnavigate.Dao.Deputy;
 import com.example.airnavigate.Dao.Topic;
+import com.example.airnavigate.Dao.VotingResult;
 import com.example.airnavigate.Internal.BackgroundThread;
-import com.example.airnavigate.Model.Voting;
-import com.example.airnavigate.Model.VotingResult;
 import com.example.airnavigate.Utils.Prefs;
 
 import java.util.List;

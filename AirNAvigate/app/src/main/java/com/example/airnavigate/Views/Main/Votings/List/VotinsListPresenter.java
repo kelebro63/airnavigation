@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.example.airnavigate.Dao.Deputy;
 import com.example.airnavigate.MVP.IPresenter;
-import com.example.airnavigate.Model.VotingResult;
+import com.example.airnavigate.Dao.VotingResult;
 import com.example.airnavigate.Views.Base.BaseSubscriber;
 import com.example.airnavigate.Views.Common.ErrorNavigator;
 import com.example.airnavigate.Views.Main.MainInteractor;

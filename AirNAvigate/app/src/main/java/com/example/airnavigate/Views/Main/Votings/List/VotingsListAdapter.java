@@ -3,9 +3,10 @@ package com.example.airnavigate.Views.Main.Votings.List;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.example.airnavigate.Model.Voting;
+import com.example.airnavigate.Dao.Voting;
 import com.example.airnavigate.R;
 import com.example.airnavigate.Views.Base.Adapter.BaseArrayAdapter;
+import com.example.airnavigate.Dao.Voting;
 
 import java.util.Collection;
 import java.util.List;
