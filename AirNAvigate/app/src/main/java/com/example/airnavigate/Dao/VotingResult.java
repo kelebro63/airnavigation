@@ -13,9 +13,8 @@ import de.greenrobot.dao.DaoException;
  */
 public class VotingResult {
 
-    private long id;
     private String totalCount;
-    private String page;
+    private Long page;
     private String pageSize;
     private String wording;
 
@@ -33,12 +32,11 @@ public class VotingResult {
     public VotingResult() {
     }
 
-    public VotingResult(long id) {
-        this.id = id;
+    public VotingResult(Long page) {
+        this.page = page;
     }
 
-    public VotingResult(long id, String totalCount, String page, String pageSize, String wording) {
-        this.id = Integer.valueOf(page);
+    public VotingResult(String totalCount, Long page, String pageSize, String wording) {
         this.totalCount = totalCount;
         this.page = page;
         this.pageSize = pageSize;
@@ -51,14 +49,6 @@ public class VotingResult {
         myDao = daoSession != null ? daoSession.getVotingResultDao() : null;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = Integer.valueOf(page);
-    }
-
     public String getTotalCount() {
         return totalCount;
     }
@@ -67,11 +57,11 @@ public class VotingResult {
         this.totalCount = totalCount;
     }
 
-    public String getPage() {
+    public Long getPage() {
         return page;
     }
 
-    public void setPage(String page) {
+    public void setPage(Long page) {
         this.page = page;
     }
 
@@ -98,7 +88,7 @@ public class VotingResult {
                 throw new DaoException("Entity is detached from DAO context");
             }
             VotingDao targetDao = daoSession.getVotingDao();
-            List<Voting> votesNew = targetDao._queryVotingResult_Votes(id);
+            List<Voting> votesNew = targetDao._queryVotingResult_Votes(page);
             synchronized (this) {
                 if(votes == null) {
                     votes = votesNew;

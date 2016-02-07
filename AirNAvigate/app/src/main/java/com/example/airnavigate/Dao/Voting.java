@@ -171,7 +171,7 @@ public class Voting {
         }
         synchronized (this) {
             this.votingResult = votingResult;
-            votingResultId = votingResult.getId();
+            votingResultId = votingResult.getPage();
             votingResult__resolvedKey = votingResultId;
         }
     }

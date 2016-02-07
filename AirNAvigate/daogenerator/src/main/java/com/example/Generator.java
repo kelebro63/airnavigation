@@ -9,6 +9,7 @@ import de.greenrobot.daogenerator.Schema;
 import de.greenrobot.daogenerator.ToMany;
 
 public class Generator {
+
     public static void main(String[] args) throws Exception {
         Schema schema = new Schema(8, "com.example.airnavigate.Dao");
         schema.enableKeepSectionsByDefault();
@@ -68,9 +69,8 @@ public class Generator {
 
     private static void addVoteResult(Schema schema) {
         Entity votingResult = schema.addEntity("VotingResult");
-        votingResult.addIdProperty().notNull().autoincrement();
         votingResult.addStringProperty("totalCount");
-        votingResult.addStringProperty("page");
+        votingResult.addLongProperty("page").primaryKey();
         votingResult.addStringProperty("pageSize");
         votingResult.addStringProperty("wording");
 

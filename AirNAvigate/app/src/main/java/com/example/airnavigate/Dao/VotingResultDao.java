@@ -23,11 +23,10 @@ public class VotingResultDao extends AbstractDao<VotingResult, Long> {
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {
-        public final static Property Id = new Property(0, long.class, "id", true, "_id");
-        public final static Property TotalCount = new Property(1, String.class, "totalCount", false, "TOTAL_COUNT");
-        public final static Property Page = new Property(2, String.class, "page", false, "PAGE");
-        public final static Property PageSize = new Property(3, String.class, "pageSize", false, "PAGE_SIZE");
-        public final static Property Wording = new Property(4, String.class, "wording", false, "WORDING");
+        public final static Property TotalCount = new Property(0, String.class, "totalCount", false, "TOTAL_COUNT");
+        public final static Property Page = new Property(1, Long.class, "page", true, "PAGE");
+        public final static Property PageSize = new Property(2, String.class, "pageSize", false, "PAGE_SIZE");
+        public final static Property Wording = new Property(3, String.class, "wording", false, "WORDING");
     };
 
     private DaoSession daoSession;
@@ -46,11 +45,10 @@ public class VotingResultDao extends AbstractDao<VotingResult, Long> {
     public static void createTable(SQLiteDatabase db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"VOTING_RESULT\" (" + //
-                "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL ," + // 0: id
-                "\"TOTAL_COUNT\" TEXT," + // 1: totalCount
-                "\"PAGE\" TEXT," + // 2: page
-                "\"PAGE_SIZE\" TEXT," + // 3: pageSize
-                "\"WORDING\" TEXT);"); // 4: wording
+                "\"TOTAL_COUNT\" TEXT," + // 0: totalCount
+                "\"PAGE\" INTEGER PRIMARY KEY ," + // 1: page
+                "\"PAGE_SIZE\" TEXT," + // 2: pageSize
+                "\"WORDING\" TEXT);"); // 3: wording
     }
 
     /** Drops the underlying database table. */
@@ -63,26 +61,25 @@ public class VotingResultDao extends AbstractDao<VotingResult, Long> {
     @Override
     protected void bindValues(SQLiteStatement stmt, VotingResult entity) {
         stmt.clearBindings();
-        stmt.bindLong(1, entity.getId());
  
         String totalCount = entity.getTotalCount();
         if (totalCount != null) {
-            stmt.bindString(2, totalCount);
+            stmt.bindString(1, totalCount);
         }
  
-        String page = entity.getPage();
+        Long page = entity.getPage();
         if (page != null) {
-            stmt.bindString(3, page);
+            stmt.bindLong(2, page);
         }
  
         String pageSize = entity.getPageSize();
         if (pageSize != null) {
-            stmt.bindString(4, pageSize);
+            stmt.bindString(3, pageSize);
         }
  
         String wording = entity.getWording();
         if (wording != null) {
-            stmt.bindString(5, wording);
+            stmt.bindString(4, wording);
         }
     }
 
@@ -95,18 +92,17 @@ public class VotingResultDao extends AbstractDao<VotingResult, Long> {
     /** @inheritdoc */
     @Override
     public Long readKey(Cursor cursor, int offset) {
-        return cursor.getLong(offset + 0);
+        return cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1);
     }    
 
     /** @inheritdoc */
     @Override
     public VotingResult readEntity(Cursor cursor, int offset) {
         VotingResult entity = new VotingResult( //
-            cursor.getLong(offset + 0), // id
-            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // totalCount
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // page
-            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // pageSize
-            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4) // wording
+            cursor.isNull(offset + 0) ? null : cursor.getString(offset + 0), // totalCount
+            cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1), // page
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // pageSize
+            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3) // wording
         );
         return entity;
     }
@@ -114,17 +110,16 @@ public class VotingResultDao extends AbstractDao<VotingResult, Long> {
     /** @inheritdoc */
     @Override
     public void readEntity(Cursor cursor, VotingResult entity, int offset) {
-        entity.setId(cursor.getLong(offset + 0));
-        entity.setTotalCount(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
-        entity.setPage(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
-        entity.setPageSize(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
-        entity.setWording(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
+        entity.setTotalCount(cursor.isNull(offset + 0) ? null : cursor.getString(offset + 0));
+        entity.setPage(cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1));
+        entity.setPageSize(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
+        entity.setWording(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
      }
     
     /** @inheritdoc */
     @Override
     protected Long updateKeyAfterInsert(VotingResult entity, long rowId) {
-        entity.setId(rowId);
+        entity.setPage(rowId);
         return rowId;
     }
     
@@ -132,7 +127,7 @@ public class VotingResultDao extends AbstractDao<VotingResult, Long> {
     @Override
     public Long getKey(VotingResult entity) {
         if(entity != null) {
-            return entity.getId();
+            return entity.getPage();
         } else {
             return null;
         }

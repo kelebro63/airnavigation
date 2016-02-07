@@ -223,7 +223,7 @@ public class VotingDao extends AbstractDao<Voting, Void> {
             builder.append(',');
             SqlUtils.appendColumns(builder, "T0", daoSession.getVotingResultDao().getAllColumns());
             builder.append(" FROM VOTING T");
-            builder.append(" LEFT JOIN VOTING_RESULT T0 ON T.\"VOTING_RESULT_ID\"=T0.\"_id\"");
+            builder.append(" LEFT JOIN VOTING_RESULT T0 ON T.\"VOTING_RESULT_ID\"=T0.\"PAGE\"");
             builder.append(' ');
             selectDeep = builder.toString();
         }
