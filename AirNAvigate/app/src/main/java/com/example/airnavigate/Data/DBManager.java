@@ -65,7 +65,8 @@ public class DBManager {
 
     public void saveVoting(VotingResult votingResult) {
         votingResultDao.insertOrReplace(votingResult);
-        for (Voting voting:votingResult.getVotes() ) {
+        for (Voting voting:votingResult.getVotes()) {
+            voting.setVotingResultId(votingResult.getPage());
             votingDao.insertOrReplace(voting);
         }
     }
