@@ -11,7 +11,7 @@ import com.example.airnavigate.R;
 import butterknife.Bind;
 
 /**
- * Gokixx CMS article UI representation in list
+ * CMS article UI representation in list
  * */
 class TopicsListHolder extends AbstractTopicsHolder {
     @Bind(R.id.newsPreviewImage)

@@ -17,7 +17,7 @@ public class Prefs {
     private static final String KEY_DEVICE_TOKEN = "KEY_DEVICE_TOKEN";
     private static final String KEY_NOTIFICATIONS_KEYS = "KEY_NOTIFICATIONS_KEYS";
     private static final String KEY_NOTIFICATION_KEY_PREFIX = "KEY_NOTIFICATION_KEY_PREFIX";
-    private static final String KEY_IS_GOKIXX_ALL_STAR_PROFILE = "KEY_IS_GOKIXX_ALL_STAR_PROFILE";
+    private static final String KEY_IS_ALL_STAR_PROFILE = "KEY_IS_ALL_STAR_PROFILE";
 
     private static final String KEY_FORMAT_METADATA_LAST_MODIFIED_TIMESTAMP = "last_modified_online_%s";
 
@@ -60,17 +60,17 @@ public class Prefs {
     }
 
     /**
-     * Set if current user's account is a Gokixx Redaction account
+     * Set if current user's account is a  Redaction account
      */
-    public void setIsGokixxAllStarProfile(boolean isGokixxAllStarProfile) {
-        prefs.edit().putBoolean(KEY_IS_GOKIXX_ALL_STAR_PROFILE, isGokixxAllStarProfile).apply();
+    public void setIsAllStarProfile(boolean isAllStarProfile) {
+        prefs.edit().putBoolean(KEY_IS_ALL_STAR_PROFILE, isAllStarProfile).apply();
     }
 
     /**
-     * Is this user's account a Gokixx Redaction account?
+     * Is this user's account a  Redaction account?
      */
-    public boolean isGokixxAllStarProfile() {
-        return prefs.getBoolean(KEY_IS_GOKIXX_ALL_STAR_PROFILE, false);
+    public boolean isAllStarProfile() {
+        return prefs.getBoolean(KEY_IS_ALL_STAR_PROFILE, false);
     }
 
 

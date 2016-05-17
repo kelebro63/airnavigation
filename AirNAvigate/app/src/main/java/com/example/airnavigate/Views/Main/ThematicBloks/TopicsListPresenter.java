@@ -125,7 +125,7 @@ class TopicsListPresenter implements IPresenter<ITopicsListView> {
 //
 //        StringArrayList tags = item.getTags();
 //
-//        EventTracker tracker = GokixxApp.analytixx(context).eventTracker;
+//        EventTracker tracker = App.analytixx(context).eventTracker;
 //        String tag = null;
 //        if (tags != null && tags.size() > 0) {
 //            tag = tags.get(0);

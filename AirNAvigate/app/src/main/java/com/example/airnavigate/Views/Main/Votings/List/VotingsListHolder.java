@@ -14,7 +14,7 @@ import java.util.Random;
 import butterknife.Bind;
 
 /**
- * Gokixx CMS article UI representation in list
+ * CMS article UI representation in list
  * */
 class VotingsListHolder extends AbstractVotingHolder {
     @Bind(R.id.votingPreviewImage)
@@ -47,6 +47,4 @@ class VotingsListHolder extends AbstractVotingHolder {
         Picasso.with(context).load(url).placeholder(android.R.drawable.gallery_thumb).resize(216, 216).centerCrop().into(votingPreviewImage);
 
     }
-
-
 }

@@ -124,39 +124,6 @@ class DeputiesListPresenter implements IPresenter<IDeputiesListView> {
             return;
         }
         navigator.openArticle((int) item.getId());
-//        StringArrayList tags = item.getTags();
-//
-//        EventTracker tracker = GokixxApp.analytixx(context).eventTracker;
-//        String tag = null;
-//        if (tags != null && tags.size() > 0) {
-//            tag = tags.get(0);
-//        }
-//
-//        if (item.getContentType().equals(ContentType.NEWS.value())) {
-//
-//
-//            navigator.openArticle(item.getId(), tag);
-//            if (filter == null) {
-//                tracker.trackArticleOpenFromNewsfeed(item.getTitle());
-//            } else {
-//                tracker.trackArticleOpenFromHashtags(item.getTitle(), filter);
-//            }
-//
-//        } else if (item.getContentType().equals(ContentType.VIDEO.value())) {
-//            openYoutubeVideo(item);
-//            if (filter == null) {
-//                tracker.trackClickVideoItemFromNewsfeed(item.getTitle());
-//            } else {
-//                tracker.trackClickVideoItemFromHashtagsTab(item.getTitle(), filter);
-//            }
-//        } else {
-//            navigator.openTwitterPost(item.getId(), tag);
-//            if (filter == null) {
-//                tracker.trackTweetOpenFromNewsfeed(item.getTitle());
-//            } else {
-//                tracker.trackTweetOpenFromHashtags(item.getTitle(), filter);
-//            }
-//        }
     }
 
 

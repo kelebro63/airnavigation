@@ -23,12 +23,12 @@ public class DataSourceImpl implements IDataSource {
     /**
      * An account for which we should ignore analytics
      */
-//    private static final String EDITORIAL_ACCOUNT_TEAM_NAME = "FC GOKIXX All Stars";
+
 //
 //    /**
 //     * Twitter user for which  we fetch the timeline
 //     */
-//    private static final String GOKIXX_TWITTER_ACCOUNT = "Gokixx";
+
 //
     private final IAirNavigateAPI serverApi;
     private final DBManager manager;

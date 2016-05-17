@@ -69,22 +69,7 @@ public abstract class BaseDialogFragment extends DialogFragment {
         //destroyPresenter();
     }
 
-    /**
-     * Gets a component for dependency injection by its type.
-     */
-//    @SuppressWarnings("unchecked")
-//    protected <C> C getComponent(Class<C> componentType) {
-//        return componentType.cast(((HasComponent<C>) getActivity()).getComponent());
-//    }
-//
-//
-//    protected final GokixxAppComponent getAppComponent() {
-//        return ((BaseActivity) getActivity()).getApplicationComponent();
-//    }
-//
-//    private void destroyPresenter() {
-//        Utils.destroyPresenter(this);
-//    }
+
 
     /**
      * When you add the dialog D in front of any other fragment F, the fragment F is not paused.<br>

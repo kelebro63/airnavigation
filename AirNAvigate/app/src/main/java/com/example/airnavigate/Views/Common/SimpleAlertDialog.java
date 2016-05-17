@@ -10,9 +10,7 @@ import com.example.airnavigate.R;
 import com.example.airnavigate.Views.Base.BaseDialog;
 
 
-/**
- * A simple fragment-based alert dialog with gokixx styling
- * */
+
 public class SimpleAlertDialog extends BaseDialog {
     @Override
     protected void onRightBtnClickImpl() {
